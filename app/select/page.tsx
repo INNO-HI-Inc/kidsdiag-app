@@ -28,7 +28,7 @@ export default function SelectPage() {
       <section className="max-w-3xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-ink-500 px-1.5 py-0.5 rounded border border-ink-100 bg-white"><span className="w-1 h-1 rounded-full bg-mint-500" />FUN-001</span>
             <span className="eyebrow text-mint-600">사전진단 시작</span>
           </div>
           <h1 className="h-section text-3xl mb-3">진단 시작 전 확인사항</h1>

@@ -9,27 +9,75 @@ export default function HomePage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="border-b border-ink-100">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-mint-50 text-mint-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-mint-500" />
-            (주)제닉스 · AI 기반 초등학력 진단·학습시스템
+      <section className="border-b border-ink-100 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 py-14 md:py-20 grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 bg-mint-50 text-mint-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-mint-500" />
+              (주)제닉스 · AI 기반 초등학력 진단·학습시스템
+            </div>
+            <h1 className="h-hero text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] mb-5">
+              초등 3~6학년<br />
+              <span className="text-mint-600">학력·재능 이중 진단</span>
+            </h1>
+            <p className="text-base text-ink-700 leading-[1.7] mb-8 max-w-md">
+              수학·과학·국어 3교과 + 통합사고력 57문항 / 45분.<br />
+              사전 진단 → 맞춤 학습 → 사후 진단까지.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/signup" className="inline-flex items-center justify-center gap-2 bg-mint-600 hover:bg-mint-700 text-white font-semibold px-7 py-3.5 rounded-full transition shadow-pop">
+                회원 가입 <IconArrowRight size={18} />
+              </Link>
+              <Link href="/select" className="inline-flex items-center justify-center gap-2 bg-white border-2 border-ink-200 hover:border-mint-500 text-ink-900 font-semibold px-7 py-3.5 rounded-full transition">
+                사전 진단 시작
+              </Link>
+            </div>
           </div>
-          <h1 className="h-hero text-4xl md:text-5xl mb-5">
-            초등 3~6학년<br />
-            <span className="text-mint-600">학력·재능 이중 진단</span>
-          </h1>
-          <p className="text-base text-ink-700 leading-[1.7] mb-8 max-w-xl mx-auto">
-            수학·과학·국어 3교과 + 통합사고력 57문항 / 45분.<br />
-            사전 진단 → 맞춤 학습 → 사후 진단까지.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/signup" className="inline-flex items-center justify-center gap-2 bg-mint-600 hover:bg-mint-700 text-white font-semibold px-7 py-3.5 rounded-full transition shadow-pop">
-              회원 가입 <IconArrowRight size={18} />
-            </Link>
-            <Link href="/select" className="inline-flex items-center justify-center gap-2 bg-white border-2 border-ink-200 hover:border-mint-500 text-ink-900 font-semibold px-7 py-3.5 rounded-full transition">
-              사전 진단 시작
-            </Link>
+
+          {/* Hero 미리보기 카드 */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute -top-4 -left-4 z-20 px-3 py-1.5 rounded-full bg-accent-500 text-carbon-900 text-[10px] font-bold rotate-[-4deg] shadow-accent">
+              실시간 분석 미리보기
+            </div>
+            <div className="relative bg-white border border-ink-100 rounded-3xl p-6 shadow-pop rotate-[1deg] hover:rotate-0 transition-transform duration-700">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="text-[10px] font-bold tracking-widest text-mint-700">진단 리포트</div>
+                  <div className="text-sm font-bold mt-0.5">민지 · 초5</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-3xl font-bold text-mint-700 tabular-nums leading-none">74<span className="text-base text-mint-500">%</span></div>
+                  <div className="text-[10px] text-ink-500 mt-0.5">상위 32%</div>
+                </div>
+              </div>
+
+              <div className="space-y-2.5 mb-4">
+                {[
+                  { n: "국어", v: 71, c: "bg-lavender-500" },
+                  { n: "과학", v: 65, c: "bg-sky-500" },
+                  { n: "수학", v: 78, c: "bg-mint-500" },
+                  { n: "통합사고력", v: 82, c: "bg-sun-500" },
+                ].map((b) => (
+                  <div key={b.n}>
+                    <div className="flex justify-between text-[11px] mb-1">
+                      <span className="font-semibold text-ink-700">{b.n}</span>
+                      <span className="font-bold tabular-nums">{b.v}%</span>
+                    </div>
+                    <div className="h-1.5 bg-ink-100 rounded-full overflow-hidden">
+                      <div className={`h-full ${b.c} rounded-full`} style={{ width: `${b.v}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-paper-grey rounded-xl p-3 border border-ink-100">
+                <div className="text-[9px] font-bold tracking-widest text-ink-600 mb-2">재능 프로필 (상위 2)</div>
+                <div className="flex gap-1.5">
+                  <span className="px-2 py-1 rounded-md bg-lavender-100 text-lavender-700 text-[10px] font-bold">수리·논리 82</span>
+                  <span className="px-2 py-1 rounded-md bg-mint-100 text-mint-700 text-[10px] font-bold">언어·기호 76</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
