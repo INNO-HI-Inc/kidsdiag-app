@@ -27,7 +27,7 @@ export default function HomePage() {
             <div className="w-8 h-8 rounded-xl bg-carbon-900 flex items-center justify-center text-white font-bold text-sm">
               k
             </div>
-            <div className="font-bold text-base tracking-tight">kidsdiag</div>
+            <div className="font-bold text-base tracking-tight">제닉스</div>
           </div>
           <div className="text-[11px] font-semibold text-ink-500 hidden sm:block">
             (주)제닉스 · AI 기반 초등학력 진단·학습시스템
@@ -36,16 +36,10 @@ export default function HomePage() {
       </header>
 
       {/* Split: Pitch + Auth */}
-      <section className="max-w-6xl mx-auto px-6 py-10 md:py-16 grid lg:grid-cols-12 gap-10 items-start">
-        {/* LEFT — JOBDA 스타일 PITCH */}
-        <div className="lg:col-span-7 lg:pt-6">
-          <div className="inline-flex items-center gap-2 bg-mint-50 text-mint-700 text-xs font-bold tracking-widest px-3 py-1.5 rounded-full mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-mint-500" />
-            FOR ELEMENTARY · 3~6 GRADE
-          </div>
-
-          <h1 className="h-hero text-4xl md:text-5xl lg:text-[4rem] leading-[1.1] mb-7">
-            점수가 아니라<br />
+      <section className="max-w-6xl mx-auto px-6 py-12 md:py-20 grid lg:grid-cols-12 gap-10 items-center">
+        {/* LEFT — 간단 PITCH */}
+        <div className="lg:col-span-7">
+          <h1 className="h-hero text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] mb-5">
             <span className="relative inline-block">
               어디서 막혔는지
               <Squiggle color="#FFC82A" />
@@ -53,60 +47,9 @@ export default function HomePage() {
             <br />
             <span className="text-mint-600">짚어드립니다.</span>
           </h1>
-
-          <p className="text-base text-ink-700 leading-[1.7] mb-9 max-w-md">
-            <strong className="text-ink-900 font-semibold">학력 + 재능 8개</strong> 동시 진단.<br />
-            교과 문항에 이중 매핑되어, 한 번 응시로 두 결과를 받습니다.
+          <p className="text-base text-ink-700 leading-[1.7] max-w-md">
+            초3~6 학력 + 재능 8개 동시 진단 · 57문항 · 45분
           </p>
-
-          {/* 잡다 스타일 STATS */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 mb-10 max-w-lg">
-            {[
-              { v: "57", l: "문항", c: "text-ink-900" },
-              { v: "45", l: "분 소요", c: "text-mint-600" },
-              { v: "4", l: "교과 블록", c: "text-ink-900" },
-              { v: "8", l: "재능 차원", c: "text-accent-700" },
-            ].map((s) => (
-              <div key={s.l} className="border-l-2 border-ink-100 pl-4">
-                <div className={`text-3xl md:text-4xl font-bold ${s.c} tabular-nums tracking-tight leading-none`}>
-                  {s.v}
-                </div>
-                <div className="text-[11px] text-ink-600 mt-1.5 font-semibold">{s.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* 미리보기 카드 — 잡다 rotate */}
-          <div className="hidden md:block relative max-w-sm">
-            <div className="absolute -top-3 -left-3 z-20 px-3 py-1.5 rounded-full bg-accent-500 text-carbon-900 text-[10px] font-bold rotate-[-6deg] shadow-accent">
-              실시간 분석
-            </div>
-            <div className="relative bg-white border border-ink-100 rounded-3xl p-5 shadow-pop rotate-[1.5deg] hover:rotate-0 transition-transform duration-700">
-              <div className="flex items-center justify-between mb-3">
-                <div className="text-[10px] font-bold tracking-widest text-mint-700">진단 리포트 미리보기</div>
-                <div className="text-2xl font-bold text-mint-700 tabular-nums leading-none">
-                  74<span className="text-sm text-mint-500">%</span>
-                </div>
-              </div>
-              <div className="space-y-2">
-                {[
-                  { n: "수리·논리", v: 82, c: "bg-mint-500" },
-                  { n: "언어·기호", v: 76, c: "bg-lavender-500" },
-                  { n: "공간·시각", v: 71, c: "bg-sky-500" },
-                ].map((b) => (
-                  <div key={b.n}>
-                    <div className="flex justify-between text-[10px] mb-0.5">
-                      <span className="font-semibold text-ink-700">{b.n}</span>
-                      <span className="font-bold tabular-nums">{b.v}</span>
-                    </div>
-                    <div className="h-1 bg-ink-100 rounded-full overflow-hidden">
-                      <div className={`h-full ${b.c} rounded-full`} style={{ width: `${b.v}%` }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* RIGHT — AUTH FORM */}

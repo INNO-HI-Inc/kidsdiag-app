@@ -65,7 +65,7 @@ export default function SiteSettingsPage() {
             <h2 className="text-base font-bold tracking-tight mb-4">기타 문구 수정</h2>
             <div className="space-y-3 text-xs">
               {[
-                { l: "사이트 제목", v: "kidsdiag — AI 기반 초등학력 진단·학습시스템" },
+                { l: "사이트 제목", v: "제닉스 — AI 기반 초등학력 진단·학습시스템" },
                 { l: "메타 디스크립션", v: "(주)제닉스 초3~6 학력 진단 + GeniusX 재능 진단" },
                 { l: "헤더 슬로건", v: "초등 3~6학년 학력·재능 이중 진단" },
                 { l: "푸터 저작권", v: "© 2026 (주)제닉스" },

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "kidsdiag — 초5 학력진단",
-  description: "한국창의영재교육원 검수 + AI 진단으로 자녀의 학력을 정밀 진단",
+  title: "제닉스 — AI 기반 초등학력 진단·학습시스템",
+  description: "(주)제닉스 초3~6 학력+재능 이중 진단 · 4교과 57문항 45분",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

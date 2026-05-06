@@ -69,7 +69,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-2.5 min-w-0">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="w-8 h-8 rounded-xl bg-carbon-900 flex items-center justify-center text-white font-bold text-sm">k</div>
-            <div className="font-bold text-base tracking-tight">kidsdiag</div>
+            <div className="font-bold text-base tracking-tight">제닉스</div>
           </Link>
           <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-semibold text-ink-600 px-2 py-1 rounded-full bg-paper-grey border border-ink-100">
             <span className={`w-1.5 h-1.5 rounded-full ${meta.dot}`} />
