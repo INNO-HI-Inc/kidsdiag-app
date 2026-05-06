@@ -32,13 +32,17 @@ export default function AdminDashboard() {
           }
         />
 
-        {/* 4개 sub-route 빠른 진입 */}
+        {/* 7개 sub-route 빠른 진입 (PDF 관리자 메뉴) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
           {[
+            { href: "/admin/members", title: "회원관리", desc: "FUN-007 등록·승인", dot: "bg-mint-500" },
+            { href: "/admin/stats", title: "통계", desc: "FUN-006 차트·다운로드", dot: "bg-sky-500" },
+            { href: "/admin/content", title: "학습 콘텐츠", desc: "FUN-005 동영상·자료", dot: "bg-lavender-500" },
+            { href: "/admin/cms-editor", title: "문항 편집기", desc: "FUN-005 CMS 에디터", dot: "bg-sun-500" },
             { href: "/admin/grading", title: "답안 채점", desc: "FUN-001 수동 채점", dot: "bg-mint-500" },
-            { href: "/admin/cms-editor", title: "문항 편집기", desc: "FUN-005 CMS", dot: "bg-sky-500" },
             { href: "/admin/permissions", title: "권한·알림", desc: "FUN-007 매트릭스", dot: "bg-lavender-500" },
             { href: "/admin/site", title: "사이트 설정", desc: "FUN-008 로고·문구", dot: "bg-sun-500" },
+            { href: "/board", title: "게시판", desc: "FUN-008 공지·Q&A", dot: "bg-sky-500" },
           ].map((c) => (
             <Link key={c.href} href={c.href} className="bg-white rounded-2xl border border-ink-100 p-4 hover:border-mint-300 transition">
               <div className="flex items-center gap-2 mb-2">

@@ -62,11 +62,19 @@ export default function SelectPage() {
           </div>
         </div>
 
-        {/* Step 2 — 학년 */}
+        {/* Step 2 — 소속 학교·학년 */}
         <div className="bg-white border-2 border-ink-100 rounded-2xl p-6 mb-4">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-7 h-7 rounded-full bg-mint-600 text-white text-sm font-bold flex items-center justify-center">2</div>
-            <h2 className="text-base font-bold tracking-tight">학년 선택</h2>
+            <h2 className="text-base font-bold tracking-tight">소속 학교 · 학년</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3 mb-3">
+            <select className="px-3 py-2.5 rounded-xl border-2 border-ink-100 text-sm">
+              <option>제닉스초등학교</option>
+              <option>한빛초등학교</option>
+              <option>샛별초등학교</option>
+            </select>
+            <input placeholder="반 (예: 5-3)" defaultValue="5-3" className="px-3 py-2.5 rounded-xl border-2 border-ink-100 text-sm" />
           </div>
           <div className="grid grid-cols-4 gap-2">
             {([3, 4, 5, 6] as Grade[]).map((g) => (
@@ -81,12 +89,45 @@ export default function SelectPage() {
               </button>
             ))}
           </div>
+          <div className="text-[10px] text-ink-500 mt-2">소속 학교에 등록된 학과별 맞춤 검사 페이지가 자동 제공됩니다.</div>
         </div>
 
-        {/* Step 3 — 4 블록 안내 */}
+        {/* Step 2.5 — 희망 선호 과목 / 부족 교과 설문 */}
         <div className="bg-white border-2 border-ink-100 rounded-2xl p-6 mb-4">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-7 h-7 rounded-full bg-mint-600 text-white text-sm font-bold flex items-center justify-center">3</div>
+            <h2 className="text-base font-bold tracking-tight">희망·부족 교과 설문 <span className="text-[10px] font-normal text-ink-500">(선택)</span></h2>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-1.5">희망 (자신 있는) 과목</div>
+              <div className="flex gap-2 flex-wrap">
+                {["수학", "과학", "국어", "통합사고력"].map((s) => (
+                  <label key={s} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-ink-100 text-xs cursor-pointer hover:border-mint-300">
+                    <input type="checkbox" className="accent-mint-600 w-3 h-3" />
+                    {s}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-1.5">부족 (도움이 필요한) 교과</div>
+              <div className="flex gap-2 flex-wrap">
+                {["수학", "과학", "국어", "통합사고력"].map((s) => (
+                  <label key={s} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-ink-100 text-xs cursor-pointer hover:border-peach-200">
+                    <input type="checkbox" className="accent-peach-400 w-3 h-3" />
+                    {s}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Step 4 — 4 블록 안내 */}
+        <div className="bg-white border-2 border-ink-100 rounded-2xl p-6 mb-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-7 h-7 rounded-full bg-mint-600 text-white text-sm font-bold flex items-center justify-center">4</div>
             <h2 className="text-base font-bold tracking-tight">교과 블록 (자동 진행 순서)</h2>
           </div>
           <div className="space-y-2">
@@ -109,10 +150,10 @@ export default function SelectPage() {
           </div>
         </div>
 
-        {/* Step 4 — 동의 */}
+        {/* Step 5 — 동의 */}
         <div className="bg-lavender-50 border-2 border-lavender-200 rounded-2xl p-6 mb-6">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-7 h-7 rounded-full bg-lavender-500 text-white text-sm font-bold flex items-center justify-center">4</div>
+            <div className="w-7 h-7 rounded-full bg-lavender-500 text-white text-sm font-bold flex items-center justify-center">5</div>
             <h2 className="text-base font-bold tracking-tight">학습 데이터 수집 동의</h2>
           </div>
           <p className="text-xs text-ink-700 leading-[1.7] mb-3">

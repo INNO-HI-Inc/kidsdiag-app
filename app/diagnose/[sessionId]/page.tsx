@@ -68,6 +68,8 @@ export default function DiagnosePage() {
   const [submitting, setSubmitting] = useState(false);
   const [paused, setPaused] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [showRubric, setShowRubric] = useState(false);
+  const [selfMark, setSelfMark] = useState<"correct" | "wrong" | null>(null);
   const startRef = useRef<number>(Date.now());
 
   useEffect(() => {
@@ -228,9 +230,22 @@ export default function DiagnosePage() {
           <div className={`${block.color.bg} rounded-xl px-3 py-1.5`}>
             <span className={`text-[10px] font-bold tracking-widest ${block.color.text}`}>{block.short.toUpperCase()}</span>
           </div>
-          <button className="text-[10px] font-semibold px-2.5 py-1.5 rounded-full bg-paper-grey hover:bg-ink-100 text-ink-700">
+          <button onClick={() => setShowRubric(true)} className="text-[10px] font-semibold px-2.5 py-1.5 rounded-full bg-paper-grey hover:bg-ink-100 text-ink-700">
             정답채점기준 보기
           </button>
+          <div className="ml-auto flex items-center gap-1 text-[10px]">
+            <span className="text-ink-500">자가 표시:</span>
+            <button
+              onClick={() => setSelfMark("correct")}
+              className={`px-2 py-1 rounded font-bold ${selfMark === "correct" ? "bg-mint-500 text-white" : "bg-paper-grey text-ink-700"}`}
+              title="정답 자가 표시"
+            >○ 정답</button>
+            <button
+              onClick={() => setSelfMark("wrong")}
+              className={`px-2 py-1 rounded font-bold ${selfMark === "wrong" ? "bg-peach-400 text-white" : "bg-paper-grey text-ink-700"}`}
+              title="오답 자가 표시"
+            >× 오답</button>
+          </div>
         </div>
 
         {/* 멀티미디어 영역 (음성·동영상 재생 자리) */}
@@ -293,6 +308,38 @@ export default function DiagnosePage() {
           틀려도 점수 차감 없음 · 차분히 풀어주세요
         </p>
       </div>
+
+      {/* 정답채점기준 모달 */}
+      {showRubric && (
+        <div onClick={() => setShowRubric(false)} className="fixed inset-0 z-50 bg-ink-900/50 backdrop-blur-sm flex items-end md:items-center justify-center p-4">
+          <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-2xl border border-ink-100 shadow-pop p-6 max-w-md w-full">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base font-bold tracking-tight">정답채점기준</h3>
+              <button onClick={() => setShowRubric(false)} className="w-8 h-8 rounded-full bg-paper-grey hover:bg-ink-100 text-ink-700 font-bold">×</button>
+            </div>
+            <div className="space-y-3 text-sm">
+              <div className="bg-mint-50 rounded-xl p-3">
+                <div className="text-[10px] font-bold tracking-widest text-mint-700 mb-1">완전 정답</div>
+                <p className="text-xs text-ink-700 leading-[1.6]">핵심 개념·키워드 모두 포함, 정확한 표현</p>
+              </div>
+              <div className="bg-sun-50 rounded-xl p-3">
+                <div className="text-[10px] font-bold tracking-widest text-sun-600 mb-1">부분 정답</div>
+                <p className="text-xs text-ink-700 leading-[1.6]">핵심 일부 + 논리 흐름은 맞음 (부분 점수)</p>
+              </div>
+              <div className="bg-peach-100 rounded-xl p-3">
+                <div className="text-[10px] font-bold tracking-widest text-peach-500 mb-1">오답</div>
+                <p className="text-xs text-ink-700 leading-[1.6]">핵심 누락 또는 개념 오류</p>
+              </div>
+              <div className="text-[10px] text-ink-500 pt-2 border-t border-ink-100">
+                AI 채점 신뢰도 ≥ 0.75 자동 채점 / 미만은 인간 검토 라우팅
+              </div>
+            </div>
+            <button onClick={() => setShowRubric(false)} className="w-full mt-5 bg-mint-600 hover:bg-mint-700 text-white font-bold py-3 rounded-full">
+              확인
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
