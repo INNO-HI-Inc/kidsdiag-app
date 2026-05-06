@@ -77,6 +77,37 @@ export default function ManualPage() {
           </div>
         </div>
 
+        {/* 이해관계자 수용성 자료 (GeniusX Section 4.5) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold mb-4 tracking-tight">이해관계자 수용성 자료</h2>
+          <div className="grid md:grid-cols-3 gap-3">
+            <div className="bg-sky-50 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-sky-700 mb-2">교사용</div>
+              <div className="text-sm font-bold mb-1.5">1페이지 안내자료</div>
+              <p className="text-[11px] text-ink-700 leading-[1.6] mb-3">
+                업무 부담 정량 제시 (교실당 실시 시간, 교사 역할 최소화)
+              </p>
+              <button className="text-xs font-bold text-sky-700 hover:text-sky-900">PDF 다운로드 ↓</button>
+            </div>
+            <div className="bg-lavender-50 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-lavender-700 mb-2">학부모용</div>
+              <div className="text-sm font-bold mb-1.5">설명회 영상 (5~7분)</div>
+              <p className="text-[11px] text-ink-700 leading-[1.6] mb-3">
+                목적·방법·결과·개인정보·심화 진단 연계 FAQ 형식
+              </p>
+              <button className="text-xs font-bold text-lavender-700 hover:text-lavender-900">영상 시청 →</button>
+            </div>
+            <div className="bg-sun-50 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-sun-600 mb-2">교장·교감용</div>
+              <div className="text-sm font-bold mb-1.5">브리핑 자료</div>
+              <p className="text-[11px] text-ink-700 leading-[1.6] mb-3">
+                교육청 협약 기반 외 학교장 의사결정 지원용
+              </p>
+              <button className="text-xs font-bold text-sun-600 hover:text-sun-700">PDF 다운로드 ↓</button>
+            </div>
+          </div>
+        </div>
+
         {/* 환경 호환 안내 */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
           <h2 className="text-base font-bold mb-4 tracking-tight">지원 환경 (RFP I.4.다.6))</h2>

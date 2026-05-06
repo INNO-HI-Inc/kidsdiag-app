@@ -113,10 +113,10 @@ export default function SignupPage() {
             </div>
             <div className="space-y-2.5">
               {[
-                { k: "guardian", t: "법정대리인 동의 (필수)", d: "만 14세 미만 자녀의 진단·학습 데이터 처리에 보호자로서 동의합니다." },
-                { k: "dataDiag", t: "학력 진단 데이터 수집·이용 (필수)", d: "응답·풀이시간·답 변경 등 학습 행동 로그 · 5년 보관 후 자동 파기" },
-                { k: "dataTalent", t: "재능 진단 프리뷰 분석 (필수)", d: "8개 재능 중 5개 측정값을 익명 ID로 분석합니다." },
-                { k: "marketing", t: "심화 진단 안내·마케팅 (선택)", d: "GeniusX 진로 가이드, 이벤트 등 추가 정보 수신" },
+                { k: "guardian", t: "법정대리인 동의 (필수)", d: "만 14세 미만 자녀의 진단·학습 데이터 처리에 보호자로서 동의합니다. 개인정보보호법 §22조의2 준수." },
+                { k: "dataDiag", t: "학력 진단 데이터 수집·이용 (필수)", d: "응답·풀이시간·답 변경 등 학습 행동 로그를 데이터 최소 수집 원칙에 따라 익명 ID로 처리하며, 5년 보관 후 자동 파기됩니다." },
+                { k: "dataTalent", t: "재능 진단 프리뷰 분석 (필수)", d: "8개 재능 중 5개 측정값을 익명 ID로 분석합니다. 서울교대 IRB(박민구 교수 책임 체제) 심의 완료." },
+                { k: "marketing", t: "심화 진단 안내·마케팅 (선택)", d: "GeniusX 진로 가이드, 이벤트 등 추가 정보 수신. 연구 목적 2차 활용 시 별도 재동의를 받습니다." },
               ].map((c) => {
                 const sel = agreed[c.k as keyof typeof agreed];
                 return (
@@ -139,6 +139,15 @@ export default function SignupPage() {
                   </button>
                 );
               })}
+            </div>
+
+            {/* 데이터 거버넌스 안내 */}
+            <div className="mt-4 bg-paper-grey rounded-2xl p-3.5 text-[10px] text-ink-700 leading-[1.7] space-y-1">
+              <div>· 데이터 최소 수집 원칙 — 진단에 꼭 필요한 정보만 수집</div>
+              <div>· 보관 5년 후 자동 파기 · 익명 ID 사용 · 실명 미수집</div>
+              <div>· IRB 심의 — 서울교대 박민구 교수 책임연구원 체제</div>
+              <div>· PIA 선제적 시행 (개인정보 영향평가) · 5,000명 규모 권장 적용</div>
+              <div>· 연구 목적 2차 활용 시 별도 재동의 절차</div>
             </div>
           </>
         )}

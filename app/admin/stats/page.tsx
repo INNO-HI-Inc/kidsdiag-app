@@ -62,6 +62,35 @@ export default function StatsPage() {
           }
         />
 
+        {/* 응시자 대표성 (GeniusX Section 4.1) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">응시자 대표성 점검</h2>
+            <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">5,124명 / 5,000 목표</span>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { l: "도시:비도시:읍면", target: "5 : 3 : 2", actual: "5.1 : 2.9 : 2.0", ok: true },
+              { l: "저소득층 (학교급식 지원 기준)", target: "≥ 15%", actual: "17.4%", ok: true },
+              { l: "일반 공립학교", target: "≥ 80%", actual: "82.1%", ok: true },
+              { l: "특수교육 대상", target: "3~5%", actual: "3.8%", ok: true },
+              { l: "사립·국립·혁신학교", target: "적정 비율", actual: "14.7%", ok: true },
+              { l: "영재교육원 네트워크", target: "≤ 30%", actual: "23.2%", ok: true },
+              { l: "3학년 / 4학년", target: "2,500 / 2,500", actual: "2,587 / 2,537", ok: true },
+              { l: "수직 척도화 앵커", target: "15문항 공통", actual: "15문항 동일", ok: true },
+            ].map((s) => (
+              <div key={s.l} className="bg-paper-grey rounded-xl p-3">
+                <div className="text-[10px] text-ink-600 mb-0.5">{s.l}</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm font-bold tabular-nums">{s.actual}</span>
+                  {s.ok && <span className="text-[9px] text-mint-700 font-bold">OK</span>}
+                </div>
+                <div className="text-[9px] text-ink-500 mt-0.5">목표: {s.target}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* 학년·성별 분포 */}
         <div className="grid md:grid-cols-2 gap-3 mb-5">
           <div className="bg-white rounded-2xl border border-ink-100 p-6">

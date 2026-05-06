@@ -147,6 +147,41 @@ export default function CmsEditorPage() {
               · 음성 MP3·WAV (≤ 5MB)<br />
               · 동영상 MP4 (≤ 30MB)
             </div>
+
+            {/* 문항 보안 정책 (GeniusX Section 4.3) */}
+            <div className="bg-white rounded-2xl border-2 border-peach-200 p-5">
+              <h3 className="text-sm font-bold mb-3 tracking-tight">문항 보안 정책</h3>
+              <div className="space-y-2.5 text-xs">
+                <label className="flex items-start gap-2.5 cursor-pointer p-2 rounded-lg hover:bg-paper-grey">
+                  <input type="radio" name="anchor" defaultChecked className="mt-0.5 accent-peach-400" />
+                  <div>
+                    <div className="font-semibold">앵커 문항 (미공개·장기 재사용)</div>
+                    <div className="text-[10px] text-ink-600">전체 57문항 중 20~25개 — 리포트·해설 비공개</div>
+                  </div>
+                </label>
+                <label className="flex items-start gap-2.5 cursor-pointer p-2 rounded-lg hover:bg-paper-grey">
+                  <input type="radio" name="anchor" className="mt-0.5 accent-peach-400" />
+                  <div>
+                    <div className="font-semibold">공개 가능 문항</div>
+                    <div className="text-[10px] text-ink-600">리포트·해설에 일부 공개 (유형별 예시만)</div>
+                  </div>
+                </label>
+                <div className="pt-2 mt-2 border-t border-ink-100 space-y-1.5">
+                  <label className="flex items-center gap-2 text-[11px]">
+                    <input type="checkbox" defaultChecked className="accent-peach-400 w-3.5 h-3.5" />
+                    응시 화면 캡처 방지 (스크린샷·드래그 차단)
+                  </label>
+                  <label className="flex items-center gap-2 text-[11px]">
+                    <input type="checkbox" defaultChecked className="accent-peach-400 w-3.5 h-3.5" />
+                    동적 문항 회전 (응시자별 57→55 랜덤)
+                  </label>
+                  <label className="flex items-center gap-2 text-[11px]">
+                    <input type="checkbox" defaultChecked className="accent-peach-400 w-3.5 h-3.5" />
+                    모바일 OS별 보안 테스트 통과
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

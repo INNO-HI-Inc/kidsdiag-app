@@ -76,6 +76,16 @@ export default function TutorPage() {
             ))}
           </div>
         </div>
+
+        {/* 안전 안내 */}
+        <div className="max-w-3xl mx-auto px-6 pb-3">
+          <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold">
+            <span className="bg-mint-50 text-mint-700 px-2 py-0.5 rounded-full">정답 직답 금지</span>
+            <span className="bg-sky-50 text-sky-700 px-2 py-0.5 rounded-full">부적절 콘텐츠 차단</span>
+            <span className="bg-lavender-50 text-lavender-700 px-2 py-0.5 rounded-full">할루시네이션 검사</span>
+            <span className="bg-sun-50 text-sun-600 px-2 py-0.5 rounded-full">학부모 모니터링</span>
+          </div>
+        </div>
       </header>
 
       {/* MESSAGES */}

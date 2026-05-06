@@ -95,6 +95,68 @@ export default function ReportPage() {
           </ol>
         </div>
 
+        {/* 검증 체계 5지표 (GeniusX Section 3.5) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold mb-4">검증 체계 — 5개 핵심 지표</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
+                <tr>
+                  <th className="pb-2 text-left">검증 대상</th>
+                  <th className="pb-2 text-left">지표</th>
+                  <th className="pb-2 text-left">합격 기준</th>
+                  <th className="pb-2 text-center">현재값</th>
+                  <th className="pb-2 text-right">상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { d: "학력진단 타당도", m: "Cronbach's α", c: "≥ 0.80", v: "0.84", ok: true },
+                  { d: "학력진단 IRT", m: "변별도 / 난이도 / 추측도", c: "a≥0.5 · b∈[-2,2] · c≤0.25", v: "OK", ok: true },
+                  { d: "학력진단 적합도", m: "Infit / Outfit MNSQ", c: "∈ [0.7, 1.3]", v: "0.92", ok: true },
+                  { d: "재능 매핑 타당도", m: "CFA · CFI / RMSEA", c: "CFI ≥ 0.90, RMSEA ≤ 0.08", v: "0.92 · 0.06", ok: true },
+                  { d: "이중 매핑 직교성 (최우선)", m: "학력 × 재능 상관 r", c: "r ∈ [0.3, 0.6]", v: "0.42", ok: true },
+                  { d: "발달 차이 검증", m: "Levene's Test", c: "p < 0.05 분산 차이 유의", v: "p=0.03", ok: true },
+                ].map((r, i) => (
+                  <tr key={i} className="border-b border-ink-100 last:border-0">
+                    <td className="py-2.5 text-xs font-semibold">{r.d}</td>
+                    <td className="py-2.5 text-xs text-ink-700">{r.m}</td>
+                    <td className="py-2.5 text-[11px] text-ink-600 font-mono">{r.c}</td>
+                    <td className="py-2.5 text-center text-xs font-bold tabular-nums">{r.v}</td>
+                    <td className="py-2.5 text-right">
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${r.ok ? "bg-mint-50 text-mint-700" : "bg-peach-100 text-peach-500"}`}>
+                        {r.ok ? "통과" : "미달"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* B플랜 — 실패 시나리오 (GeniusX Section 4.7) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold mb-4">B플랜 — 실패 시나리오 대응</h2>
+          <div className="space-y-2.5">
+            {[
+              { fail: "학력진단 α < 0.80", action: "저성능 문항 식별 → 뱅크 제외 → 잔여 문항 재분석. 학력진단 자체 유효 판정." },
+              { fail: "이중 매핑 r > 0.8 (같은 것 측정)", action: "재능 태그 재구성 + Phase 1 CBT 행동 로그 기반 F1 지표 도입으로 차별화 확보. 1단계 재능진단은 프리뷰 수준 유지." },
+              { fail: "이중 매핑 r < 0.2 (무의미)", action: "태그 B의 타당도 근본 문제. 1단계 재능진단 보고 중단, 학력진단 단독 서비스 전환. 태그 체계 전면 재설계 후 재시도." },
+              { fail: "CFA 미달", action: "오히려 긍정 신호 가능 — GeniusX 8재능 구조가 한국 3·4학년 데이터에 완전 맞지 않음을 시사. 데이터 기반 구조 수정으로 학술 논문화 기회." },
+              { fail: "응시자 4,000명 미만 확보", action: "기간 2주 연장 + 모집 채널 확장. 최악 시 파일럿 범위 축소 (3학년만, 2,500명)로 학년 내 분석 심화." },
+            ].map((r, i) => (
+              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-paper-grey">
+                <div className="w-1.5 h-1.5 rounded-full bg-peach-400 mt-2 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="text-sm font-bold text-peach-500 mb-1">{r.fail}</div>
+                  <div className="text-xs text-ink-700 leading-[1.6]">{r.action}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* 일괄 다운로드 */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
           <h2 className="text-base font-bold mb-4">일괄 다운로드</h2>

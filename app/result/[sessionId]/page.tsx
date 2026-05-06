@@ -174,9 +174,11 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* 윤리 메시지 */}
-          <div className="mt-4 text-[11px] text-ink-600 leading-[1.6] bg-paper-grey rounded-xl p-3">
-            점수가 낮은 영역은 <strong className="text-ink-900">'약점'이 아닌 '아직 발현되지 않은 영역'</strong>입니다. 3·4학년은 재능이 분화되기 시작하는 시기입니다.
+          {/* 윤리 메시지 3종 (GeniusX 핵심 원칙) */}
+          <div className="mt-4 space-y-2 bg-paper-grey rounded-xl p-3 text-[11px] text-ink-700 leading-[1.6]">
+            <div>① 이 진단은 <strong className="text-ink-900">학력과 재능의 일부 측면만</strong> 측정합니다.</div>
+            <div>② 점수가 낮은 영역은 <strong className="text-ink-900">'약점'이 아닌 '아직 발현되지 않은 영역'</strong>입니다.</div>
+            <div>③ 전체 8개 재능 중 <strong className="text-ink-900">5개만 본 검사에서 측정</strong>됩니다. 나머지 3개(음향·리듬, 신체·운동, 사회·관계)는 심화 진단에서 별도 방식으로 측정됩니다.</div>
           </div>
         </div>
 

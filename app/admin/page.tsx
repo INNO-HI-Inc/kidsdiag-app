@@ -163,6 +163,45 @@ export default function AdminDashboard() {
           </div>
         </div>
 
+        {/* M1~M8 타임라인 + 자문위원진 (GeniusX Section 3.6, 5) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold mb-4">파일럿 타임라인 · 8개월 · 5,000명</h2>
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-2 mb-5">
+            {[
+              { m: "M1", t: "문항 개발", c: "bg-mint-50 text-mint-700" },
+              { m: "M2", t: "이중 태그", c: "bg-mint-50 text-mint-700" },
+              { m: "M3", t: "검증·IRB", c: "bg-sky-50 text-sky-700" },
+              { m: "M4", t: "프리테스트", c: "bg-sky-50 text-sky-700" },
+              { m: "M5", t: "모집 런칭", c: "bg-lavender-50 text-lavender-700" },
+              { m: "M6", t: "본 응시", c: "bg-lavender-50 text-lavender-700" },
+              { m: "M7", t: "데이터 분석", c: "bg-sun-50 text-sun-600" },
+              { m: "M8", t: "검증 보고서", c: "bg-sun-50 text-sun-600" },
+            ].map((m) => (
+              <div key={m.m} className={`${m.c} rounded-lg p-2.5 text-center`}>
+                <div className="text-[10px] font-bold tracking-widest">{m.m}</div>
+                <div className="text-xs font-bold mt-0.5">{m.t}</div>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-ink-100 pt-4">
+            <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-3">책임 자문위원진</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+              {[
+                { r: "수학 책임자문", n: "박만구 교수", o: "서울교육대" },
+                { r: "과학 책임자문", n: "[섭외 중]", o: "서울과학교육대" },
+                { r: "국어 책임자문", n: "[섭외 중]", o: "국어교육 전공" },
+                { r: "기술 PM", n: "김종하", o: "(주)제닉스" },
+              ].map((p) => (
+                <div key={p.r} className="bg-paper-grey rounded-lg p-2.5">
+                  <div className="text-[9px] text-ink-600 mb-0.5">{p.r}</div>
+                  <div className="font-bold text-sm">{p.n}</div>
+                  <div className="text-[10px] text-ink-600">{p.o}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* 검수 콘솔 */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
           <div className="flex items-center justify-between mb-3">
