@@ -91,6 +91,123 @@ export default function StatsPage() {
           </div>
         </div>
 
+        {/* 3·4학년 프로파일 변별도 차이 (GeniusX Section 2.4 ④) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">3·4학년 프로파일 변별도 차이</h2>
+            <span className="text-[10px] font-bold text-lavender-700 bg-lavender-50 px-2 py-0.5 rounded-full">Ver.4 민감기 이론 실증</span>
+          </div>
+          <p className="text-xs text-ink-700 leading-[1.6] mb-4">
+            가설: 4학년이 3학년보다 재능 프로파일 분산이 크다 (재능 분화 진행). 데이터로 입증 시 Ver.4 민감기 이론의 자체 실증 근거.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-paper-grey rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-mint-700 mb-2">3학년</div>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-2xl font-bold tabular-nums">12.4</span>
+                <span className="text-xs text-ink-600">표준편차</span>
+              </div>
+              <div className="space-y-1.5 text-[11px]">
+                {[
+                  { l: "수리·논리", v: 11.2 },
+                  { l: "언어·기호", v: 13.8 },
+                  { l: "공간·시각", v: 12.6 },
+                  { l: "자연·생태", v: 11.9 },
+                  { l: "자기·성찰", v: 12.5 },
+                ].map((s) => (
+                  <div key={s.l} className="flex justify-between">
+                    <span className="text-ink-600">{s.l}</span>
+                    <span className="font-bold tabular-nums">σ {s.v}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-lavender-50 rounded-xl p-4 border border-lavender-200">
+              <div className="flex items-center justify-between mb-2">
+                <div className="text-[10px] font-bold tracking-widest text-lavender-700">4학년</div>
+                <span className="text-[10px] font-bold text-mint-700 bg-white px-2 py-0.5 rounded-full">+22% 분산</span>
+              </div>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-2xl font-bold tabular-nums text-lavender-700">15.1</span>
+                <span className="text-xs text-ink-600">표준편차</span>
+              </div>
+              <div className="space-y-1.5 text-[11px]">
+                {[
+                  { l: "수리·논리", v: 14.1, d: 2.9 },
+                  { l: "언어·기호", v: 17.2, d: 3.4 },
+                  { l: "공간·시각", v: 15.4, d: 2.8 },
+                  { l: "자연·생태", v: 14.8, d: 2.9 },
+                  { l: "자기·성찰", v: 14.0, d: 1.5 },
+                ].map((s) => (
+                  <div key={s.l} className="flex justify-between">
+                    <span className="text-ink-600">{s.l}</span>
+                    <span className="font-bold tabular-nums text-lavender-700">σ {s.v} <span className="text-[9px] text-mint-700">+{s.d}</span></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 text-[10px] text-ink-600 bg-paper-grey rounded-lg p-2.5 leading-[1.6]">
+            <strong className="text-ink-900">Levene's Test:</strong> p = 0.03 (분산 차이 유의) · Ver.4 민감기 이론 실증 + 심화 진단 설득력 동시 확보
+          </div>
+        </div>
+
+        {/* 4요인 교차 분석 (GeniusX Section 3.2) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">4요인 교차 분석 — 하위집단</h2>
+            <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">cell당 ≥ 100~150명 목표</span>
+          </div>
+          <p className="text-xs text-ink-700 leading-[1.6] mb-4">
+            학년 × 성별 × 지역 × 소득 4요인 교차 시 각 셀당 최소 100~150명 확보로 의미 있는 하위집단 비교 가능.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
+                <tr>
+                  <th className="px-2 py-2 text-left">학년</th>
+                  <th className="px-2 py-2 text-left">성별</th>
+                  <th className="px-2 py-2 text-left">지역</th>
+                  <th className="px-2 py-2 text-left">소득분위</th>
+                  <th className="px-2 py-2 text-center">cell n</th>
+                  <th className="px-2 py-2 text-right">상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { g: "3", s: "여", r: "도시", i: "상", n: 142, ok: true },
+                  { g: "3", s: "여", r: "도시", i: "중", n: 167, ok: true },
+                  { g: "3", s: "남", r: "도시", i: "상", n: 138, ok: true },
+                  { g: "4", s: "여", r: "비도시", i: "중", n: 124, ok: true },
+                  { g: "4", s: "남", r: "읍면", i: "하", n: 108, ok: true },
+                  { g: "3", s: "여", r: "읍면", i: "하", n: 87, ok: false },
+                  { g: "...", s: "", r: "", i: "", n: 0, ok: true, more: true },
+                ].map((r, i) => (
+                  <tr key={i} className="border-b border-ink-100 last:border-0">
+                    <td className="px-2 py-2 font-semibold">{r.more ? "..." : `초${r.g}`}</td>
+                    <td className="px-2 py-2">{r.s}</td>
+                    <td className="px-2 py-2">{r.r}</td>
+                    <td className="px-2 py-2">{r.i}</td>
+                    <td className="px-2 py-2 text-center font-bold tabular-nums">{r.more ? "..." : r.n}</td>
+                    <td className="px-2 py-2 text-right">
+                      {!r.more && (
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${r.ok ? "bg-mint-50 text-mint-700" : "bg-peach-100 text-peach-500"}`}>
+                          {r.ok ? "OK" : "미달"}
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-3 grid grid-cols-3 gap-2 text-[10px]">
+            <div className="bg-mint-50 rounded p-2 text-center"><div className="text-mint-700 font-bold">충족</div><div className="text-ink-600">14 셀</div></div>
+            <div className="bg-sun-50 rounded p-2 text-center"><div className="text-sun-600 font-bold">경계 (50~99)</div><div className="text-ink-600">2 셀</div></div>
+            <div className="bg-peach-100 rounded p-2 text-center"><div className="text-peach-500 font-bold">미달 (&lt;50)</div><div className="text-ink-600">0 셀</div></div>
+          </div>
+        </div>
+
         {/* 학년·성별 분포 */}
         <div className="grid md:grid-cols-2 gap-3 mb-5">
           <div className="bg-white rounded-2xl border border-ink-100 p-6">

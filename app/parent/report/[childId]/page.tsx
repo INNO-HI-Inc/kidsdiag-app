@@ -140,6 +140,33 @@ export default function ParentReportPage() {
             </div>
           </div>
 
+          {/* 발달단계 민감기 시각화 (GeniusX Section 2.4 ③) */}
+          <div className="bg-paper-grey rounded-xl p-4 mb-5">
+            <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-3">발달단계 민감기 — 측정 가능 시점 안내</div>
+            <p className="text-[11px] text-ink-700 leading-[1.6] mb-3">
+              GeniusX Ver.4 발달단계 민감기 이론에 따라, 3·4학년 시점에 측정 가능한 재능과 분화 이전 재능이 다릅니다. 분화 이전 재능은 점수 낮음 ≠ 약점입니다.
+            </p>
+            <div className="space-y-1.5 text-[11px]">
+              {[
+                { name: "수리·논리", peak: "5~8세 → 9~13세 정점", measurable: true, current: "측정 가능" },
+                { name: "언어·기호", peak: "4~7세 → 지속 발달", measurable: true, current: "측정 가능" },
+                { name: "공간·시각", peak: "6~10세 정점", measurable: true, current: "측정 가능" },
+                { name: "자연·생태", peak: "7~12세 활성", measurable: true, current: "측정 가능" },
+                { name: "자기·성찰", peak: "9세 이후 분화", measurable: true, current: "측정 가능" },
+                { name: "음향·리듬", peak: "3~6세 결정적 → 8세 후 안정", measurable: false, current: "심화 진단" },
+                { name: "신체·운동", peak: "5~12세 점진 발달", measurable: false, current: "심화 진단" },
+                { name: "사회·관계", peak: "9~14세 본격 분화", measurable: false, current: "심화 진단 (분화 진행 중)" },
+              ].map((t) => (
+                <div key={t.name} className={`flex items-center gap-2 p-2 rounded-lg ${t.measurable ? "bg-white" : "bg-paper-grey opacity-60"}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${t.measurable ? "bg-lavender-500" : "bg-ink-300"}`} />
+                  <span className="font-semibold w-20 flex-shrink-0">{t.name}</span>
+                  <span className="text-[10px] text-ink-600 flex-1 truncate">{t.peak}</span>
+                  <span className={`text-[10px] font-bold ${t.measurable ? "text-mint-700" : "text-ink-500"}`}>{t.current}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* 상위 2 해설 */}
           <div className="border-t border-ink-100 pt-5">
             <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-3">강점 재능 (상위 2)</div>

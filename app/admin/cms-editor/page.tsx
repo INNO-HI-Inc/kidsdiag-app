@@ -101,37 +101,102 @@ export default function CmsEditorPage() {
             <div className="bg-white rounded-2xl border border-ink-100 p-5">
               <h2 className="text-base font-bold mb-4 tracking-tight">메타데이터</h2>
               <div className="space-y-2 text-xs">
-                {[
-                  { l: "ID", v: "MATH-5-FRAC-001", grp: "기본" },
-                  { l: "학년", v: "초5", grp: "기본" },
-                  { l: "교과", v: "수학", grp: "기본" },
-                  { l: "단원", v: "분수의 덧셈", grp: "기본" },
-                  { l: "탐구요소", v: "추론·상상", grp: "PDF 9종" },
-                  { l: "탐구과정", v: "검증·과정", grp: "PDF 9종" },
-                  { l: "난이도", v: "중", grp: "PDF 9종" },
-                  { l: "소요시간", v: "60초", grp: "PDF 9종" },
-                  { l: "실시방법", v: "지필", grp: "PDF 9종" },
-                  { l: "배점", v: "3점", grp: "PDF 9종" },
-                  { l: "Bloom 분류", v: "적용", grp: "PDF 9종" },
-                  { l: "재능영역(B)", v: "수리·논리", grp: "PDF 9종" },
-                  { l: "문항형태", v: "단순풀이", grp: "PDF 9종" },
-                  { l: "성취기준 코드(A)", v: "5수01-04", grp: "태그 A" },
-                  { l: "성취수준(A)", v: "B", grp: "태그 A" },
-                  { l: "출제 의도", v: "통분 후 분수 덧셈", grp: "태그 A" },
-                  { l: "재능 Primary(B)", v: "수리·논리", grp: "태그 B" },
-                  { l: "재능 Secondary(B)", v: "공간·시각", grp: "태그 B" },
-                  { l: "발달민감기 대응", v: "4~7세 지속 분화", grp: "태그 B" },
-                  { l: "하위 역량", v: "패턴 인식", grp: "태그 B" },
-                  { l: "변별도(a)", v: "1.2", grp: "IRT" },
-                  { l: "난이도(b)", v: "0.5", grp: "IRT" },
-                  { l: "추측도(c)", v: "0.20", grp: "IRT" },
-                ].map((f) => (
-                  <div key={f.l} className="flex items-center gap-2">
-                    <span className="w-24 text-ink-600 font-semibold">{f.l}</span>
-                    <input defaultValue={f.v} className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]" />
-                    <span className="text-[9px] text-ink-400 w-12 text-right">{f.grp}</span>
+                {/* 기본 */}
+                <div className="text-[10px] font-bold tracking-widest text-ink-500 pt-1">기본</div>
+                <div className="grid grid-cols-2 gap-2">
+                  <input defaultValue="MATH-5-FRAC-001" placeholder="ID" className="px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                  <select className="px-2 py-1 rounded border border-ink-100 text-[10px]">
+                    <option>초3</option><option>초4</option><option selected>초5</option><option>초6</option>
+                  </select>
+                  <select className="px-2 py-1 rounded border border-ink-100 text-[10px]">
+                    <option>국어</option><option>과학</option><option selected>수학</option><option>통합사고력</option>
+                  </select>
+                  <input defaultValue="분수의 덧셈" placeholder="단원" className="px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                </div>
+
+                {/* PDF 별첨1 9종 메타데이터 */}
+                <div className="text-[10px] font-bold tracking-widest text-ink-500 pt-2">PDF 별첨1 — 9종 메타데이터</div>
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">탐구요소</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {["관찰·발견","추론·상상","계획·설계","예측·근거","실행·과정","논리·수식","분석·이해","창의·발명","고찰·결론","정의","보고서","발표"].map(o=><option key={o}>{o}</option>)}
+                    </select>
                   </div>
-                ))}
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">탐구과정</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {["문제인식","가설·설계","검증·과정","자료처리","일반화","요약정리","제언"].map(o=><option key={o}>{o}</option>)}
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">난이도</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      <option>상</option><option selected>중</option><option>하</option>
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">소요시간</span>
+                    <input defaultValue="60초" className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">실시방법</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      <option>온라인</option><option selected>지필</option>
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">배점</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {[1,2,3,4,5].map(o=><option key={o}>{o}점</option>)}
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">Bloom</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {["지식","이해","적용","분석","종합","평가"].map(o=><option key={o}>{o}</option>)}
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">재능영역</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {["논리·수리","언어·기호","공간지각","과학추론","확산적사고","수렴적사고","수행능력"].map(o=><option key={o}>{o}</option>)}
+                    </select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-20 text-ink-600 text-[10px]">문항형태</span>
+                    <select className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]">
+                      {["지식요구","단순풀이","자료제시","현상해석","수식분석","도표해석","현상예측","상황적용","과정설계","실행과정","요약결론","자료평가","오류분석","모델링","다제융합","창의제언","관점전환","최적효율","유추전이","위계구조","논리설계"].map(o=><option key={o}>{o}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                {/* 태그 A·B 확장 */}
+                <div className="text-[10px] font-bold tracking-widest text-ink-500 pt-2">태그 A · B 확장</div>
+                <div className="space-y-1.5">
+                  {[
+                    { l: "성취기준(A)", v: "5수01-04" },
+                    { l: "성취수준(A)", v: "B" },
+                    { l: "출제 의도", v: "통분 후 분수 덧셈" },
+                    { l: "재능 Primary(B)", v: "수리·논리" },
+                    { l: "재능 Secondary(B)", v: "공간·시각" },
+                    { l: "발달민감기", v: "4~7세 지속" },
+                    { l: "하위 역량", v: "패턴 인식" },
+                  ].map((f) => (
+                    <div key={f.l} className="flex items-center gap-2">
+                      <span className="w-20 text-ink-600 text-[10px]">{f.l}</span>
+                      <input defaultValue={f.v} className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                    </div>
+                  ))}
+                </div>
+
+                {/* IRT */}
+                <div className="text-[10px] font-bold tracking-widest text-ink-500 pt-2">IRT 모수</div>
+                <div className="grid grid-cols-3 gap-2">
+                  <input defaultValue="1.2" placeholder="변별도 a" className="px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                  <input defaultValue="0.5" placeholder="난이도 b" className="px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                  <input defaultValue="0.20" placeholder="추측도 c" className="px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                </div>
               </div>
             </div>
 
@@ -184,6 +249,30 @@ export default function CmsEditorPage() {
               </div>
               <div className="mt-3 text-[11px] text-ink-600 bg-paper-grey rounded-lg p-2.5">
                 현재 Cohen's Kappa: <strong className="text-mint-700">0.84</strong> (목표 ≥ 0.7) · 합격
+              </div>
+            </div>
+
+            {/* 4대 공통 구조 이슈 (GeniusX Section 1.2) */}
+            <div className="bg-white rounded-2xl border-2 border-peach-200 p-5">
+              <h3 className="text-sm font-bold mb-3 tracking-tight">4대 공통 구조 이슈 점검</h3>
+              <div className="space-y-2">
+                {[
+                  { n: "①", t: "평가 메타데이터 전면 누락", d: "탐구요소·탐구과정·난이도·Bloom·재능영역·문항형태 등 분류표 단순 나열만 됨", status: "해결", ok: true },
+                  { n: "②", t: "소요시간 비정상", d: "10~30초 표기 vs 실제 서술형·다단계 사고 요구 — 3학년 독해 시간만으로도 부족", status: "수정", ok: true },
+                  { n: "③", t: "단원명 혼재", d: "1~7번 2022 개정 / 8번 현행 X / 10번 2015 개정 — 교육과정 정합성 붕괴", status: "검수중", ok: false },
+                  { n: "④", t: "정답의 과학적 정확성 문제", d: "1번 오개념 유발 / 9번 수달 분류 오류 / 10번 부력 개념 불완전 — 정답 자체가 수정 대상", status: "재작성", ok: false },
+                ].map((s) => (
+                  <div key={s.n} className="flex items-start gap-3 p-3 rounded-lg bg-paper-grey">
+                    <span className="text-sm font-bold text-peach-500 flex-shrink-0">{s.n}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-bold mb-0.5">{s.t}</div>
+                      <div className="text-[10px] text-ink-700 leading-[1.5]">{s.d}</div>
+                    </div>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${s.ok ? "bg-mint-50 text-mint-700" : "bg-sun-50 text-sun-600"}`}>
+                      {s.status}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 

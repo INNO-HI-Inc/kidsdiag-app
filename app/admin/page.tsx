@@ -167,6 +167,16 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">3단계 로드맵 — MVP → Phase 1 → Phase 2</h2>
 
+          {/* 측정학적 한계 — 단계 분리 정당화 (GeniusX Section 2.2) */}
+          <div className="bg-paper-grey rounded-xl p-4 mb-4">
+            <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">왜 단계로 나누어야 하는가 — 측정학적 한계</div>
+            <div className="space-y-1.5 text-[11px] text-ink-700 leading-[1.6]">
+              <div>① 지필·CBT 문항으로 <strong className="text-ink-900">차원 2(F1·F2·F3)와 차원 3(21세기 역량)을 직접 측정하는 것은 원리적으로 불가능</strong>. 별도 행동 로그·자기보고·시뮬레이션·포트폴리오 요구.</div>
+              <div>② 차원 1(8재능)조차 지필 가능 영역 제한적. <strong className="text-ink-900">음향·신체는 원리적으로 불가</strong>, 사회-관계는 매우 간접적으로만 가능.</div>
+              <div>③ 따라서 GeniusX "완전 구현" 목표는 과도하며, <strong className="text-ink-900">차원 1 지필 가능 영역부터 점진 확장이 유일한 합리적 선택</strong>.</div>
+            </div>
+          </div>
+
           {/* 3단계 카드 */}
           <div className="grid md:grid-cols-3 gap-3 mb-5">
             <div className="bg-mint-50 border-2 border-mint-300 rounded-xl p-4">
@@ -189,7 +199,7 @@ export default function AdminDashboard() {
               </div>
               <div className="text-sm font-bold mb-1">F1 인지 영역 MVP</div>
               <ul className="text-[11px] text-ink-700 space-y-0.5 mb-2">
-                <li>· 실행·주의·메타인지 측정</li>
+                <li>· 주의 지속 · 작업기억 · 메타인지</li>
                 <li>· CBT 행동 로그 기반</li>
                 <li>· 수리·과학 영역 우선</li>
               </ul>
@@ -207,6 +217,56 @@ export default function AdminDashboard() {
                 <li>· GeniusX Ver.4 완전 구현</li>
               </ul>
               <div className="text-[10px] text-ink-500 pt-2 border-t border-lavender-200">미래성공예측지수 산출 · 진로·교육 설계 보고서</div>
+            </div>
+          </div>
+
+          {/* Phase 1 F1 간접 지표 3종 측정 방식 (GeniusX) */}
+          <div className="bg-paper-grey rounded-xl p-4 mb-4">
+            <div className="text-[10px] font-bold tracking-widest text-sky-700 mb-2">Phase 1 — F1 간접 지표 3종 측정 방식</div>
+            <div className="grid md:grid-cols-3 gap-2.5">
+              {[
+                { n: "주의 지속", d: "문항 간 반응시간 일관성 · 후반부 정확도 저하 곡선" },
+                { n: "작업기억", d: "다단계 추론 문항 풀이 시간 분포 · 중간 계산 흔적" },
+                { n: "메타인지 조절", d: "재검토 횟수 · 오답 후 전략 변화 · 시간 배분 자가 조정" },
+              ].map((f) => (
+                <div key={f.n} className="bg-white rounded-lg p-3">
+                  <div className="text-xs font-bold text-sky-700 mb-1">{f.n}</div>
+                  <div className="text-[10px] text-ink-700 leading-[1.5]">{f.d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 단계별 태그 확장 코드 (GeniusX Section 2.3) */}
+          <div className="bg-paper-grey rounded-xl p-4 mb-4">
+            <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">단계별 중층 태깅 원칙</div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead className="text-[10px] text-ink-500 font-bold tracking-widest">
+                  <tr>
+                    <th className="pb-2 text-left">단계</th>
+                    <th className="pb-2 text-left">태그 A (학력진단)</th>
+                    <th className="pb-2 text-left">태그 B (재능진단)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-ink-100">
+                    <td className="py-2 font-bold text-mint-700">1단계</td>
+                    <td className="py-2 text-[10px]">성취기준 코드 · 성취수준(A~E) · 단원 귀속 · 출제 의도</td>
+                    <td className="py-2 text-[10px]">차원 1 재능 코드(Primary+Secondary+Tertiary) · 발달민감기 · 하위 역량</td>
+                  </tr>
+                  <tr className="border-t border-ink-100">
+                    <td className="py-2 font-bold text-sky-700">2단계</td>
+                    <td className="py-2 text-[10px]">(1단계 유지)</td>
+                    <td className="py-2 text-[10px]">+ <strong>F1 하위요소 4종</strong>: 주의통제 · 작업기억 · 인지유연성 · 메타인지 + 행동 로그 추출 규칙</td>
+                  </tr>
+                  <tr className="border-t border-ink-100">
+                    <td className="py-2 font-bold text-lavender-700">3단계</td>
+                    <td className="py-2 text-[10px]">(1단계 유지)</td>
+                    <td className="py-2 text-[10px]">+ F2·F3 하위요소 + <strong>차원 3 역량 코드 4종</strong>: 디지털-AI · 문화지능 · 실용상황 · 창의혁신</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
