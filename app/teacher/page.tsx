@@ -28,7 +28,7 @@ export default function TeacherDashboard() {
         />
 
         {/* 응시 결과 조회 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-base font-bold tracking-tight">응시 결과 조회</h2>
             <div className="flex gap-2">
@@ -77,7 +77,7 @@ export default function TeacherDashboard() {
         </div>
 
         {/* 맞춤 검사지 생성 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold tracking-tight mb-5">맞춤 검사지 생성</h2>
           <div className="grid md:grid-cols-3 gap-3">
             {[
@@ -100,7 +100,7 @@ export default function TeacherDashboard() {
         </div>
 
         {/* 알림 발송 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-base font-bold tracking-tight">학생·학부모 알림 발송</h2>
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-ink-500 px-1.5 py-0.5 rounded border border-ink-100 bg-white">

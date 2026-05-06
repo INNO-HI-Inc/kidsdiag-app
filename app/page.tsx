@@ -34,7 +34,7 @@ export default function HomePage() {
         <div className="w-full max-w-md">
           {/* 브랜드 안내 */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight mb-2">
               제닉스에 로그인
             </h1>
             <p className="text-sm text-ink-600">

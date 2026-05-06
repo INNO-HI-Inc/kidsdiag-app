@@ -76,7 +76,7 @@ export default function ReportPage() {
         </div>
 
         {/* 종합 보고서 구조 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">종합 운영 보고서 구조 (PDF 5장)</h2>
           <ol className="grid md:grid-cols-5 gap-3">
             {[
@@ -96,7 +96,7 @@ export default function ReportPage() {
         </div>
 
         {/* CBT 응답 데이터 계층 L1·L2·L3 (GeniusX Section 3.3) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">CBT 응답 데이터 계층 (L1·L2·L3)</h2>
           <div className="space-y-3">
             {[
@@ -147,7 +147,7 @@ export default function ReportPage() {
         </div>
 
         {/* 검증 체계 5지표 (GeniusX Section 3.5) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">검증 체계 — 5개 핵심 지표</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -187,7 +187,7 @@ export default function ReportPage() {
         </div>
 
         {/* B플랜 — 실패 시나리오 (GeniusX Section 4.7) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">B플랜 — 실패 시나리오 대응</h2>
           <div className="space-y-2.5">
             {[
@@ -209,7 +209,7 @@ export default function ReportPage() {
         </div>
 
         {/* Phase 1·2 자산 이전 설계 (GeniusX Section 4.8) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-bold tracking-tight">Phase 1·2 자산 이전 설계</h2>
             <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">285,000건 응답 + 행동 로그</span>
@@ -240,7 +240,7 @@ export default function ReportPage() {
         </div>
 
         {/* 일괄 다운로드 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7">
           <h2 className="text-base font-bold mb-4">일괄 다운로드</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[

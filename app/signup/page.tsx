@@ -65,7 +65,7 @@ export default function SignupPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 1 / 4</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 학부모님 정보를<br />알려주세요
               </h1>
               <p className="text-sm text-ink-600 mt-3">자녀의 진단 결과를 받아보실 계정이에요</p>
@@ -106,7 +106,7 @@ export default function SignupPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-lavender-700 mb-2">STEP 2 / 4</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 동의 항목을<br />확인해주세요
               </h1>
               <p className="text-sm text-ink-600 mt-3">개인정보보호법 §22조의2 · 만 14세 미만 자녀</p>
@@ -156,7 +156,7 @@ export default function SignupPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 3 / 4</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 자녀를 등록해주세요
               </h1>
               <p className="text-sm text-ink-600 mt-3">자녀가 여러 명이면 가입 후 추가할 수 있어요</p>
@@ -196,7 +196,7 @@ export default function SignupPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 4 / 4</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 자녀가 쓸<br />4자리 PIN을 만들어요
               </h1>
               <p className="text-sm text-ink-600 mt-3">{childName} 학생이 로그인할 때 사용해요</p>

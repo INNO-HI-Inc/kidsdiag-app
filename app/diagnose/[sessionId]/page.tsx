@@ -218,7 +218,7 @@ export default function DiagnosePage() {
             <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">
               안내 {introStep} / {total}
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
               {cur.title}
             </h1>
             <p className="text-sm text-ink-600 mt-3 leading-[1.6]">{cur.sub}</p>

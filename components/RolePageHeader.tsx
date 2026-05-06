@@ -39,7 +39,7 @@ export default function RolePageHeader({
   actions?: React.ReactNode;
 }) {
   return (
-    <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+    <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 mb-2 flex-wrap">
@@ -57,7 +57,7 @@ export default function RolePageHeader({
               </span>
             ))}
           </div>
-          <h1 className="text-2xl md:text-[1.75rem] font-bold tracking-tight">{title}</h1>
+          <h1 className="text-xl md:text-2xl lg:text-[1.75rem] font-bold tracking-tight">{title}</h1>
           {subtitle && <p className="text-sm text-ink-600 mt-1.5">{subtitle}</p>}
         </div>
         {actions && <div className="flex items-center gap-2 flex-wrap">{actions}</div>}

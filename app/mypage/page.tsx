@@ -31,7 +31,7 @@ export default function MyPage() {
         />
 
         {/* 영역별·종합결과 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-base font-bold tracking-tight">영역별·종합결과 (사전 → 사후)</h2>
             <Link href="/parent/report/child_demo" className="text-xs font-semibold text-mint-700 hover:text-mint-900">
@@ -76,7 +76,7 @@ export default function MyPage() {
         </div>
 
         {/* 학습이력관리 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold tracking-tight mb-5">학습이력관리</h2>
           <div className="space-y-1.5">
             {history.map((h, i) => {
@@ -103,7 +103,7 @@ export default function MyPage() {
         </div>
 
         {/* 진단/총괄 현황 조회 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold tracking-tight mb-4">진단·총괄 현황 조회</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">

@@ -80,7 +80,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 1 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 어떤 진단을 받으실<br />건가요?
               </h1>
               <p className="text-sm text-ink-600 mt-3">언제든 다시 선택할 수 있어요</p>
@@ -116,7 +116,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 2 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 지금 몇 학년이에요?
               </h1>
               <p className="text-sm text-ink-600 mt-3">학년에 맞춘 문항이 자동으로 출제돼요</p>
@@ -143,7 +143,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 3 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 어느 학교, 어느 반이에요?
               </h1>
               <p className="text-sm text-ink-600 mt-3">소속에 맞는 진단이 자동 매칭돼요</p>
@@ -179,7 +179,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 4 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 자신 있는 과목 있어요?
               </h1>
               <p className="text-sm text-ink-600 mt-3">여러 개 골라도 OK · 건너뛰어도 돼요</p>
@@ -216,7 +216,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">STEP 5 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 도움이 필요한 과목은요?
               </h1>
               <p className="text-sm text-ink-600 mt-3">진단 결과 + 이 답을 합쳐서 맞춤 학습을 추천해드려요</p>
@@ -247,7 +247,7 @@ export default function SelectPage() {
           <>
             <div className="mb-8">
               <div className="text-[11px] font-bold tracking-widest text-lavender-700 mb-2">STEP 6 / 6</div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.3] tracking-tight">
                 마지막으로<br />하나만 확인할게요
               </h1>
               <p className="text-sm text-ink-600 mt-3">학습 행동 데이터를 정확한 진단에 사용해요</p>

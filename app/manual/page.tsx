@@ -8,7 +8,7 @@ export default function ManualPage() {
       <SiteHeader />
 
       <section className="max-w-5xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <div className="flex items-center gap-1.5 mb-2">
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-ink-500 px-1.5 py-0.5 rounded border border-ink-100 bg-white">
               <span className="w-1 h-1 rounded-full bg-mint-500" />과업 4)
@@ -22,7 +22,7 @@ export default function ManualPage() {
         </div>
 
         {/* 매뉴얼 다운로드 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4 tracking-tight">매뉴얼 다운로드</h2>
           <div className="grid md:grid-cols-2 gap-3">
             {[
@@ -49,7 +49,7 @@ export default function ManualPage() {
         </div>
 
         {/* 오프라인 설명회 일정 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4 tracking-tight">오프라인 설명회 일정</h2>
           <div className="space-y-3">
             {[
@@ -78,7 +78,7 @@ export default function ManualPage() {
         </div>
 
         {/* 이해관계자 수용성 자료 (GeniusX Section 4.5) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4 tracking-tight">이해관계자 수용성 자료</h2>
           <div className="grid md:grid-cols-3 gap-3">
             <div className="bg-sky-50 rounded-xl p-4">
@@ -109,7 +109,7 @@ export default function ManualPage() {
         </div>
 
         {/* 환경 호환 안내 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7">
           <h2 className="text-base font-bold mb-4 tracking-tight">지원 환경 (RFP I.4.다.6))</h2>
           <p className="text-xs text-ink-700 leading-[1.7] mb-4">
             운영체제(Android·iOS)와 무관하게 모바일·태블릿·PC·홈페이지 등 다양한 환경에서 학습 가능.

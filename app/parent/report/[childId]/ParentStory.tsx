@@ -107,7 +107,7 @@ export default function ParentStory({
     // === SLIDE 3: 영역 차트 ===
     <div key="radar" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
       <div className="eyebrow text-mint-600 mb-2">영역별 분포</div>
-      <h2 className="h-section text-2xl md:text-3xl mb-2">
+      <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
         한눈에 보는 <span className="text-mint-600">학력 지도</span>
       </h2>
       <p className="text-sm text-ink-600 font-normal mb-6">바깥쪽일수록 강점, 안쪽일수록 보강 필요.</p>
@@ -147,7 +147,7 @@ export default function ParentStory({
     ...(rootCauses.length > 0 ? [
       <div key="tree" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
         <div className="eyebrow text-accent-700 mb-2">결손 트리 — 학년 거슬러 추적</div>
-        <h2 className="h-section text-2xl md:text-3xl mb-2">
+        <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
           <span className="text-accent-600">근본 원인</span>까지 짚어드립니다
         </h2>
         <p className="text-sm text-ink-600 font-normal mb-6">가장 깊은 곳부터 채우는 게 효율적입니다.</p>
@@ -190,7 +190,7 @@ export default function ParentStory({
     ...(paths.length > 0 ? [
       <div key="paths" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
         <div className="eyebrow text-lavender-700 mb-2">추천 학습 경로</div>
-        <h2 className="h-section text-2xl md:text-3xl mb-2">
+        <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
           이 <span className="text-lavender-600">순서대로</span> 진행해주세요
         </h2>
         <p className="text-sm text-ink-600 font-normal mb-6">우선순위 알고리즘으로 정렬됐습니다.</p>
@@ -225,7 +225,7 @@ export default function ParentStory({
     // === SLIDE 6: 재진단 일정 ===
     <div key="retest" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
       <div className="eyebrow text-mint-600 mb-2">재진단 일정</div>
-      <h2 className="h-section text-2xl md:text-3xl mb-2">
+      <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
         <span className="text-mint-600">정량적으로</span> 변화를 추적합니다
       </h2>
       <p className="text-sm text-ink-600 font-normal mb-7">진단은 한 번이 아니라, 학습 효과 측정의 시작점입니다.</p>

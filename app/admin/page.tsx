@@ -164,7 +164,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* 3단계 로드맵 + M1~M8 타임라인 + 자문위원진 (GeniusX Section 2.2, 3.6, 5) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">3단계 로드맵 — MVP → Phase 1 → Phase 2</h2>
 
           {/* 3단계 카드 */}
@@ -248,7 +248,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* 검수 콘솔 */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold tracking-tight">전문가 검수 콘솔</h2>
             <span className="text-xs font-bold tabular-nums text-mint-700">Cohen's κ 0.84</span>

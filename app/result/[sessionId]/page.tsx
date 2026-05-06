@@ -44,7 +44,7 @@ export default function ResultPage() {
         <div className="text-center mb-8">
           <div className="text-sm text-ink-600 mb-3">홍길동 · 초5 · 사전 진단 · 2026.05.06</div>
           <div className="relative inline-block">
-            <div className="text-7xl md:text-8xl font-bold text-mint-700 tabular-nums leading-none tracking-tight">
+            <div className="text-5xl md:text-6xl font-bold text-mint-700 tabular-nums leading-none tracking-tight">
               {overall}
               <span className="text-3xl text-mint-500 ml-1">%</span>
             </div>

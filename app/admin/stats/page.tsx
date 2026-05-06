@@ -63,7 +63,7 @@ export default function StatsPage() {
         />
 
         {/* 응시자 대표성 (GeniusX Section 4.1) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-bold tracking-tight">응시자 대표성 점검</h2>
             <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">5,124명 / 5,000 목표</span>

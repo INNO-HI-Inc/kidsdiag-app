@@ -48,7 +48,7 @@ export default function StudentStory({
         </p>
 
         <div className="flex items-end gap-4 mb-7">
-          <div className="text-7xl md:text-8xl font-bold tabular-nums leading-none text-accent-500">
+          <div className="text-6xl md:text-7xl font-bold tabular-nums leading-none text-accent-500">
             {score}
           </div>
           <div className="text-white/70 font-medium pb-3">/ 100</div>
@@ -77,7 +77,7 @@ export default function StudentStory({
     // === SLIDE 2: 영역 차트 ===
     <div key="radar" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
       <div className="eyebrow text-mint-600 mb-2">한눈에 보는 학력 지도</div>
-      <h2 className="h-section text-2xl md:text-3xl mb-2">
+      <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
         영역별 <span className="text-mint-600">실력 분포</span>
       </h2>
       <p className="text-sm text-ink-600 font-normal mb-6">바깥쪽일수록 잘하는 영역이야.</p>
@@ -113,7 +113,7 @@ export default function StudentStory({
     // === SLIDE 3: 강점 ===
     <div key="strengths" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
       <div className="eyebrow text-mint-600 mb-2">잘하는 부분</div>
-      <h2 className="h-section text-2xl md:text-3xl mb-2">
+      <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
         {childName}는 이 부분이 <span className="text-mint-600">강해</span>
       </h2>
       <p className="text-sm text-ink-600 font-normal mb-7">계속 이 페이스로 가면 돼.</p>
@@ -137,7 +137,7 @@ export default function StudentStory({
     // === SLIDE 4: 약점 ===
     <div key="weaknesses" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
       <div className="eyebrow text-accent-700 mb-2">조금 더 연습하면 좋은 부분</div>
-      <h2 className="h-section text-2xl md:text-3xl mb-2">
+      <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
         여기만 채우면 <span className="text-accent-600">한 단계 점프</span>
       </h2>
       <p className="text-sm text-ink-600 font-normal mb-7">
@@ -169,7 +169,7 @@ export default function StudentStory({
     ...(rootCauses.length > 0 ? [
       <div key="tree" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
         <div className="eyebrow text-accent-700 mb-2">왜 막혔을까?</div>
-        <h2 className="h-section text-2xl md:text-3xl mb-2">
+        <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
           학년을 <span className="text-accent-600">거슬러</span> 가서 짚었어
         </h2>
         <p className="text-sm text-ink-600 font-normal mb-7">표면만 보지 말고 뿌리부터 채우자.</p>
@@ -212,7 +212,7 @@ export default function StudentStory({
     ...(paths.length > 0 ? [
       <div key="paths" className="bg-white border border-ink-100 rounded-3xl p-7 md:p-10">
         <div className="eyebrow text-lavender-700 mb-2">다음에 같이 풀어볼래?</div>
-        <h2 className="h-section text-2xl md:text-3xl mb-2">
+        <h2 className="h-section text-xl md:text-2xl lg:text-3xl mb-2">
           <span className="text-lavender-600">우선순위</span> 순으로 정리했어
         </h2>
         <p className="text-sm text-ink-600 font-normal mb-7">아래 순서대로 풀면 효율적이야.</p>

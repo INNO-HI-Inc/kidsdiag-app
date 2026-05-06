@@ -52,7 +52,7 @@ export default function ContentManagementPage() {
         </div>
 
         {/* 교과 블록 내부 구성 + 이독성 통제 (GeniusX Section 3.1) */}
-        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+        <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">교과 블록 내부 구성</h2>
           <div className="grid md:grid-cols-2 gap-3">
             {/* 국어 10문항 내부 구성 */}

@@ -41,7 +41,7 @@ export default function ParentReportPage() {
 
       <section className="max-w-3xl mx-auto px-5 py-6">
         {/* PDF 페이지 1 — 학력 결과 */}
-        <article className="bg-white border border-ink-100 rounded-2xl shadow-card p-7 md:p-9 mb-6 relative">
+        <article className="bg-white border border-ink-100 rounded-2xl shadow-card p-5 md:p-7 lg:p-9 mb-6 relative">
           <div className="absolute top-4 right-5 text-[10px] font-bold tracking-widest text-ink-400">P. 1 / 3</div>
 
           <div className="mb-6">
@@ -97,7 +97,7 @@ export default function ParentReportPage() {
         </article>
 
         {/* PDF 페이지 2 — 재능 프로필 */}
-        <article className="bg-white border border-ink-100 rounded-2xl shadow-card p-7 md:p-9 mb-6 relative">
+        <article className="bg-white border border-ink-100 rounded-2xl shadow-card p-5 md:p-7 lg:p-9 mb-6 relative">
           <div className="absolute top-4 right-5 text-[10px] font-bold tracking-widest text-ink-400">P. 2 / 3</div>
 
           <div className="mb-6">
@@ -162,7 +162,7 @@ export default function ParentReportPage() {
         </article>
 
         {/* PDF 페이지 3 — 심화 진단 안내 */}
-        <article className="bg-gradient-to-br from-carbon-900 to-carbon-700 text-white rounded-2xl shadow-pop p-7 md:p-9 mb-6 relative overflow-hidden">
+        <article className="bg-gradient-to-br from-carbon-900 to-carbon-700 text-white rounded-2xl shadow-pop p-5 md:p-7 lg:p-9 mb-6 relative overflow-hidden">
           <div className="absolute top-4 right-5 text-[10px] font-bold tracking-widest text-white/40">P. 3 / 3</div>
           <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-accent-500/20 blur-2xl pointer-events-none" />
 
