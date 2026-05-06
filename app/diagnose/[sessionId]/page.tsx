@@ -213,7 +213,7 @@ export default function DiagnosePage() {
         </header>
 
         {/* 본문 */}
-        <section className="flex-1 flex flex-col px-6 pt-8 pb-32 max-w-md mx-auto w-full">
+        <section className="flex-1 flex flex-col px-6 pt-8 pb-32 max-w-xl mx-auto w-full">
           <div className="mb-6">
             <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">
               안내 {introStep} / {total}
@@ -228,7 +228,7 @@ export default function DiagnosePage() {
 
         {/* 하단 고정 CTA */}
         <div className="fixed bottom-0 left-0 right-0 bg-paper border-t border-ink-100">
-          <div className="max-w-md mx-auto px-6 py-4">
+          <div className="max-w-xl mx-auto px-6 py-4">
             <button
               onClick={() => {
                 if (introStep < total) setIntroStep(introStep + 1);
@@ -248,7 +248,7 @@ export default function DiagnosePage() {
   if (paused) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-paper-grey p-6">
-        <div className="bg-white rounded-2xl p-8 max-w-md text-center border-2 border-mint-200">
+        <div className="bg-white rounded-2xl p-8 max-w-xl text-center border-2 border-mint-200">
           <div className="text-4xl mb-4"></div>
           <h2 className="text-xl font-bold mb-2">잠깐 쉬어가기</h2>
           <p className="text-sm text-ink-700 leading-[1.7] mb-6">
@@ -396,7 +396,7 @@ export default function DiagnosePage() {
       {/* 정답채점기준 모달 */}
       {showRubric && (
         <div onClick={() => setShowRubric(false)} className="fixed inset-0 z-50 bg-ink-900/50 backdrop-blur-sm flex items-end md:items-center justify-center p-4">
-          <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-2xl border border-ink-100 shadow-pop p-6 max-w-md w-full">
+          <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-2xl border border-ink-100 shadow-pop p-6 max-w-xl w-full">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold tracking-tight">정답채점기준</h3>
               <button onClick={() => setShowRubric(false)} className="w-8 h-8 rounded-full bg-paper-grey hover:bg-ink-100 text-ink-700 font-bold">×</button>
