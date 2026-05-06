@@ -128,15 +128,15 @@ export default function ImprovementPage() {
         {/* AI 추천 + 오답유형 + 유사문항 */}
         <div className="grid md:grid-cols-3 gap-4 mb-6">
           {[
-            { t: "AI 추천 학습 문제", d: "결손 영역 우선순위 → 5단계 시퀀스", icon: "", color: "border-mint-200" },
-            { t: "오답 유형 관리", d: "개념 누락 / 절차 오류 / 부주의 / 시간 부족 — 4종 분류", icon: "", color: "border-lavender-200" },
-            { t: "유사 문항 자동 매칭", d: "Sentence-BERT 임베딩으로 동일 개념 변형 문항", icon: "", color: "border-sky-200" },
+            { t: "AI 추천 학습 문제", d: "결손 영역 우선순위 → 5단계 시퀀스", color: "border-mint-200", href: "/improvement/practice" },
+            { t: "오답 유형 관리", d: "개념 누락 / 절차 오류 / 부주의 / 시간 부족 — 4종 분류", color: "border-lavender-200", href: "/improvement/practice" },
+            { t: "유사 문항 자동 매칭", d: "Sentence-BERT 임베딩으로 동일 개념 변형 문항", color: "border-sky-200", href: "/improvement/practice" },
           ].map((c) => (
-            <div key={c.t} className={`bg-white border-2 ${c.color} rounded-2xl p-5`}>
-              <div className="text-3xl mb-3">{c.icon}</div>
+            <Link key={c.t} href={c.href} className={`bg-white border-2 ${c.color} rounded-2xl p-5 hover:-translate-y-1 transition block`}>
               <h3 className="font-bold text-sm mb-2 tracking-tight">{c.t}</h3>
-              <p className="text-[11px] text-ink-700 leading-[1.6]">{c.d}</p>
-            </div>
+              <p className="text-[11px] text-ink-700 leading-[1.6] mb-2">{c.d}</p>
+              <div className="text-[10px] font-bold text-mint-700">문제 풀어보기 →</div>
+            </Link>
           ))}
         </div>
 

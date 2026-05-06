@@ -11,7 +11,7 @@ export default function TeacherDashboard() {
       <section className="max-w-6xl mx-auto px-6 py-8">
         <RolePageHeader
           role="teacher"
-          title="김민수 선생님"
+          title="홍선생님"
           subtitle="제닉스초등학교 5학년 3반 · 등록 학생 27명 · 검사지 생성·결과 조회 권한"
           funBadges={[{ id: "FUN-001" }, { id: "FUN-002" }]}
           kpis={[
@@ -51,12 +51,12 @@ export default function TeacherDashboard() {
               </thead>
               <tbody>
                 {[
-                  { n: "김민지", pre: 42, post: 78, status: "완료", color: "text-mint-700" },
-                  { n: "이지훈", pre: 65, post: 81, status: "완료", color: "text-mint-700" },
-                  { n: "박서연", pre: 38, post: null, status: "진행", color: "text-sky-700" },
-                  { n: "최도현", pre: 72, post: 88, status: "완료", color: "text-mint-700" },
-                  { n: "정유나", pre: 28, post: 45, status: "주의", color: "text-peach-500" },
-                  { n: "강하준", pre: null, post: null, status: "미응시", color: "text-ink-500" },
+                  { n: "홍길동", pre: 42, post: 78, status: "완료", color: "text-mint-700" },
+                  { n: "김철수", pre: 65, post: 81, status: "완료", color: "text-mint-700" },
+                  { n: "이영희", pre: 38, post: null, status: "진행", color: "text-sky-700" },
+                  { n: "박지수", pre: 72, post: 88, status: "완료", color: "text-mint-700" },
+                  { n: "최민호", pre: 28, post: 45, status: "주의", color: "text-peach-500" },
+                  { n: "정수영", pre: null, post: null, status: "미응시", color: "text-ink-500" },
                 ].map((s) => (
                   <tr key={s.n} className="border-b border-ink-100 last:border-0">
                     <td className="py-3 font-semibold">{s.n}</td>

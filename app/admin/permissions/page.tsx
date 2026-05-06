@@ -97,12 +97,12 @@ export default function PermissionsPage() {
             </div>
             <div className="text-xs space-y-1.5 max-h-48 overflow-y-auto">
               {[
-                "김민지 · 5-3 · 진단 완료",
-                "이지훈 · 5-3 · 진단 완료",
-                "박서연 · 5-3 · 진단 진행",
-                "최도현 · 5-3 · 진단 완료",
-                "정유나 · 5-3 · 진단 완료",
-                "강하준 · 5-3 · 미응시",
+                "홍길동 · 5-3 · 진단 완료",
+                "김철수 · 5-3 · 진단 완료",
+                "이영희 · 5-3 · 진단 진행",
+                "박지수 · 5-3 · 진단 완료",
+                "최민호 · 5-3 · 진단 완료",
+                "정수영 · 5-3 · 미응시",
               ].map((s, i) => (
                 <label key={i} className="flex items-center gap-2 p-2 rounded-lg hover:bg-paper-grey cursor-pointer">
                   <input type="checkbox" className="accent-mint-600" />

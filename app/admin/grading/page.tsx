@@ -4,11 +4,11 @@ import SiteFooter from "@/components/SiteFooter";
 
 export default function GradingPage() {
   const submissions = [
-    { id: "S-1247", student: "김민지", subj: "국어", q: "Q3 / 글의 중심 생각", answer: "균형이 중요하고 연습해야 한다", status: "대기", auto: 78 },
-    { id: "S-1248", student: "이지훈", subj: "국어", q: "Q3 / 글의 중심 생각", answer: "자전거를 자주 타야 한다", status: "대기", auto: 42 },
-    { id: "S-1249", student: "박서연", subj: "과학", q: "Q15 / 자유 서술", answer: "물체는 미는 방향으로 움직임", status: "대기", auto: 88 },
-    { id: "S-1250", student: "최도현", subj: "국어 (논술)", q: "200자 논술", answer: "환경 보호는 우리 모두의 책임이다…", status: "검토중", auto: 65 },
-    { id: "S-1245", student: "정유나", subj: "과학", q: "Q9 / 동물 분류", answer: "고래, 돌고래, 상어", status: "완료", auto: 71 },
+    { id: "S-1247", student: "홍길동", subj: "국어", q: "Q3 / 글의 중심 생각", answer: "균형이 중요하고 연습해야 한다", status: "대기", auto: 78 },
+    { id: "S-1248", student: "김철수", subj: "국어", q: "Q3 / 글의 중심 생각", answer: "자전거를 자주 타야 한다", status: "대기", auto: 42 },
+    { id: "S-1249", student: "이영희", subj: "과학", q: "Q15 / 자유 서술", answer: "물체는 미는 방향으로 움직임", status: "대기", auto: 88 },
+    { id: "S-1250", student: "박지수", subj: "국어 (논술)", q: "200자 논술", answer: "환경 보호는 우리 모두의 책임이다…", status: "검토중", auto: 65 },
+    { id: "S-1245", student: "최민호", subj: "과학", q: "Q9 / 동물 분류", answer: "고래, 돌고래, 상어", status: "완료", auto: 71 },
   ];
 
   return (

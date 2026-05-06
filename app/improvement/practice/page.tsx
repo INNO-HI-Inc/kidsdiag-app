@@ -60,10 +60,14 @@ export default function PracticePage() {
             </div>
             <span className="text-xs text-ink-600 tabular-nums">{idx + 1} / {ITEMS.length}</span>
           </div>
-          <div className="flex items-center gap-2 mt-3">
+          <div className="flex items-center gap-2 mt-3 flex-wrap">
             <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-mint-50 text-mint-700">{item.subj}</span>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-paper-grey text-ink-700">{item.grade}</span>
             <span className="text-xs text-ink-700">· {item.topic}</span>
+            <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded bg-sun-50 text-sun-600">중등 연계 개념</span>
+          </div>
+          <div className="mt-2 text-[10px] text-ink-500">
+            ※ 중등 교과과정(중1) 이해도를 높일 수 있도록 설계된 개념 문항입니다.
           </div>
         </div>
 

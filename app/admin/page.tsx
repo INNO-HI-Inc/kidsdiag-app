@@ -42,6 +42,8 @@ export default function AdminDashboard() {
             { href: "/admin/grading", title: "답안 채점", desc: "FUN-001 수동 채점", dot: "bg-mint-500" },
             { href: "/admin/permissions", title: "권한·알림", desc: "FUN-007 매트릭스", dot: "bg-lavender-500" },
             { href: "/admin/site", title: "사이트 설정", desc: "FUN-008 로고·문구", dot: "bg-sun-500" },
+            { href: "/admin/report", title: "운영 보고서", desc: "Raw 데이터·시각화", dot: "bg-sky-500" },
+            { href: "/manual", title: "매뉴얼·설명회", desc: "사용자 가이드", dot: "bg-mint-500" },
             { href: "/board", title: "게시판", desc: "FUN-008 공지·Q&A", dot: "bg-sky-500" },
           ].map((c) => (
             <Link key={c.href} href={c.href} className="bg-white rounded-2xl border border-ink-100 p-4 hover:border-mint-300 transition">

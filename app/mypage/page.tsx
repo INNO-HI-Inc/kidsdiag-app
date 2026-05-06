@@ -19,7 +19,7 @@ export default function MyPage() {
       <section className="max-w-6xl mx-auto px-6 py-8">
         <RolePageHeader
           role="student"
-          title="김민지 · 초5"
+          title="홍길동 · 초5"
           subtitle="학번 2026-05-1247 · 제닉스초등학교 5-3"
           funBadges={[{ id: "FUN-002" }, { id: "FUN-004" }]}
           kpis={[

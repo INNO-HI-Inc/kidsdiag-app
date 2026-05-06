@@ -6,14 +6,14 @@ import SiteFooter from "@/components/SiteFooter";
 import RolePageHeader from "@/components/RolePageHeader";
 
 const MEMBERS = [
-  { id: "S-1247", n: "김민지", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
-  { id: "S-1248", n: "이지훈", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
-  { id: "S-1249", n: "박서연", role: "학생", school: "제닉스초", grade: "5", status: "승인대기" },
-  { id: "S-1250", n: "최도현", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
-  { id: "T-021", n: "김민수", role: "교원", school: "제닉스초", grade: "5-3", status: "활성" },
+  { id: "S-1247", n: "홍길동", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
+  { id: "S-1248", n: "김철수", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
+  { id: "S-1249", n: "이영희", role: "학생", school: "제닉스초", grade: "5", status: "승인대기" },
+  { id: "S-1250", n: "박지수", role: "학생", school: "제닉스초", grade: "5", status: "활성" },
+  { id: "T-021", n: "홍선생", role: "교원", school: "제닉스초", grade: "5-3", status: "활성" },
   { id: "T-022", n: "이수진", role: "교원", school: "제닉스초", grade: "5-1", status: "활성" },
-  { id: "P-892", n: "김지혜", role: "학부모", school: "제닉스초", grade: "민지 母", status: "활성" },
-  { id: "P-893", n: "박혜원", role: "학부모", school: "제닉스초", grade: "서연 母", status: "승인대기" },
+  { id: "P-892", n: "홍부모", role: "학부모", school: "제닉스초", grade: "홍길동 父", status: "활성" },
+  { id: "P-893", n: "이부모", role: "학부모", school: "제닉스초", grade: "이영희 母", status: "승인대기" },
 ];
 
 export default function MembersPage() {
