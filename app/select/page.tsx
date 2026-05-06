@@ -75,7 +75,7 @@ export default function SelectPage() {
       </header>
 
       {/* 본문 */}
-      <section className="flex-1 flex flex-col px-6 pt-6 pb-32 max-w-xl mx-auto w-full">
+      <section className="flex-1 flex flex-col px-6 pt-6 pb-32 max-w-2xl mx-auto w-full">
         {step === 1 && (
           <>
             <div className="mb-8">
@@ -297,7 +297,7 @@ export default function SelectPage() {
 
       {/* 하단 고정 CTA */}
       <div className="fixed bottom-0 left-0 right-0 bg-paper border-t border-ink-100">
-        <div className="max-w-xl mx-auto px-6 py-4">
+        <div className="max-w-2xl mx-auto px-6 py-4">
           <button
             onClick={next}
             disabled={!canNext() || loading}
