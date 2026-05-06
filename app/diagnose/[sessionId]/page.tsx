@@ -1,332 +1,276 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import type { Item } from "@/lib/types";
-import { IconArrowRight, IconCheck, IconClock, IconChart, IconTree } from "@/components/icons";
+import Link from "next/link";
 
-interface DiagnoseState {
-  item: Item | null;
-  itemIndex: number;
-  done: boolean;
-  prevGrade?: number;
+interface Block {
+  id: "korean" | "science" | "math" | "thinking";
+  name: string;
+  short: string;
+  totalQ: number;
+  totalMin: number;
+  color: { bg: string; bar: string; text: string };
+  items: { stem: string; choices: string[]; answer: string }[];
 }
+
+const BLOCKS: Block[] = [
+  {
+    id: "korean", name: "국어 (읽기·어휘)", short: "국어",
+    totalQ: 10, totalMin: 8,
+    color: { bg: "bg-lavender-50", bar: "bg-lavender-500", text: "text-lavender-700" },
+    items: [
+      { stem: "다음 중 '함박눈'의 뜻으로 알맞은 것은?", choices: ["① 가는 비", "② 굵고 탐스러운 눈", "③ 우박", "④ 진눈깨비"], answer: "②" },
+      { stem: "밑줄 친 어휘의 쓰임이 어색한 것은?", choices: ["① 기뻐하다", "② 슬퍼하다", "③ 노여워하다", "④ 생각해지다"], answer: "④" },
+      { stem: "다음 글의 중심 생각으로 알맞은 것은?\n\n자전거를 타려면 균형이 중요하다. 처음에는 어렵지만 자꾸 연습하면 잘 탈 수 있다.", choices: ["① 자전거는 비싸다", "② 균형을 잡으려면 연습이 필요하다", "③ 자전거는 위험하다", "④ 어른은 잘 탄다"], answer: "②" },
+    ],
+  },
+  {
+    id: "science", name: "과학", short: "과학",
+    totalQ: 20, totalMin: 15,
+    color: { bg: "bg-sky-50", bar: "bg-sky-500", text: "text-sky-700" },
+    items: [
+      { stem: "물체를 밀 때 물체가 움직이는 방향은 미는 방향과 어떻게 다를까요?", choices: ["① 같은 방향", "② 반대 방향", "③ 위쪽", "④ 아무 방향"], answer: "①" },
+      { stem: "다음 중 액체의 성질로 옳은 것은?", choices: ["① 모양이 일정하다", "② 부피가 일정하다", "③ 손으로 잡을 수 있다", "④ 모두 색이 있다"], answer: "②" },
+      { stem: "물에 사는 동물끼리 묶인 것은?", choices: ["① 붕어, 오징어", "② 호랑이, 토끼", "③ 매미, 잠자리", "④ 비둘기, 까치"], answer: "①" },
+    ],
+  },
+  {
+    id: "math", name: "수학", short: "수학",
+    totalQ: 15, totalMin: 12,
+    color: { bg: "bg-mint-50", bar: "bg-mint-500", text: "text-mint-700" },
+    items: [
+      { stem: "1/2 + 1/3 = ?", choices: ["① 2/5", "② 5/6", "③ 1/6", "④ 2/6"], answer: "②" },
+      { stem: "비 3:5에서 전항이 6일 때, 후항은?", choices: ["① 8", "② 10", "③ 12", "④ 15"], answer: "②" },
+      { stem: "144 ÷ 12 = ?", choices: ["① 10", "② 11", "③ 12", "④ 13"], answer: "③" },
+    ],
+  },
+  {
+    id: "thinking", name: "통합 사고력", short: "통합사고력",
+    totalQ: 12, totalMin: 10,
+    color: { bg: "bg-sun-50", bar: "bg-sun-500", text: "text-sun-600" },
+    items: [
+      { stem: "다음 도형을 시계 방향으로 90도 회전하면 어떤 모양이 될까요?\n\n[ㄱ 모양]", choices: ["① ㄴ", "② ㄷ", "③ ㄴ 회전", "④ ㄱ 그대로"], answer: "①" },
+      { stem: "수평잡기 저울의 양쪽 접시에 같은 무게가 올라가 있을 때, 한쪽 접시에 추를 더 올리면 어떻게 될까요?", choices: ["① 그대로", "② 추 올린 쪽이 내려간다", "③ 추 올린 쪽이 올라간다", "④ 평형 유지"], answer: "②" },
+      { stem: "1, 3, 6, 10, 15, ___ — 다음 수는?", choices: ["① 18", "② 20", "③ 21", "④ 25"], answer: "③" },
+    ],
+  },
+];
 
 export default function DiagnosePage() {
   const router = useRouter();
   const params = useParams<{ sessionId: string }>();
   const sessionId = params.sessionId;
 
-  const [step, setStep] = useState<"intro" | "test">("intro"); // 잡다 스타일 인트로 단계
-  const [state, setState] = useState<DiagnoseState>({ item: null, itemIndex: 0, done: false });
-  const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
-  const [shortAnswer, setShortAnswer] = useState("");
+  const [step, setStep] = useState<"intro" | "test">("intro");
+  const [blockIdx, setBlockIdx] = useState(0);
+  const [itemIdx, setItemIdx] = useState(0);
+  const [selected, setSelected] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [answerChanges, setAnswerChanges] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [showHelp, setShowHelp] = useState(false);
-  const [gradeJumpNotice, setGradeJumpNotice] = useState<string | null>(null);
-  const [totalElapsedSec, setTotalElapsedSec] = useState(0);
-  const startTimeRef = useRef<number>(Date.now());
-  const totalStartRef = useRef<number>(Date.now());
-  const lastChoiceRef = useRef<string | null>(null);
+  const [elapsed, setElapsed] = useState(0);
+  const startRef = useRef<number>(Date.now());
 
-  // Total timer
   useEffect(() => {
     if (step !== "test" || paused) return;
-    const id = setInterval(() => {
-      setTotalElapsedSec(Math.floor((Date.now() - totalStartRef.current) / 1000));
-    }, 1000);
+    const id = setInterval(() => setElapsed(Math.floor((Date.now() - startRef.current) / 1000)), 1000);
     return () => clearInterval(id);
   }, [step, paused]);
 
-  // ===== 정적 export 데모용 mock 문항 시퀀스 =====
-  const MOCK_ITEMS = [
-    {
-      id: "demo_1", subject: "math", grade: 5, type: "multiple_choice",
-      stem: "1/2 + 1/3 = ?",
-      choices: ["① 2/5", "② 5/6", "③ 1/6", "④ 2/6"],
-    },
-    {
-      id: "demo_2", subject: "math", grade: 5, type: "multiple_choice",
-      stem: "비 3:5에서 전항이 6일 때, 후항은?",
-      choices: ["① 8", "② 10", "③ 12", "④ 15"],
-    },
-    {
-      id: "demo_3", subject: "math", grade: 4, type: "multiple_choice",
-      stem: "144 ÷ 12 = ?",
-      choices: ["① 10", "② 11", "③ 12", "④ 13"],
-    },
-  ] as Item[];
-
   function startTest() {
-    setState({ item: MOCK_ITEMS[0], itemIndex: 0, done: false, prevGrade: MOCK_ITEMS[0].grade });
-    startTimeRef.current = Date.now();
-    totalStartRef.current = Date.now();
+    startRef.current = Date.now();
     setStep("test");
   }
 
-  function selectChoice(c: string) {
-    if (lastChoiceRef.current && lastChoiceRef.current !== c) setAnswerChanges((n) => n + 1);
-    lastChoiceRef.current = c;
-    setSelectedChoice(c);
-  }
-
-  async function submitAnswer(answer: string | null, isDontKnow = false) {
-    if (!state.item) return;
-    if (!answer && !isDontKnow) return;
+  function submit() {
+    if (!selected) return;
     setSubmitting(true);
-
-    // 정적 export 데모: 다음 mock 문항으로 이동 또는 결과 페이지로
     setTimeout(() => {
-      const nextIndex = state.itemIndex + 1;
-      if (nextIndex >= MOCK_ITEMS.length) {
-        router.push(`/result/${sessionId}`);
+      const block = BLOCKS[blockIdx];
+      // 다음 문항
+      if (itemIdx + 1 < block.items.length) {
+        setItemIdx(itemIdx + 1);
+        setSelected(null);
+        setSubmitting(false);
         return;
       }
-      const nextItem = MOCK_ITEMS[nextIndex];
-      let notice: string | null = null;
-      if (state.prevGrade && nextItem.grade < state.prevGrade) notice = `잠깐, 기초를 좀 더 살펴볼게요. (초${nextItem.grade})`;
-      else if (state.prevGrade && nextItem.grade > state.prevGrade) notice = `좋아요, 한 단계 더 가볼까요. (초${nextItem.grade})`;
-      setGradeJumpNotice(notice);
-      if (notice) setTimeout(() => setGradeJumpNotice(null), 3500);
-
-      setState({ item: nextItem, itemIndex: nextIndex, done: false, prevGrade: nextItem.grade });
-      setSelectedChoice(null);
-      setShortAnswer("");
-      setAnswerChanges(0);
-      lastChoiceRef.current = null;
-      startTimeRef.current = Date.now();
-      setSubmitting(false);
+      // 다음 블록
+      if (blockIdx + 1 < BLOCKS.length) {
+        setBlockIdx(blockIdx + 1);
+        setItemIdx(0);
+        setSelected(null);
+        setSubmitting(false);
+        return;
+      }
+      // 종료
+      router.push(`/result/${sessionId}`);
     }, 250);
   }
 
-  // ============= INTRO (잡다 스타일 진중한 진단 안내) =============
+  // ===== INTRO =====
   if (step === "intro") {
     return (
       <main className="min-h-screen bg-paper flex items-center py-8">
-        <div className="max-w-3xl mx-auto px-6 w-full">
-          {/* 진척 도트 + 뒤로 */}
-          <div className="flex items-center justify-between mb-10">
-            <a href="/select" className="text-sm text-ink-500 hover:text-ink-900 font-medium">← 뒤로</a>
-            <div className="flex items-center gap-1.5">
-              <div className="h-1 w-6 rounded-full bg-mint-500" />
-              <div className="h-1 w-6 rounded-full bg-mint-500" />
-              <div className="h-1 w-6 rounded-full bg-ink-200" />
-            </div>
-          </div>
-
+        <div className="max-w-2xl mx-auto px-6 w-full">
           <div className="text-center mb-8">
-            <div className="eyebrow text-mint-600 mb-3">진단 시작 전</div>
-            <h1 className="h-hero text-3xl md:text-4xl mb-3">
-              <span className="text-mint-600">5~10분</span>이면 끝나요
-            </h1>
-            <p className="text-ink-700 font-normal text-sm md:text-base">
-              차분한 환경에서 시작해주세요.
+            <div className="eyebrow text-mint-600 mb-3">진단 시작 전 안내</div>
+            <h1 className="h-section text-3xl mb-3">총 <span className="text-mint-600">57문항 · 45분</span></h1>
+            <p className="text-sm text-ink-700 leading-[1.7]">
+              4개 교과 블록이 자동으로 이어집니다.<br />
+              일시정지 가능 · 자동 저장 · 틀려도 점수 차감 없음
             </p>
           </div>
 
-          <div className="bg-white border border-mint-100 rounded-3xl p-6 mb-6">
-            <ul className="space-y-3">
-              {[
-                <>모르면 <strong className="font-semibold text-mint-700">"잘 모르겠어요"</strong></>,
-                <><strong className="font-semibold text-mint-700">틀려도 점수 안 깎여요</strong></>,
-                <>잠깐 쉬어도 OK, <strong className="font-semibold text-mint-700">자동 저장</strong></>,
-              ].map((t, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-normal text-ink-800">
-                  <span className="w-5 h-5 rounded-full bg-mint-500 text-white flex items-center justify-center mt-0.5 flex-shrink-0 text-[10px] font-bold">{i + 1}</span>
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="bg-white border-2 border-mint-100 rounded-2xl p-6 mb-6 space-y-3">
+            {[
+              "모르면 '잘 모르겠어요'를 눌러도 괜찮아요",
+              "한 번 답하면 이전 문제로 돌아갈 수 없어요",
+              "잠깐 쉬어도 OK — 자동으로 저장됩니다",
+              "응답·풀이시간·답 변경 횟수가 기록되어 정확한 진단에 사용됩니다",
+            ].map((t, i) => (
+              <div key={i} className="flex items-start gap-3 text-sm text-ink-800">
+                <span className="w-5 h-5 rounded-full bg-mint-500 text-white text-[10px] font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                <span>{t}</span>
+              </div>
+            ))}
           </div>
 
-          <button onClick={startTest} className="bg-mint-600 hover:bg-mint-700 text-white font-semibold rounded-full w-full px-8 py-4 text-base flex items-center justify-center gap-2 shadow-pop transition">
-            검사 시작 <IconArrowRight size={18} />
+          <div className="grid grid-cols-4 gap-2 mb-6">
+            {BLOCKS.map((b, i) => (
+              <div key={b.id} className={`${b.color.bg} rounded-xl p-3 text-center`}>
+                <div className={`text-[9px] font-bold tracking-widest ${b.color.text}`}>BLOCK {i + 1}</div>
+                <div className="text-xs font-bold mt-1">{b.short}</div>
+                <div className="text-[10px] text-ink-600 mt-0.5 tabular-nums">{b.totalQ}문항</div>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={startTest} className="w-full bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-full py-4 text-base shadow-pop transition">
+            검사 시작 →
           </button>
         </div>
       </main>
     );
   }
 
-  // ============= PAUSED =============
+  // ===== PAUSED =====
   if (paused) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-mesh-mint p-6">
-        <div className="bg-white rounded-3xl border border-mint-100 shadow-soft p-8 max-w-md text-center">
-          <div className="w-16 h-16 rounded-3xl bg-mint-100 mx-auto flex items-center justify-center mb-5 text-mint-600">
-            <IconClock size={28} />
-          </div>
-          <h2 className="h-section text-2xl mb-2">잠깐 쉬어가기</h2>
-          <p className="text-ink-700 font-normal leading-[1.7] mb-6">
-            지금까지 답한 건 자동으로 저장됐어요.<br />
-            화장실 다녀오거나 물 마시고 와도 괜찮아요.
+      <main className="min-h-screen flex items-center justify-center bg-paper-grey p-6">
+        <div className="bg-white rounded-2xl p-8 max-w-md text-center border-2 border-mint-200">
+          <div className="text-4xl mb-4">⏸</div>
+          <h2 className="text-xl font-bold mb-2">잠깐 쉬어가기</h2>
+          <p className="text-sm text-ink-700 leading-[1.7] mb-6">
+            지금까지 답한 건 자동으로 저장됐어요.
           </p>
-          <button onClick={() => { setPaused(false); startTimeRef.current = Date.now(); }} className="bg-mint-600 hover:bg-mint-700 text-white font-semibold rounded-full px-7 py-4 w-full flex items-center justify-center gap-2 transition">
-            다시 시작하기 <IconArrowRight size={18} />
+          <button onClick={() => { setPaused(false); startRef.current = Date.now() - elapsed * 1000; }} className="w-full bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-full py-3.5">
+            다시 시작
           </button>
         </div>
       </main>
     );
   }
 
-  if (!state.item) {
-    return <main className="min-h-screen flex items-center justify-center bg-paper"><div className="text-ink-500 font-medium">진단 준비중…</div></main>;
-  }
+  // ===== TEST =====
+  const block = BLOCKS[blockIdx];
+  const item = block.items[itemIdx];
+  const blockProgressPct = ((itemIdx + 1) / block.items.length) * 100;
+  const overallQ = BLOCKS.slice(0, blockIdx).reduce((sum, b) => sum + b.items.length, 0) + (itemIdx + 1);
+  const overallTotal = BLOCKS.reduce((sum, b) => sum + b.items.length, 0);
+  const minutes = Math.floor(elapsed / 60);
+  const seconds = elapsed % 60;
 
-  const item = state.item;
-  const remainingApprox = Math.max(0, 16 - state.itemIndex);
-  const progressPct = Math.min(100, ((state.itemIndex + 1) / 17) * 100);
-  const minutes = Math.floor(totalElapsedSec / 60);
-  const seconds = totalElapsedSec % 60;
-
-  // ============= TEST =============
   return (
     <main className="min-h-screen bg-paper-grey">
-      {/* TOP — 잡다 스타일 단계+진척 */}
-      <div className="bg-white border-b border-ink-100 sticky top-0 z-20 backdrop-blur-md">
-        <div className="max-w-3xl mx-auto px-4 md:px-6 py-3 md:py-4">
-          {/* Step indicator (mini) */}
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-1.5">
-              {["1", "2", "3"].map((n) => (
-                <div key={n} className={`h-1 w-8 rounded-full ${n === "2" ? "bg-mint-600" : "bg-ink-200"}`} />
-              ))}
-              <span className="text-[11px] font-semibold text-ink-700 ml-2">2단계 · 진단 진행중</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-ink-700 tabular-nums">
-              <IconClock size={12} />
-              {minutes}:{seconds.toString().padStart(2, "0")}
+      {/* TOP — 4블록 진행도 */}
+      <div className="bg-white border-b border-ink-100 sticky top-0 z-10">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 py-3">
+          <div className="flex items-center justify-between mb-2">
+            <Link href="/select" className="text-xs text-ink-500 hover:text-ink-900">← 종료</Link>
+            <div className="flex items-center gap-2 text-[11px] tabular-nums font-semibold text-ink-700">
+              ⏱ {minutes}:{seconds.toString().padStart(2, "0")}
+              <button onClick={() => setPaused(true)} className="ml-2 w-7 h-7 rounded-full bg-ink-100 hover:bg-ink-200 text-ink-700 font-bold flex items-center justify-center">⏸</button>
             </div>
           </div>
 
-          {/* Question progress */}
-          <div className="flex justify-between items-center mb-2">
-            <div>
-              <div className="text-[11px] eyebrow text-mint-600">{state.itemIndex + 1}번째 문제</div>
-              <div className="text-sm text-ink-700 font-medium mt-0.5">평균 <strong className="font-semibold text-ink-900">{remainingApprox}개</strong> 정도 남았어요</div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => setShowHelp(true)} className="w-10 h-10 rounded-full bg-ink-100 hover:bg-ink-200 text-ink-700 font-bold transition flex items-center justify-center text-base" aria-label="도움말">?</button>
-              <button onClick={() => setPaused(true)} className="w-10 h-10 rounded-full bg-ink-100 hover:bg-ink-200 text-ink-700 font-bold transition flex items-center justify-center text-sm" aria-label="일시 정지">⏸</button>
-            </div>
+          {/* 4블록 도트 */}
+          <div className="flex items-center gap-1.5 mb-3">
+            {BLOCKS.map((b, i) => {
+              const isActive = i === blockIdx;
+              const isDone = i < blockIdx;
+              return (
+                <div key={b.id} className="flex-1 flex items-center gap-1.5">
+                  <div className={`flex-1 h-1.5 rounded-full overflow-hidden ${isActive ? "bg-ink-100" : isDone ? b.color.bar : "bg-ink-100"}`}>
+                    {isActive && (
+                      <div className={`h-full ${b.color.bar} transition-all duration-500`} style={{ width: `${blockProgressPct}%` }} />
+                    )}
+                    {isDone && <div className={`h-full ${b.color.bar}`} style={{ width: "100%" }} />}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="h-1.5 bg-ink-100 rounded-full overflow-hidden">
-            <div className="h-full bg-mint-500 transition-all duration-700" style={{ width: `${progressPct}%` }} />
+
+          <div className="flex items-center justify-between text-[11px]">
+            <span className={`font-bold ${block.color.text}`}>BLOCK {blockIdx + 1} · {block.name}</span>
+            <span className="text-ink-600 font-semibold tabular-nums">
+              {itemIdx + 1} / {block.items.length} 문항 · 전체 {overallQ}/{overallTotal}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* 학년 점프 알림 */}
-      {gradeJumpNotice && (
-        <div className="max-w-3xl mx-auto px-4 md:px-6 mt-4 animate-slide-up">
-          <div className="bg-accent-100 border border-accent-300 rounded-2xl px-4 py-3 text-sm text-accent-700 font-semibold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-500" />
-            {gradeJumpNotice}
-          </div>
-        </div>
-      )}
-
       {/* QUESTION */}
-      <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
-        <div className="bg-white border border-ink-100 rounded-3xl shadow-card p-6 md:p-9 animate-fade-in" key={item.id}>
-          <div className="flex items-center gap-2 mb-5">
-            <span className="px-3 py-1 rounded-full bg-mint-600 text-white text-xs font-semibold">
-              {item.subject === "math" ? "수학" : "국어"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-ink-100 text-ink-700 text-xs font-semibold">
-              초{item.grade}
-            </span>
-          </div>
+      <div className="max-w-3xl mx-auto px-4 md:px-6 py-8">
+        <div className={`${block.color.bg} rounded-2xl p-3 mb-4 inline-block`}>
+          <span className={`text-[10px] font-bold tracking-widest ${block.color.text}`}>{block.short.toUpperCase()}</span>
+        </div>
 
-          <h2 className="text-[22px] md:text-2xl font-bold leading-[1.6] mb-7 whitespace-pre-line text-ink-900 tracking-tight">
+        <div className="bg-white border border-ink-100 rounded-2xl shadow-card p-6 md:p-8">
+          <h2 className="text-lg md:text-xl font-bold leading-[1.6] mb-6 whitespace-pre-line tracking-tight">
             {item.stem}
           </h2>
-
-          {item.type === "multiple_choice" && item.choices && (
-            <div className="space-y-3">
-              {item.choices.map((c, idx) => {
-                const choiceKey = c.match(/^[①②③④]/)?.[0] ?? String.fromCharCode(0x2460 + idx);
-                const selected = selectedChoice === choiceKey;
-                return (
-                  <button
-                    key={c}
-                    onClick={() => selectChoice(choiceKey)}
-                    className={`w-full text-left px-5 py-5 rounded-2xl border-2 transition-all font-medium text-base min-h-[64px] ${
-                      selected
-                        ? "border-mint-500 bg-mint-600 text-white shadow-pop"
-                        : "border-ink-100 bg-white text-ink-800 hover:border-mint-300 active:bg-mint-50/50"
-                    }`}
-                  >
-                    {c}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-
-          {item.type === "short_answer" && (
-            <input
-              value={shortAnswer}
-              onChange={(e) => setShortAnswer(e.target.value)}
-              placeholder="답을 적어볼까요?"
-              className="w-full px-5 py-5 rounded-2xl border-2 border-ink-100 focus:border-mint-500 outline-none font-medium text-base"
-            />
-          )}
+          <div className="space-y-2.5">
+            {item.choices.map((c) => {
+              const key = c.match(/^[①②③④]/)?.[0] ?? c[0];
+              const sel = selected === key;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setSelected(key)}
+                  className={`w-full text-left px-4 py-4 rounded-xl border-2 font-medium text-sm md:text-base transition ${
+                    sel
+                      ? `border-mint-500 bg-mint-600 text-white`
+                      : "border-ink-100 bg-white hover:border-mint-300"
+                  }`}
+                >
+                  {c}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-6 flex flex-col sm:flex-row gap-3">
+        <div className="mt-5 flex flex-col sm:flex-row gap-3">
           <button
-            onClick={() => submitAnswer(null, true)}
+            onClick={() => { setSelected("__SKIP__"); setTimeout(submit, 50); }}
             disabled={submitting}
-            className="flex-1 sm:flex-initial bg-white border-2 border-ink-200 text-ink-700 px-7 py-4 rounded-full font-semibold hover:border-accent-500 hover:text-accent-700 transition min-h-[60px]"
+            className="flex-1 sm:flex-initial bg-white border-2 border-ink-200 text-ink-700 px-6 py-3.5 rounded-full font-semibold hover:border-accent-500 hover:text-accent-700 transition"
           >
             잘 모르겠어요
           </button>
           <button
-            onClick={() => submitAnswer(item.type === "multiple_choice" ? selectedChoice : shortAnswer)}
-            disabled={
-              submitting ||
-              (item.type === "multiple_choice" && !selectedChoice) ||
-              (item.type === "short_answer" && !shortAnswer)
-            }
-            className="flex-1 sm:flex-initial bg-mint-600 hover:bg-mint-700 text-white font-semibold rounded-full px-7 py-4 flex items-center justify-center gap-2 shadow-pop transition disabled:opacity-50 disabled:hover:bg-mint-600 min-h-[60px]"
+            onClick={submit}
+            disabled={!selected || submitting}
+            className="flex-1 sm:flex-initial bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-full px-6 py-3.5 transition disabled:opacity-50 shadow-pop"
           >
-            {submitting ? "보내는 중…" : <>제출하고 다음 <IconArrowRight size={18} /></>}
+            {submitting ? "제출 중…" : "제출 →"}
           </button>
         </div>
 
-        <p className="mt-5 text-xs text-center text-ink-500 font-normal leading-relaxed">
-          틀려도 점수 안 깎여요. 차분히 풀어보세요.
+        <p className="mt-4 text-[11px] text-center text-ink-500">
+          틀려도 점수 차감 없음 · 차분히 풀어주세요
         </p>
       </div>
-
-      {/* HELP MODAL */}
-      {showHelp && (
-        <div className="fixed inset-0 z-50 bg-ink-900/50 backdrop-blur-sm flex items-end md:items-center justify-center p-4" onClick={() => setShowHelp(false)}>
-          <div className="bg-white rounded-3xl border border-ink-100 shadow-soft p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
-            <h3 className="h-section text-xl mb-4">자주 묻는 질문</h3>
-            <dl className="space-y-3 text-sm text-ink-700 font-normal mb-5">
-              {[
-                ["앞 문제 다시 볼 수 있나요?", "아뇨, 한 번 답하면 못 돌아가요. 신중히 답해주세요."],
-                ["틀리면 점수가 깎이나요?", "아니에요. 어디 막혔는지 알기 위한 진단이에요."],
-                ["부모님은 모든 걸 보나요?", "결과 점수와 학습 경로만 봐요. 답한 내용은 안 보여줘요."],
-                ["왜 4학년 문제가 나오나요?", "어디서 막혔는지 거슬러 살펴보는 중이에요. 끝나면 다시 5학년으로 와요."],
-                ["잠깐 쉴 수 있나요?", "위 ⏸ 버튼을 눌러요. 자동 저장돼요."],
-                ["부모님이 옆에서 같이 봐도 되나요?", "괜찮아요. 다만 답은 본인이 직접 골라야 정확한 진단이 돼요."],
-              ].map(([q, a]) => (
-                <div key={q}>
-                  <dt className="font-semibold text-ink-900 mb-1">Q. {q}</dt>
-                  <dd className="leading-relaxed">{a}</dd>
-                </div>
-              ))}
-            </dl>
-            <button onClick={() => setShowHelp(false)} className="bg-mint-600 hover:bg-mint-700 text-white font-semibold rounded-full px-7 py-4 w-full">
-              알겠습니다
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
