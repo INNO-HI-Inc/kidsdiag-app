@@ -112,7 +112,10 @@ export default function DiagnosePage() {
       <main className="min-h-screen bg-paper flex items-center py-8">
         <div className="max-w-2xl mx-auto px-6 w-full">
           <div className="text-center mb-8">
-            <div className="eyebrow text-mint-600 mb-3">진단 시작 전 안내</div>
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
+              <span className="eyebrow text-mint-600">진단 시작 전 안내</span>
+            </div>
             <h1 className="h-section text-3xl mb-3">총 <span className="text-mint-600">57문항 · 45분</span></h1>
             <p className="text-sm text-ink-700 leading-[1.7]">
               4개 교과 블록이 자동으로 이어집니다.<br />

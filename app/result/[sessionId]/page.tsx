@@ -35,9 +35,12 @@ export default function ResultPage() {
 
       <section className="max-w-5xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
-          <div className="eyebrow text-mint-600 mb-3">DIAGNOSIS RESULT · 진단 결과</div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-widest bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full">FUN-002</span>
+            <span className="eyebrow text-mint-600">DIAGNOSIS RESULT · 진단 결과</span>
+          </div>
           <h1 className="h-section text-3xl mb-3">진단이 완료되었습니다</h1>
-          <p className="text-sm text-ink-700">민지 · 초5 · 사전 진단 · 2026.05.06</p>
+          <p className="text-sm text-ink-700">민지 · 초5 · 사전 진단 · 2026.05.06 · 반 진도 7급 · 학교 내 랭킹 12/87</p>
         </div>
 
         {/* 종합 점수 */}

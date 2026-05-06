@@ -10,12 +10,16 @@ export default function TeacherDashboard() {
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 bg-sky-50 text-sky-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
-              TEACHER DASHBOARD
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                TEACHER DASHBOARD
+              </span>
+              <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
+              <span className="text-[10px] font-bold tracking-widest bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full">FUN-002</span>
             </div>
             <h1 className="h-section text-2xl md:text-3xl">김민수 선생님</h1>
-            <div className="text-sm text-ink-600 mt-1">제닉스초등학교 5학년 3반 · 등록 학생 27명</div>
+            <div className="text-sm text-ink-600 mt-1">제닉스초등학교 5학년 3반 · 등록 학생 27명 · 검사지 생성·결과 조회 권한</div>
           </div>
           <button className="bg-sky-600 hover:bg-sky-700 text-white font-bold px-6 py-3 rounded-full text-sm transition shadow-card">
             + 새 검사지 생성

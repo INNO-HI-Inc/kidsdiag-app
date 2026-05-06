@@ -9,7 +9,10 @@ export default function ImprovementPage() {
 
       <section className="max-w-5xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
-          <div className="eyebrow text-sky-700 mb-3">향상교육 · FUN-003</div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-widest bg-lavender-100 text-lavender-700 px-2 py-0.5 rounded-full">FUN-003</span>
+            <span className="eyebrow text-sky-700">향상교육 · IMPROVEMENT</span>
+          </div>
           <h1 className="h-section text-3xl mb-3">맞춤 학습</h1>
           <p className="text-sm text-ink-700 leading-[1.7]">
             진단 결과 기반 동영상 강의 · 학습 자료실 · AI 학습 도우미 · 오답 유형 관리 · 유사 문항

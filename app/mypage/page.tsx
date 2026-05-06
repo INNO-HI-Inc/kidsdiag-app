@@ -23,7 +23,11 @@ export default function MyPage() {
             <div className="flex items-center gap-4 md:col-span-2">
               <div className="w-16 h-16 rounded-2xl bg-mint-500 text-white flex items-center justify-center text-3xl font-bold">민</div>
               <div className="flex-1">
-                <div className="text-[10px] font-bold tracking-widest text-mint-700">MY PAGE</div>
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span className="text-[10px] font-bold tracking-widest text-mint-700">MY PAGE</span>
+                  <span className="text-[9px] font-bold bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded-full">FUN-002</span>
+                  <span className="text-[9px] font-bold bg-sun-100 text-sun-600 px-1.5 py-0.5 rounded-full">FUN-004</span>
+                </div>
                 <h1 className="text-xl font-bold tracking-tight">김민지 · 초5</h1>
                 <div className="text-[11px] text-ink-600 mt-1">
                   학번 <span className="font-semibold tabular-nums">2026-05-1247</span> · 제닉스초등학교 5-3

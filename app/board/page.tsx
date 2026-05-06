@@ -25,9 +25,12 @@ export default function BoardPage() {
 
       <section className="max-w-5xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
-          <div className="eyebrow text-mint-600 mb-3">BOARD · FUN-008</div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-widest bg-sun-100 text-sun-600 px-2 py-0.5 rounded-full">FUN-008</span>
+            <span className="eyebrow text-mint-600">BOARD · 게시판</span>
+          </div>
           <h1 className="h-section text-3xl md:text-4xl">게시판</h1>
-          <p className="text-ink-700 mt-3">공지사항 · Q&A · 학교별 안내</p>
+          <p className="text-ink-700 mt-3">공지사항 · Q&A · 학교별 안내 · 학교 이미지(로고·배너) 관리</p>
         </div>
 
         {/* 탭 */}

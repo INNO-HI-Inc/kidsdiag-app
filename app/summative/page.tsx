@@ -9,7 +9,10 @@ export default function SummativePage() {
 
       <section className="max-w-3xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
-          <div className="eyebrow text-accent-700 mb-3">총괄평가 · POST DIAGNOSIS</div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
+            <span className="eyebrow text-accent-700">총괄평가 · POST DIAGNOSIS</span>
+          </div>
           <h1 className="h-section text-3xl mb-3">사후 진단</h1>
           <p className="text-sm text-ink-700 leading-[1.7]">
             진단 검사 영역과 동일한 영역 사후 검사<br />
