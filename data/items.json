@@ -1,0 +1,162 @@
+[
+  {
+    "id": "item_001", "nodeId": "math_3_addition", "subject": "math", "grade": 3, "type": "multiple_choice",
+    "stem": "47 + 38의 값으로 옳은 것은?",
+    "choices": ["① 75", "② 85", "③ 815", "④ 95"],
+    "answer": "②",
+    "explanation": "일의 자리: 7+8=15 (10 올림). 십의 자리: 4+3+1=8. 답은 85.",
+    "difficulty": 0.2, "irt": {"a": 1.2, "b": -1.0, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_002", "nodeId": "math_3_multiplication_basic", "subject": "math", "grade": 3, "type": "multiple_choice",
+    "stem": "7 × 8의 값은?",
+    "choices": ["① 49", "② 54", "③ 56", "④ 64"],
+    "answer": "③",
+    "explanation": "구구단 7단: 7×8=56.",
+    "difficulty": 0.15, "irt": {"a": 1.5, "b": -1.2, "c": 0.25}, "estimatedTimeSec": 30, "bloom": "remember", "status": "approved"
+  },
+  {
+    "id": "item_003", "nodeId": "math_4_division", "subject": "math", "grade": 4, "type": "multiple_choice",
+    "stem": "72 ÷ 8의 값은?",
+    "choices": ["① 7", "② 8", "③ 9", "④ 10"],
+    "answer": "③",
+    "explanation": "72를 8로 나누면 9. 8 × 9 = 72로 검산 가능.",
+    "difficulty": 0.25, "irt": {"a": 1.4, "b": -0.8, "c": 0.25}, "estimatedTimeSec": 45, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_004", "nodeId": "math_4_fraction_intro", "subject": "math", "grade": 4, "type": "multiple_choice",
+    "stem": "분수 3/5에서 분자는 무엇인가?",
+    "choices": ["① 3", "② 5", "③ 8", "④ 15"],
+    "answer": "①",
+    "explanation": "분수 3/5에서 위에 있는 수 3이 분자, 아래 5가 분모.",
+    "difficulty": 0.1, "irt": {"a": 1.3, "b": -1.5, "c": 0.25}, "estimatedTimeSec": 30, "bloom": "remember", "status": "approved"
+  },
+  {
+    "id": "item_005", "nodeId": "math_4_fraction_compare", "subject": "math", "grade": 4, "type": "multiple_choice",
+    "stem": "다음 중 가장 큰 분수는?",
+    "choices": ["① 1/4", "② 2/4", "③ 3/4", "④ 0/4"],
+    "answer": "③",
+    "explanation": "분모가 같으면 분자가 클수록 큰 수. 3/4가 가장 큼.",
+    "difficulty": 0.2, "irt": {"a": 1.3, "b": -1.0, "c": 0.25}, "estimatedTimeSec": 45, "bloom": "analyze", "status": "approved"
+  },
+  {
+    "id": "item_006", "nodeId": "math_5_fraction_add_same_denom", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "1/4 + 2/4의 값은?",
+    "choices": ["① 3/8", "② 3/4", "③ 1/2", "④ 1/8"],
+    "answer": "②",
+    "explanation": "분모가 같으면 분자끼리 더한다. 1+2=3. 답은 3/4.",
+    "difficulty": 0.3, "irt": {"a": 1.4, "b": -0.5, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_007", "nodeId": "math_5_fraction_add_same_denom", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "2/7 + 4/7의 값은?",
+    "choices": ["① 6/14", "② 6/7", "③ 8/7", "④ 2/7"],
+    "answer": "②",
+    "explanation": "분모는 그대로 두고 분자만 더한다. 2+4=6. 답은 6/7.",
+    "difficulty": 0.35, "irt": {"a": 1.5, "b": -0.3, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_008", "nodeId": "math_5_fraction_add_diff_denom", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "1/2 + 1/3의 값은?",
+    "choices": ["① 2/5", "② 1/6", "③ 5/6", "④ 1/5"],
+    "answer": "③",
+    "explanation": "분모가 다르면 통분. 1/2 = 3/6, 1/3 = 2/6. 합은 5/6.",
+    "difficulty": 0.5, "irt": {"a": 1.6, "b": 0.2, "c": 0.25}, "estimatedTimeSec": 90, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_009", "nodeId": "math_5_fraction_add_diff_denom", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "현우는 케이크의 1/4을, 동생은 1/6을 먹었다. 둘이 합쳐 먹은 양은?",
+    "choices": ["① 2/10", "② 5/12", "③ 1/2", "④ 2/24"],
+    "answer": "②",
+    "explanation": "1/4과 1/6을 통분: 12를 분모로. 1/4=3/12, 1/6=2/12. 합 = 5/12.",
+    "difficulty": 0.55, "irt": {"a": 1.7, "b": 0.4, "c": 0.25}, "estimatedTimeSec": 120, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_010", "nodeId": "math_5_fraction_subtract", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "5/6 - 1/3의 값은?",
+    "choices": ["① 4/3", "② 1/2", "③ 4/6", "④ 1/3"],
+    "answer": "②",
+    "explanation": "통분: 5/6 - 2/6 = 3/6 = 1/2.",
+    "difficulty": 0.5, "irt": {"a": 1.5, "b": 0.1, "c": 0.25}, "estimatedTimeSec": 90, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_011", "nodeId": "math_5_fraction_multiply", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "2/3 × 4의 값은?",
+    "choices": ["① 8/3", "② 6/3", "③ 8/12", "④ 2/12"],
+    "answer": "①",
+    "explanation": "분수 × 자연수는 분자에 자연수를 곱한다. 2×4=8. 답은 8/3.",
+    "difficulty": 0.45, "irt": {"a": 1.4, "b": 0.0, "c": 0.25}, "estimatedTimeSec": 75, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_012", "nodeId": "math_5_decimal_intro", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "소수 0.7의 1/10은?",
+    "choices": ["① 0.07", "② 7", "③ 0.007", "④ 0.7"],
+    "answer": "①",
+    "explanation": "어떤 소수의 1/10은 자리가 한 칸 내려간다. 0.7 → 0.07.",
+    "difficulty": 0.4, "irt": {"a": 1.3, "b": -0.2, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "understand", "status": "approved"
+  },
+  {
+    "id": "item_013", "nodeId": "math_5_decimal_add_sub", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "1.5 + 0.75의 값은?",
+    "choices": ["① 1.80", "② 2.25", "③ 2.30", "④ 0.90"],
+    "answer": "②",
+    "explanation": "소수점 위치를 맞춰서 더한다. 1.50 + 0.75 = 2.25.",
+    "difficulty": 0.4, "irt": {"a": 1.4, "b": -0.1, "c": 0.25}, "estimatedTimeSec": 75, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_014", "nodeId": "math_5_ratio", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "비 3:4를 분수로 나타내면?",
+    "choices": ["① 3/4", "② 4/3", "③ 7/12", "④ 12/7"],
+    "answer": "①",
+    "explanation": "비 a:b는 분수 a/b로 표현 가능. 3:4 = 3/4.",
+    "difficulty": 0.5, "irt": {"a": 1.4, "b": 0.3, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "understand", "status": "approved"
+  },
+  {
+    "id": "item_015", "nodeId": "math_5_polygon_area", "subject": "math", "grade": 5, "type": "multiple_choice",
+    "stem": "밑변 6cm, 높이 4cm인 삼각형의 넓이는?",
+    "choices": ["① 24 cm²", "② 12 cm²", "③ 10 cm²", "④ 20 cm²"],
+    "answer": "②",
+    "explanation": "삼각형 넓이 = (밑변 × 높이) ÷ 2 = (6 × 4) ÷ 2 = 12 cm².",
+    "difficulty": 0.4, "irt": {"a": 1.4, "b": -0.2, "c": 0.25}, "estimatedTimeSec": 75, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_016", "nodeId": "korean_5_vocab_context", "subject": "korean", "grade": 5, "type": "multiple_choice",
+    "stem": "다음 문장의 빈칸에 가장 알맞은 말은?\n\n\"그는 약속을 지키는 ___ 사람이다.\"",
+    "choices": ["① 가벼운", "② 진실한", "③ 떠들썩한", "④ 작은"],
+    "answer": "②",
+    "explanation": "약속을 지키는 사람은 신뢰할 수 있는 '진실한' 사람.",
+    "difficulty": 0.3, "irt": {"a": 1.3, "b": -0.5, "c": 0.25}, "estimatedTimeSec": 60, "bloom": "apply", "status": "approved"
+  },
+  {
+    "id": "item_017", "nodeId": "korean_5_grammar_sentence", "subject": "korean", "grade": 5, "type": "multiple_choice",
+    "stem": "다음 중 의문문은?",
+    "choices": ["① 학교에 갑니다.", "② 학교에 가니?", "③ 학교에 가자.", "④ 학교에 가라."],
+    "answer": "②",
+    "explanation": "물어보는 문장이 의문문. ②는 의문형 어미 '-니'를 사용.",
+    "difficulty": 0.25, "irt": {"a": 1.4, "b": -0.7, "c": 0.25}, "estimatedTimeSec": 45, "bloom": "analyze", "status": "approved"
+  },
+  {
+    "id": "item_018", "nodeId": "korean_5_reading_facts", "subject": "korean", "grade": 5, "type": "multiple_choice",
+    "stem": "다음 글에서 알 수 있는 사실은?\n\n\"꿀벌은 꽃에서 꿀을 모으며, 그 과정에서 꽃가루를 옮긴다. 이렇게 옮겨진 꽃가루는 식물이 열매를 맺는 데 도움을 준다.\"",
+    "choices": ["① 꿀벌은 꿀을 만들지 못한다.", "② 꿀벌은 식물의 번식에 도움을 준다.", "③ 꿀벌은 꽃을 좋아하지 않는다.", "④ 꿀벌은 열매만 먹는다."],
+    "answer": "②",
+    "explanation": "꽃가루를 옮겨 식물이 열매를 맺도록 도와준다고 명시되어 있다.",
+    "difficulty": 0.3, "irt": {"a": 1.3, "b": -0.4, "c": 0.25}, "estimatedTimeSec": 90, "bloom": "remember", "status": "approved"
+  },
+  {
+    "id": "item_019", "nodeId": "korean_5_reading_inference", "subject": "korean", "grade": 5, "type": "multiple_choice",
+    "stem": "다음 글에서 추론할 수 있는 것은?\n\n\"민지는 우산을 들고 학교에서 나왔다. 하지만 거리는 전혀 젖어 있지 않았다.\"",
+    "choices": ["① 비가 오고 있다.", "② 비가 올 것 같았으나 오지 않았다.", "③ 민지는 항상 우산을 든다.", "④ 학교에 우산이 많다."],
+    "answer": "②",
+    "explanation": "거리가 안 젖었다는 건 비가 오지 않았다는 것. 민지가 우산을 들었다는 건 비가 올 것을 예상했다는 추론 가능.",
+    "difficulty": 0.55, "irt": {"a": 1.5, "b": 0.3, "c": 0.25}, "estimatedTimeSec": 120, "bloom": "analyze", "status": "approved"
+  },
+  {
+    "id": "item_020", "nodeId": "korean_5_reading_main_idea", "subject": "korean", "grade": 5, "type": "multiple_choice",
+    "stem": "다음 글의 중심 생각은?\n\n\"운동은 우리 몸을 튼튼하게 한다. 또한 스트레스를 줄이는 데도 효과적이다. 매일 30분씩만 운동해도 건강에 큰 도움이 된다.\"",
+    "choices": ["① 운동은 30분이면 충분하다.", "② 운동은 우리에게 여러 가지 좋은 점이 있다.", "③ 스트레스는 누구나 받는다.", "④ 운동은 어려운 일이다."],
+    "answer": "②",
+    "explanation": "글은 운동의 여러 이점(몸 튼튼, 스트레스 감소, 건강 도움)을 제시한다. 핵심은 운동의 다양한 효용.",
+    "difficulty": 0.4, "irt": {"a": 1.4, "b": -0.1, "c": 0.25}, "estimatedTimeSec": 100, "bloom": "understand", "status": "approved"
+  }
+]
