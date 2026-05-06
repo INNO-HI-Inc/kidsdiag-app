@@ -391,9 +391,6 @@ export default function DiagnosePage() {
           </button>
         </div>
 
-        <p className="mt-4 text-[11px] text-center text-ink-500">
-          틀려도 점수 차감 없음 · 차분히 풀어주세요
-        </p>
       </div>
 
       {/* 정답채점기준 모달 */}
