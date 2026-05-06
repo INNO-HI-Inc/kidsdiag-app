@@ -163,9 +163,54 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* M1~M8 타임라인 + 자문위원진 (GeniusX Section 3.6, 5) */}
+        {/* 3단계 로드맵 + M1~M8 타임라인 + 자문위원진 (GeniusX Section 2.2, 3.6, 5) */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
-          <h2 className="text-base font-bold mb-4">파일럿 타임라인 · 8개월 · 5,000명</h2>
+          <h2 className="text-base font-bold mb-4">3단계 로드맵 — MVP → Phase 1 → Phase 2</h2>
+
+          {/* 3단계 카드 */}
+          <div className="grid md:grid-cols-3 gap-3 mb-5">
+            <div className="bg-mint-50 border-2 border-mint-300 rounded-xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold tracking-widest text-mint-700">1단계 · MVP</span>
+                <span className="text-[10px] font-semibold text-mint-700">현재</span>
+              </div>
+              <div className="text-sm font-bold mb-1">8개월 · 5,000명</div>
+              <ul className="text-[11px] text-ink-700 space-y-0.5 mb-2">
+                <li>· 차원 1 중 5/8 재능</li>
+                <li>· 학력 정식 + 재능 프리뷰</li>
+                <li>· 본 파일럿 (M1~M8)</li>
+              </ul>
+              <div className="text-[10px] text-ink-500 pt-2 border-t border-mint-200">출처 데이터: 285,000건 응답 + 행동 로그</div>
+            </div>
+            <div className="bg-sky-50 border-2 border-sky-200 rounded-xl p-4 opacity-90">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold tracking-widest text-sky-700">2단계 · Phase 1</span>
+                <span className="text-[10px] font-semibold text-sky-700">+6개월</span>
+              </div>
+              <div className="text-sm font-bold mb-1">F1 인지 영역 MVP</div>
+              <ul className="text-[11px] text-ink-700 space-y-0.5 mb-2">
+                <li>· 실행·주의·메타인지 측정</li>
+                <li>· CBT 행동 로그 기반</li>
+                <li>· 수리·과학 영역 우선</li>
+              </ul>
+              <div className="text-[10px] text-ink-500 pt-2 border-t border-sky-200">문항 뱅크 200+ · F1 간접 지표 3종 검증</div>
+            </div>
+            <div className="bg-lavender-50 border-2 border-lavender-200 rounded-xl p-4 opacity-90">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold tracking-widest text-lavender-700">3단계 · Phase 2</span>
+                <span className="text-[10px] font-semibold text-lavender-700">+12개월</span>
+              </div>
+              <div className="text-sm font-bold mb-1">전체 3차원 통합</div>
+              <ul className="text-[11px] text-ink-700 space-y-0.5 mb-2">
+                <li>· 8 + 3 + 4 차원 전부</li>
+                <li>· 게임화·자기보고·포트폴리오</li>
+                <li>· GeniusX Ver.4 완전 구현</li>
+              </ul>
+              <div className="text-[10px] text-ink-500 pt-2 border-t border-lavender-200">미래성공예측지수 산출 · 진로·교육 설계 보고서</div>
+            </div>
+          </div>
+
+          <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">1단계 MVP — 8개월 마일스톤</div>
           <div className="grid grid-cols-4 md:grid-cols-8 gap-2 mb-5">
             {[
               { m: "M1", t: "문항 개발", c: "bg-mint-50 text-mint-700" },

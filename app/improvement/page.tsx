@@ -48,31 +48,47 @@ export default function ImprovementPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { t: "분수의 덧셈", d: "5:32", subj: "수학", grad: "from-mint-400 to-mint-600" },
-              { t: "물질의 상태", d: "7:21", subj: "과학", grad: "from-sky-400 to-sky-600" },
-              { t: "독해 전략", d: "4:48", subj: "국어", grad: "from-lavender-400 to-lavender-600" },
-              { t: "비와 비율", d: "6:15", subj: "수학", grad: "from-mint-400 to-mint-600" },
-              { t: "동물의 분류", d: "5:08", subj: "과학", grad: "from-sky-400 to-sky-600" },
-              { t: "어휘 확장", d: "3:42", subj: "국어", grad: "from-lavender-400 to-lavender-600" },
-              { t: "도형의 둘레", d: "4:22", subj: "수학", grad: "from-mint-400 to-mint-600" },
-              { t: "글의 구조", d: "5:55", subj: "국어", grad: "from-lavender-400 to-lavender-600" },
-            ].map((v, i) => (
-              <div key={i} className="cursor-pointer group">
-                <div className={`relative aspect-video bg-gradient-to-br ${v.grad} rounded-xl flex items-center justify-center mb-2 overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/10" />
-                  <div className="relative w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-card group-hover:scale-110 transition">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 text-ink-900" fill="currentColor">
-                      <polygon points="6,4 20,12 6,20" />
-                    </svg>
+              { t: "분수의 덧셈 — 통분 이해", d: "5:32", subj: "수학", ch: "EBS Math", q: "초등+5학년+분수의+덧셈+통분" },
+              { t: "물질의 상태와 변화", d: "7:21", subj: "과학", ch: "EBS 초등", q: "초등+5학년+물질의+상태+변화" },
+              { t: "글의 중심 생각 찾기", d: "4:48", subj: "국어", ch: "EBS 초등", q: "초등+5학년+글의+중심+생각+찾기" },
+              { t: "비와 비율 활용", d: "6:15", subj: "수학", ch: "Khan Academy 한국어", q: "초등+6학년+비와+비율" },
+              { t: "동물의 분류와 특성", d: "5:08", subj: "과학", ch: "EBS Kids", q: "초등+4학년+동물의+분류" },
+              { t: "어휘 확장 학습법", d: "3:42", subj: "국어", ch: "EBS 초등", q: "초등+어휘+확장+학습" },
+              { t: "도형의 둘레와 넓이", d: "4:22", subj: "수학", ch: "EBS Math", q: "초등+5학년+도형의+둘레+넓이" },
+              { t: "글의 구조 — 서론·본론·결론", d: "5:55", subj: "국어", ch: "EBS 초등", q: "초등+글의+구조+서론+본론+결론" },
+            ].map((v, i) => {
+              const grad = v.subj === "수학" ? "from-mint-400 to-mint-600" : v.subj === "과학" ? "from-sky-400 to-sky-600" : "from-lavender-400 to-lavender-600";
+              return (
+                <a
+                  key={i}
+                  href={`https://www.youtube.com/results?search_query=${v.q}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <div className={`relative aspect-video bg-gradient-to-br ${grad} rounded-xl flex items-center justify-center mb-2 overflow-hidden`}>
+                    <div className="absolute inset-0 bg-black/10" />
+                    <div className="relative w-12 h-9 rounded-lg bg-[#FF0000] flex items-center justify-center shadow-card group-hover:scale-110 transition">
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="currentColor">
+                        <polygon points="6,4 20,12 6,20" />
+                      </svg>
+                    </div>
+                    <div className="absolute bottom-1.5 right-1.5 bg-black/80 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold tabular-nums">
+                      {v.d}
+                    </div>
+                    <div className="absolute top-1.5 left-1.5 bg-black/60 text-white text-[8px] font-bold px-1.5 py-0.5 rounded tracking-widest">
+                      YouTube
+                    </div>
                   </div>
-                  <div className="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold tabular-nums">
-                    {v.d}
-                  </div>
-                </div>
-                <div className="text-xs font-semibold">{v.t}</div>
-                <div className="text-[10px] text-ink-500">{v.subj}</div>
-              </div>
-            ))}
+                  <div className="text-xs font-semibold leading-[1.3]">{v.t}</div>
+                  <div className="text-[10px] text-ink-500 mt-0.5">{v.ch} · {v.subj}</div>
+                </a>
+              );
+            })}
+          </div>
+          <div className="mt-3 pt-3 border-t border-ink-100 flex items-center gap-2 text-[10px] text-ink-500">
+            <span className="bg-[#FF0000] text-white text-[9px] font-bold px-1.5 py-0.5 rounded">YouTube</span>
+            <span>EBS Math · EBS 초등 · EBS Kids · Khan Academy 한국어 등 공인 교육 채널 검색 결과 연결</span>
           </div>
         </div>
 

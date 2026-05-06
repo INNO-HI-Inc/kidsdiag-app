@@ -68,28 +68,60 @@ export default function GradingPage() {
           ))}
         </div>
 
-        {/* 채점 도구 */}
-        <div className="mt-6 grid md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-2xl p-5 border border-ink-100">
-            <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">RUBRIC · 정답채점기준</div>
-            <ul className="space-y-1.5 text-xs text-ink-700">
-              <li>· 완전 정답 — 핵심 키워드 모두 포함</li>
-              <li>· 부분 정답 — 일부 키워드 + 논리 OK</li>
-              <li>· 오답 — 핵심 누락 또는 개념 오류</li>
-            </ul>
-          </div>
-          <div className="bg-white rounded-2xl p-5 border border-ink-100">
-            <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">AI 신뢰도 정책</div>
-            <div className="text-xs text-ink-700 leading-[1.6]">
-              confidence &lt; 0.75 → 인간 검토 큐 자동 라우팅<br />
-              ICC ≥ 0.80 목표 (인간 채점자 2인 vs AI)
+        {/* AI 채점 타당도 검증 (GeniusX Section 4.2) */}
+        <div className="mt-6 bg-white rounded-2xl border border-ink-100 p-6 mb-5">
+          <h2 className="text-base font-bold mb-4">AI 채점 타당도 검증</h2>
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="bg-paper-grey rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">인간 채점자 vs AI 일치도</div>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-2xl font-bold tabular-nums text-mint-700">0.86</span>
+                <span className="text-xs text-ink-600">ICC</span>
+              </div>
+              <div className="text-[10px] text-ink-600 leading-[1.6]">
+                인간 채점자 2인 이상 독립 채점 → AI 채점 일치도. 목표 ≥ 0.80.
+              </div>
+            </div>
+            <div className="bg-paper-grey rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">학년별 채점 모델 보정</div>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="flex justify-between">
+                  <span>3학년 샘플</span>
+                  <span className="font-bold tabular-nums">312건 / 300 목표</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>4학년 샘플</span>
+                  <span className="font-bold tabular-nums">328건 / 300 목표</span>
+                </div>
+                <div className="text-[10px] text-ink-600 mt-1.5">
+                  3학년 수준 서술은 문법 미완성·맞춤법 오류·불완전 문장이 일반적이라 학년별 보정 필수
+                </div>
+              </div>
             </div>
           </div>
-          <div className="bg-white rounded-2xl p-5 border border-ink-100">
-            <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">일괄 작업</div>
-            <div className="space-y-1.5">
-              <button className="w-full text-xs font-semibold px-3 py-2 rounded-lg bg-mint-50 text-mint-700 hover:bg-mint-100">선택 정답 처리</button>
-              <button className="w-full text-xs font-semibold px-3 py-2 rounded-lg bg-paper-grey text-ink-700 hover:bg-ink-100">CSV 내보내기</button>
+
+          <div className="grid md:grid-cols-3 gap-3 mt-3">
+            <div className="bg-white border border-ink-100 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-mint-700 mb-2">RUBRIC 3단계</div>
+              <ul className="space-y-1 text-xs text-ink-700">
+                <li><strong className="text-mint-700">완전 정답</strong> — 핵심 키워드 모두 포함</li>
+                <li><strong className="text-sun-600">부분 정답</strong> — 일부 키워드 + 논리 OK</li>
+                <li><strong className="text-peach-500">오답</strong> — 핵심 누락 / 개념 오류</li>
+              </ul>
+            </div>
+            <div className="bg-white border border-ink-100 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-sky-700 mb-2">신뢰도 라우팅</div>
+              <div className="text-xs text-ink-700 leading-[1.6]">
+                AI confidence &lt; 0.75<br />→ 인간 검토 큐 자동 라우팅
+              </div>
+              <div className="mt-2 text-[10px] text-ink-600">현재 자동 처리율: 78.4%</div>
+            </div>
+            <div className="bg-white border border-ink-100 rounded-xl p-4">
+              <div className="text-[10px] font-bold tracking-widest text-lavender-700 mb-2">일괄 작업</div>
+              <div className="space-y-1.5">
+                <button className="w-full text-xs font-semibold px-3 py-2 rounded-lg bg-mint-50 text-mint-700 hover:bg-mint-100">선택 정답 처리</button>
+                <button className="w-full text-xs font-semibold px-3 py-2 rounded-lg bg-paper-grey text-ink-700 hover:bg-ink-100">CSV 내보내기</button>
+              </div>
             </div>
           </div>
         </div>

@@ -100,21 +100,36 @@ export default function CmsEditorPage() {
           <div className="lg:col-span-4 space-y-5">
             <div className="bg-white rounded-2xl border border-ink-100 p-5">
               <h2 className="text-base font-bold mb-4 tracking-tight">메타데이터</h2>
-              <div className="space-y-3 text-xs">
+              <div className="space-y-2 text-xs">
                 {[
-                  { l: "ID", v: "MATH-5-FRAC-001" },
-                  { l: "학년", v: "초5" },
-                  { l: "교과", v: "수학" },
-                  { l: "단원", v: "분수의 덧셈" },
-                  { l: "Bloom", v: "적용" },
-                  { l: "재능 태그(B)", v: "수리·논리" },
-                  { l: "난이도(b)", v: "0.5" },
-                  { l: "변별도(a)", v: "1.2" },
-                  { l: "예상 시간", v: "60초" },
+                  { l: "ID", v: "MATH-5-FRAC-001", grp: "기본" },
+                  { l: "학년", v: "초5", grp: "기본" },
+                  { l: "교과", v: "수학", grp: "기본" },
+                  { l: "단원", v: "분수의 덧셈", grp: "기본" },
+                  { l: "탐구요소", v: "추론·상상", grp: "PDF 9종" },
+                  { l: "탐구과정", v: "검증·과정", grp: "PDF 9종" },
+                  { l: "난이도", v: "중", grp: "PDF 9종" },
+                  { l: "소요시간", v: "60초", grp: "PDF 9종" },
+                  { l: "실시방법", v: "지필", grp: "PDF 9종" },
+                  { l: "배점", v: "3점", grp: "PDF 9종" },
+                  { l: "Bloom 분류", v: "적용", grp: "PDF 9종" },
+                  { l: "재능영역(B)", v: "수리·논리", grp: "PDF 9종" },
+                  { l: "문항형태", v: "단순풀이", grp: "PDF 9종" },
+                  { l: "성취기준 코드(A)", v: "5수01-04", grp: "태그 A" },
+                  { l: "성취수준(A)", v: "B", grp: "태그 A" },
+                  { l: "출제 의도", v: "통분 후 분수 덧셈", grp: "태그 A" },
+                  { l: "재능 Primary(B)", v: "수리·논리", grp: "태그 B" },
+                  { l: "재능 Secondary(B)", v: "공간·시각", grp: "태그 B" },
+                  { l: "발달민감기 대응", v: "4~7세 지속 분화", grp: "태그 B" },
+                  { l: "하위 역량", v: "패턴 인식", grp: "태그 B" },
+                  { l: "변별도(a)", v: "1.2", grp: "IRT" },
+                  { l: "난이도(b)", v: "0.5", grp: "IRT" },
+                  { l: "추측도(c)", v: "0.20", grp: "IRT" },
                 ].map((f) => (
                   <div key={f.l} className="flex items-center gap-2">
-                    <span className="w-20 text-ink-600 font-semibold">{f.l}</span>
-                    <input defaultValue={f.v} className="flex-1 px-2 py-1 rounded border border-ink-100 text-xs" />
+                    <span className="w-24 text-ink-600 font-semibold">{f.l}</span>
+                    <input defaultValue={f.v} className="flex-1 px-2 py-1 rounded border border-ink-100 text-[10px]" />
+                    <span className="text-[9px] text-ink-400 w-12 text-right">{f.grp}</span>
                   </div>
                 ))}
               </div>
@@ -146,6 +161,51 @@ export default function CmsEditorPage() {
               · 이미지 PNG·JPG·SVG (≤ 2MB)<br />
               · 음성 MP3·WAV (≤ 5MB)<br />
               · 동영상 MP4 (≤ 30MB)
+            </div>
+
+            {/* 이중 태그 3단 검증 (GeniusX Section 3.4) */}
+            <div className="bg-white rounded-2xl border-2 border-mint-200 p-5">
+              <h3 className="text-sm font-bold mb-3 tracking-tight">이중 태그 3단 검증</h3>
+              <div className="space-y-3">
+                {[
+                  { n: "1차", t: "문항 개발자 초안 태깅", d: "본인이 태그 A·B 초안 부여", status: "완료", color: "bg-mint-50 text-mint-700" },
+                  { n: "2차", t: "전문가 + 자문위원 독립 태깅", d: "교육과정 전문가 + 뇌과학 자문위원이 각자 독립 태깅 → Cohen's Kappa ≥ 0.7 도달까지 조정 반복", status: "진행중", color: "bg-sky-50 text-sky-700" },
+                  { n: "3차", t: "파일럿 데이터 실증 검증", d: "동일 재능 태그 문항 간 내적 일관성 α ≥ 0.7, CFA CFI ≥ 0.90 · RMSEA ≤ 0.08 확인. 미달 시 태그 재조정", status: "대기", color: "bg-paper-grey text-ink-600" },
+                ].map((s) => (
+                  <div key={s.n} className="flex items-start gap-3 p-3 rounded-lg bg-paper-grey">
+                    <span className={`text-[10px] font-bold tracking-widest px-2 py-0.5 rounded-full ${s.color} flex-shrink-0`}>{s.n}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-bold">{s.t}</div>
+                      <div className="text-[11px] text-ink-700 leading-[1.5] mt-0.5">{s.d}</div>
+                    </div>
+                    <span className="text-[10px] font-semibold text-ink-500 flex-shrink-0">{s.status}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 text-[11px] text-ink-600 bg-paper-grey rounded-lg p-2.5">
+                현재 Cohen's Kappa: <strong className="text-mint-700">0.84</strong> (목표 ≥ 0.7) · 합격
+              </div>
+            </div>
+
+            {/* 문항 검토 등급 (GeniusX Section 1.4) */}
+            <div className="bg-white rounded-2xl border-2 border-sun-200 p-5">
+              <h3 className="text-sm font-bold mb-3 tracking-tight">문항 검토 등급</h3>
+              <div className="space-y-2">
+                {[
+                  { n: "모범", count: "1문항 (7번)", action: "정답 표현만 미세 수정 후 핵심 앵커 문항으로 투입", color: "bg-mint-50 text-mint-700" },
+                  { n: "수정 후 수용", count: "6문항 (2·3·4·5·6·8번)", action: "각 문항별 시간·전제·어휘 조정. 재능진단 매핑 태그 신규 부여", color: "bg-sky-50 text-sky-700" },
+                  { n: "구조적 재작성", count: "2문항 (1·9번)", action: "정답 개념 자체를 재설계. 출제 의도 재정의부터 시작", color: "bg-sun-50 text-sun-600" },
+                  { n: "교육과정 초과", count: "1문항 (10번)", action: "부력은 중학교 이후 내용. 본 파일럿에서 폐기 또는 영재 문항으로 분리", color: "bg-peach-100 text-peach-500" },
+                ].map((s) => (
+                  <div key={s.n} className="flex items-start gap-3 p-2.5 rounded-lg bg-paper-grey">
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${s.color} flex-shrink-0`}>{s.n}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-bold">{s.count}</div>
+                      <div className="text-[10px] text-ink-700 leading-[1.5] mt-0.5">{s.action}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* 문항 보안 정책 (GeniusX Section 4.3) */}

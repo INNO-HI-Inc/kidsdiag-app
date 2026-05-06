@@ -95,6 +95,57 @@ export default function ReportPage() {
           </ol>
         </div>
 
+        {/* CBT 응답 데이터 계층 L1·L2·L3 (GeniusX Section 3.3) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold mb-4">CBT 응답 데이터 계층 (L1·L2·L3)</h2>
+          <div className="space-y-3">
+            {[
+              {
+                tier: "L1",
+                name: "정답 신호",
+                signals: "정답 여부 · 부분점수 · 선택형 응답값",
+                priority: "필수",
+                phase: "1단계 차원 1 재능 + 학력 성취도",
+                color: "bg-mint-50 border-mint-300",
+                priorityColor: "bg-mint-500 text-white",
+              },
+              {
+                tier: "L2",
+                name: "시간 신호",
+                signals: "총 응답시간 · 첫 클릭 · 검토시간 · 블록별 시간 분포",
+                priority: "필수",
+                phase: "1단계 간접 + 2단계 F1 주의·작업기억",
+                color: "bg-sky-50 border-sky-300",
+                priorityColor: "bg-sky-500 text-white",
+              },
+              {
+                tier: "L3",
+                name: "행동 신호",
+                signals: "재검토 횟수 · 선택지 변경 · 서술 입력 궤적 · 스크롤 패턴",
+                priority: "권장",
+                phase: "2·3단계 F1 메타인지·인지유연성",
+                color: "bg-lavender-50 border-lavender-300",
+                priorityColor: "bg-sun-500 text-white",
+              },
+            ].map((t) => (
+              <div key={t.tier} className={`${t.color} border-2 rounded-xl p-4`}>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-lg font-bold tabular-nums tracking-tight">{t.tier}</span>
+                  <span className="font-bold text-sm">{t.name}</span>
+                  <span className={`ml-auto text-[10px] font-bold tracking-widest px-2 py-0.5 rounded-full ${t.priorityColor}`}>
+                    {t.priority}
+                  </span>
+                </div>
+                <div className="text-xs text-ink-700 mb-1.5">{t.signals}</div>
+                <div className="text-[11px] text-ink-600 pt-2 border-t border-ink-100/50">활용 단계: {t.phase}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 text-[11px] text-ink-600 leading-[1.6] bg-paper-grey rounded-xl p-3">
+            L3 행동 신호는 1단계에서 직접 활용하지 않더라도 <strong className="text-ink-900">저장 스키마만 미리 구축</strong>해 두어 2·3단계 별도 개발 부담 없이 활용 가능한 사전 축적 자산이 됨.
+          </div>
+        </div>
+
         {/* 검증 체계 5지표 (GeniusX Section 3.5) */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
           <h2 className="text-base font-bold mb-4">검증 체계 — 5개 핵심 지표</h2>
@@ -151,6 +202,37 @@ export default function ReportPage() {
                 <div className="flex-1">
                   <div className="text-sm font-bold text-peach-500 mb-1">{r.fail}</div>
                   <div className="text-xs text-ink-700 leading-[1.6]">{r.action}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Phase 1·2 자산 이전 설계 (GeniusX Section 4.8) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">Phase 1·2 자산 이전 설계</h2>
+            <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">285,000건 응답 + 행동 로그</span>
+          </div>
+          <p className="text-xs text-ink-700 leading-[1.7] mb-4">
+            본 파일럿의 가장 큰 숨은 자산은 5,000명 × 57문항 = 285,000건 응답 데이터 + 행동 로그입니다. Phase 1·2로 이전하는 설계가 처음부터 구축되어 재활용 가능합니다.
+          </p>
+          <div className="grid md:grid-cols-2 gap-3">
+            {[
+              { t: "IRT 모수 초기값", d: "Phase 1 상용 서비스 문항의 사전 난이도·변별도 추정치", icon: "α·β" },
+              { t: "재능 프로파일 기저 분포", d: "학부모 리포트 '또래 비교' 백분위 산출 기준", icon: "P" },
+              { t: "F1 행동 로그 학습 데이터", d: "Phase 1 F1 간접 지표 머신러닝 모델 학습 데이터", icon: "ML" },
+              { t: "종단 추적 기반", d: "동의자 대상 1년 후 재응시로 발달 궤적 실증", icon: "1yr" },
+              { t: "학술 논문 ① 파일럿 타당화", d: "박민구 교수 책임연구원 체제, 학회 발표·논문화", icon: "P1" },
+              { t: "학술 논문 ② Ver.4 민감기 이론 실증", d: "3·4학년 프로파일 변별도 차이 데이터 기반", icon: "P2" },
+            ].map((a) => (
+              <div key={a.t} className="bg-paper-grey rounded-xl p-4 flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-white border border-ink-100 flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-ink-600">
+                  {a.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-bold mb-0.5">{a.t}</div>
+                  <div className="text-[11px] text-ink-700 leading-[1.5]">{a.d}</div>
                 </div>
               </div>
             ))}
