@@ -272,7 +272,7 @@ export default function DiagnosePage() {
   const seconds = elapsed % 60;
 
   return (
-    <main className="min-h-screen bg-paper-grey">
+    <main className="min-h-screen bg-paper-grey pb-32">
       {/* TOP — 4블록 진행도 */}
       <div className="bg-white border-b border-ink-100 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 md:px-6 py-3">
@@ -374,23 +374,26 @@ export default function DiagnosePage() {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col sm:flex-row gap-3">
+      </div>
+
+      {/* 하단 고정 액션 바 */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-ink-100 z-20 shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 py-3 flex gap-2 md:gap-3">
           <button
             onClick={() => { setSelected("__SKIP__"); setTimeout(submit, 50); }}
             disabled={submitting}
-            className="flex-1 sm:flex-initial bg-white border-2 border-ink-200 text-ink-700 px-6 py-3.5 rounded-full font-semibold hover:border-accent-500 hover:text-accent-700 transition"
+            className="flex-1 bg-white border-2 border-ink-200 text-ink-700 px-4 md:px-6 py-3 rounded-2xl font-semibold hover:border-accent-500 hover:text-accent-700 transition text-sm md:text-base"
           >
             잘 모르겠어요
           </button>
           <button
             onClick={submit}
             disabled={!selected || submitting}
-            className="flex-1 sm:flex-initial bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-full px-6 py-3.5 transition disabled:opacity-50 shadow-pop"
+            className="flex-[2] bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-2xl px-4 md:px-6 py-3 transition disabled:opacity-50 shadow-pop text-sm md:text-base"
           >
             {submitting ? "제출 중…" : "제출 →"}
           </button>
         </div>
-
       </div>
 
       {/* 정답채점기준 모달 */}
