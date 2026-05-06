@@ -62,6 +62,7 @@ export default function DiagnosePage() {
   const sessionId = params.sessionId;
 
   const [step, setStep] = useState<"intro" | "test">("intro");
+  const [introStep, setIntroStep] = useState(1);
   const [blockIdx, setBlockIdx] = useState(0);
   const [itemIdx, setItemIdx] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
@@ -108,50 +109,136 @@ export default function DiagnosePage() {
     }, 250);
   }
 
-  // ===== INTRO =====
+  // ===== INTRO (토스 스타일 5단계) =====
   if (step === "intro") {
-    return (
-      <main className="min-h-screen bg-paper flex items-center py-8">
-        <div className="max-w-2xl mx-auto px-6 w-full">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1 text-[10px] font-mono text-ink-500 px-1.5 py-0.5 rounded border border-ink-100 bg-white"><span className="w-1 h-1 rounded-full bg-mint-500" />FUN-001</span>
-              <span className="eyebrow text-mint-600">진단 시작 전 안내</span>
+    const INTRO_STEPS = [
+      {
+        title: "총 45분 정도 걸려요",
+        sub: "4개 교과 블록 · 57문항이 자동으로 이어져요",
+        body: (
+          <div className="bg-paper-grey rounded-2xl p-5">
+            <div className="grid grid-cols-4 gap-2">
+              {BLOCKS.map((b, i) => (
+                <div key={b.id} className={`${b.color.bg} rounded-xl p-2.5 text-center`}>
+                  <div className={`text-[9px] font-bold tracking-widest ${b.color.text}`}>{i + 1}</div>
+                  <div className="text-xs font-bold mt-1">{b.short}</div>
+                  <div className="text-[10px] text-ink-600 mt-0.5 tabular-nums">{b.totalQ}문항</div>
+                </div>
+              ))}
             </div>
-            <h1 className="h-section text-3xl mb-3">총 <span className="text-mint-600">57문항 · 45분</span></h1>
-            <p className="text-sm text-ink-700 leading-[1.7]">
-              4개 교과 블록이 자동으로 이어집니다.<br />
-              일시정지 가능 · 자동 저장 · 틀려도 점수 차감 없음
-            </p>
           </div>
-
-          <div className="bg-white border-2 border-mint-100 rounded-2xl p-6 mb-6 space-y-3">
+        ),
+      },
+      {
+        title: "모르면 '잘 모르겠어요'",
+        sub: "그냥 넘어가도 OK — 점수 차감 없어요",
+        body: (
+          <div className="flex items-center justify-center py-6">
+            <div className="bg-white border-2 border-ink-200 px-6 py-3 rounded-full text-base font-semibold text-ink-700">
+              잘 모르겠어요
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: "한 번 답하면 못 돌아가요",
+        sub: "신중하게 풀어주세요 · 자동 저장돼요",
+        body: (
+          <div className="flex items-center justify-center gap-3 py-6">
+            <div className="w-10 h-10 rounded-full bg-mint-500 text-white flex items-center justify-center font-bold">1</div>
+            <span className="text-ink-300">→</span>
+            <div className="w-10 h-10 rounded-full bg-mint-500 text-white flex items-center justify-center font-bold">2</div>
+            <span className="text-ink-300">→</span>
+            <div className="w-10 h-10 rounded-full bg-paper-grey text-ink-400 flex items-center justify-center font-bold">3</div>
+          </div>
+        ),
+      },
+      {
+        title: "잠깐 쉬어도 OK",
+        sub: "일시정지하면 그때까지 답이 자동 저장돼요",
+        body: (
+          <div className="flex items-center justify-center py-6">
+            <div className="w-16 h-16 rounded-full bg-paper-grey flex items-center justify-center text-3xl font-bold text-ink-700">
+              II
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: "응시 데이터가 기록돼요",
+        sub: "정확한 진단을 위해 풀이시간·답 변경 횟수도 함께 분석해요",
+        body: (
+          <div className="bg-paper-grey rounded-2xl p-4 space-y-2 text-xs">
             {[
-              "모르면 '잘 모르겠어요'를 눌러도 괜찮아요",
-              "한 번 답하면 이전 문제로 돌아갈 수 없어요",
-              "잠깐 쉬어도 OK — 자동으로 저장됩니다",
-              "응답·풀이시간·답 변경 횟수가 기록되어 정확한 진단에 사용됩니다",
-            ].map((t, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm text-ink-800">
-                <span className="w-5 h-5 rounded-full bg-mint-500 text-white text-[10px] font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
-                <span>{t}</span>
+              { l: "응답 답안", v: "선택한 보기" },
+              { l: "풀이 시간", v: "문항별 초 단위" },
+              { l: "답 변경 횟수", v: "확신도 분석" },
+              { l: "재검토 클릭", v: "메타인지 측정" },
+            ].map((r) => (
+              <div key={r.l} className="flex justify-between">
+                <span className="text-ink-600">{r.l}</span>
+                <span className="font-bold text-ink-800">{r.v}</span>
               </div>
             ))}
           </div>
+        ),
+      },
+    ];
 
-          <div className="grid grid-cols-4 gap-2 mb-6">
-            {BLOCKS.map((b, i) => (
-              <div key={b.id} className={`${b.color.bg} rounded-xl p-3 text-center`}>
-                <div className={`text-[9px] font-bold tracking-widest ${b.color.text}`}>BLOCK {i + 1}</div>
-                <div className="text-xs font-bold mt-1">{b.short}</div>
-                <div className="text-[10px] text-ink-600 mt-0.5 tabular-nums">{b.totalQ}문항</div>
-              </div>
-            ))}
-          </div>
+    const total = INTRO_STEPS.length;
+    const cur = INTRO_STEPS[introStep - 1];
 
-          <button onClick={startTest} className="w-full bg-mint-600 hover:bg-mint-700 text-white font-bold rounded-full py-4 text-base shadow-pop transition">
-            검사 시작 →
+    return (
+      <main className="min-h-screen bg-paper flex flex-col">
+        {/* 상단 진행 도트 */}
+        <header className="px-5 py-4 flex items-center justify-between">
+          <button
+            onClick={() => (introStep === 1 ? router.push("/select") : setIntroStep(introStep - 1))}
+            className="w-10 h-10 rounded-full hover:bg-paper-grey flex items-center justify-center text-ink-700"
+            aria-label="뒤로"
+          >
+            ←
           </button>
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: total }).map((_, i) => (
+              <div
+                key={i}
+                className={`h-1 rounded-full transition-all ${
+                  i + 1 < introStep ? "bg-mint-500 w-4" : i + 1 === introStep ? "bg-mint-600 w-8" : "bg-ink-200 w-4"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="w-10" />
+        </header>
+
+        {/* 본문 */}
+        <section className="flex-1 flex flex-col px-6 pt-8 pb-32 max-w-md mx-auto w-full">
+          <div className="mb-6">
+            <div className="text-[11px] font-bold tracking-widest text-mint-700 mb-2">
+              안내 {introStep} / {total}
+            </div>
+            <h1 className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+              {cur.title}
+            </h1>
+            <p className="text-sm text-ink-600 mt-3 leading-[1.6]">{cur.sub}</p>
+          </div>
+          <div className="mt-2">{cur.body}</div>
+        </section>
+
+        {/* 하단 고정 CTA */}
+        <div className="fixed bottom-0 left-0 right-0 bg-paper border-t border-ink-100">
+          <div className="max-w-md mx-auto px-6 py-4">
+            <button
+              onClick={() => {
+                if (introStep < total) setIntroStep(introStep + 1);
+                else startTest();
+              }}
+              className="w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-4 rounded-2xl transition shadow-pop text-base"
+            >
+              {introStep < total ? "다음" : "검사 시작"}
+            </button>
+          </div>
         </div>
       </main>
     );
