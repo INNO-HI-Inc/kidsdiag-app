@@ -1,64 +1,46 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import RolePageHeader from "@/components/RolePageHeader";
 
 export default function TeacherDashboard() {
   return (
     <main className="bg-paper-grey text-ink-900 min-h-screen">
       <SiteHeader />
 
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-700 text-xs font-semibold px-3 py-1.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
-                TEACHER DASHBOARD
-              </span>
-              <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
-              <span className="text-[10px] font-bold tracking-widest bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full">FUN-002</span>
-            </div>
-            <h1 className="h-section text-2xl md:text-3xl">김민수 선생님</h1>
-            <div className="text-sm text-ink-600 mt-1">제닉스초등학교 5학년 3반 · 등록 학생 27명 · 검사지 생성·결과 조회 권한</div>
-          </div>
-          <button className="bg-sky-600 hover:bg-sky-700 text-white font-bold px-6 py-3 rounded-full text-sm transition shadow-card">
-            + 새 검사지 생성
-          </button>
-        </div>
+      <section className="max-w-6xl mx-auto px-6 py-8">
+        <RolePageHeader
+          role="teacher"
+          title="김민수 선생님"
+          subtitle="제닉스초등학교 5학년 3반 · 등록 학생 27명 · 검사지 생성·결과 조회 권한"
+          funBadges={[{ id: "FUN-001" }, { id: "FUN-002" }]}
+          kpis={[
+            { v: "27", l: "등록 학생" },
+            { v: "23", l: "사전 진단 완료" },
+            { v: "78%", l: "반 평균 마스터리" },
+            { v: "5", l: "주의 필요 학생" },
+          ]}
+          actions={
+            <button className="bg-mint-600 hover:bg-mint-700 text-white font-bold px-5 py-2.5 rounded-full text-sm transition">
+              + 새 검사지 생성
+            </button>
+          }
+        />
 
-        {/* KPI 4개 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {[
-            { v: "27", l: "등록 학생", c: "text-sky-700" },
-            { v: "23", l: "사전 진단 완료", c: "text-mint-700" },
-            { v: "78%", l: "반 평균 마스터리", c: "text-lavender-700" },
-            { v: "5", l: "주의 필요 학생", c: "text-peach-500" },
-          ].map((k) => (
-            <div key={k.l} className="bg-white rounded-2xl p-5 border border-ink-100">
-              <div className={`text-3xl font-bold ${k.c} tabular-nums tracking-tight`}>{k.v}</div>
-              <div className="text-xs text-ink-600 mt-1.5 font-medium">{k.l}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* 학생 리스트 */}
-        <div className="bg-white rounded-3xl p-7 border border-ink-100 mb-6">
+        {/* 응시 결과 조회 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-bold tracking-tight">응시 결과 조회</h2>
+            <h2 className="text-base font-bold tracking-tight">응시 결과 조회</h2>
             <div className="flex gap-2">
-              <button className="text-xs font-semibold px-3 py-1.5 rounded-full bg-ink-100 text-ink-700 hover:bg-ink-200">
-                필터
-              </button>
-              <button className="text-xs font-semibold px-3 py-1.5 rounded-full bg-mint-50 text-mint-700 hover:bg-mint-100">
-                Excel ↓
-              </button>
+              <button className="text-xs font-semibold px-3 py-1.5 rounded-full bg-paper-grey text-ink-700 hover:bg-ink-100">필터</button>
+              <button className="text-xs font-semibold px-3 py-1.5 rounded-full bg-mint-50 text-mint-700 hover:bg-mint-100">Excel 다운로드</button>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-[11px] text-ink-500 font-semibold tracking-widest border-b border-ink-100">
+                <tr className="text-left text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
                   <th className="pb-2.5">학생</th>
                   <th className="pb-2.5 text-center">사전</th>
                   <th className="pb-2.5 text-center">사후</th>
@@ -85,7 +67,7 @@ export default function TeacherDashboard() {
                     </td>
                     <td className={`py-3 text-center text-xs font-bold ${s.color}`}>{s.status}</td>
                     <td className="py-3 text-right">
-                      <button className="text-xs text-sky-700 hover:text-sky-900 font-semibold">상세 →</button>
+                      <button className="text-xs text-mint-700 hover:text-mint-900 font-semibold">상세 →</button>
                     </td>
                   </tr>
                 ))}
@@ -94,10 +76,10 @@ export default function TeacherDashboard() {
           </div>
         </div>
 
-        {/* 검사지 생성 도구 */}
-        <div className="bg-white rounded-3xl p-7 border border-ink-100">
-          <h2 className="text-lg font-bold mb-5 tracking-tight">맞춤 검사지 생성</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+        {/* 맞춤 검사지 생성 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold tracking-tight mb-5">맞춤 검사지 생성</h2>
+          <div className="grid md:grid-cols-3 gap-3">
             {[
               { t: "교과 선택", v: "수학 / 과학 / 국어" },
               { t: "영역", v: "분수·도형·논리" },
@@ -106,22 +88,24 @@ export default function TeacherDashboard() {
               { t: "소요 시간", v: "약 12분" },
               { t: "응시 학생", v: "전체 27명" },
             ].map((s) => (
-              <div key={s.t} className="bg-paper-grey rounded-xl p-4">
+              <div key={s.t} className="bg-paper-grey rounded-xl p-3.5">
                 <div className="text-[10px] font-bold text-ink-600 tracking-widest mb-1">{s.t}</div>
                 <div className="text-sm font-semibold text-ink-900">{s.v}</div>
               </div>
             ))}
           </div>
-          <button className="mt-5 w-full bg-sky-600 hover:bg-sky-700 text-white font-bold px-6 py-3 rounded-full transition">
+          <button className="mt-5 w-full bg-mint-600 hover:bg-mint-700 text-white font-bold px-6 py-3 rounded-full transition">
             검사지 발송
           </button>
         </div>
 
-        {/* 알림 발송 폼 (FUN-007 교원 권한) */}
-        <div className="bg-white rounded-3xl p-7 border border-ink-100 mt-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold tracking-tight">학생·학부모 알림 발송</h2>
-            <span className="text-[10px] font-bold text-lavender-700 bg-lavender-50 px-2 py-0.5 rounded-full">FUN-007</span>
+        {/* 알림 발송 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-base font-bold tracking-tight">학생·학부모 알림 발송</h2>
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-ink-500 px-1.5 py-0.5 rounded border border-ink-100 bg-white">
+              <span className="w-1 h-1 rounded-full bg-lavender-500" />FUN-007
+            </span>
           </div>
           <div className="grid md:grid-cols-3 gap-3 mb-3">
             <select className="px-3 py-2 rounded-lg border border-ink-100 text-sm">
@@ -136,10 +120,10 @@ export default function TeacherDashboard() {
             </select>
             <input placeholder="제목" defaultValue="향상교육 동영상 5편 추천" className="px-3 py-2 rounded-lg border border-ink-100 text-sm" />
           </div>
-          <textarea rows={3} defaultValue="진단 결과 분수의 덧셈 영역이 약점으로 분류되어 동영상 강의 5편을 학습 자료실에 등록했습니다. 이번 주말까지 시청 부탁드립니다." className="w-full mb-3 px-3 py-2 rounded-lg border border-ink-100 text-sm" />
+          <textarea rows={3} defaultValue="진단 결과 분수의 덧셈 영역이 약점으로 분류되어 동영상 강의 5편을 학습 자료실에 등록했습니다." className="w-full mb-3 px-3 py-2 rounded-lg border border-ink-100 text-sm" />
           <div className="flex gap-2">
             <button className="flex-1 px-3 py-2 rounded-lg bg-paper-grey text-ink-700 text-sm font-semibold">초안 저장</button>
-            <button className="flex-1 px-3 py-2 rounded-lg bg-sky-600 text-white text-sm font-bold">발송</button>
+            <button className="flex-1 px-3 py-2 rounded-lg bg-mint-600 text-white text-sm font-bold">발송</button>
           </div>
         </div>
       </section>

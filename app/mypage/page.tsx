@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import RolePageHeader from "@/components/RolePageHeader";
 
 export default function MyPage() {
   const history = [
@@ -12,49 +13,27 @@ export default function MyPage() {
   ];
 
   return (
-    <main className="bg-paper text-ink-900 min-h-screen">
+    <main className="bg-paper-grey text-ink-900 min-h-screen">
       <SiteHeader />
 
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        {/* 학생 정보 카드 */}
-        <div className="bg-gradient-to-br from-mint-50 via-paper to-lavender-50 border-2 border-mint-200 rounded-3xl p-7 mb-6 relative overflow-hidden">
-          <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-mint-200/40 blur-2xl pointer-events-none" />
-          <div className="relative grid md:grid-cols-3 gap-5 items-center">
-            <div className="flex items-center gap-4 md:col-span-2">
-              <div className="w-16 h-16 rounded-2xl bg-mint-500 text-white flex items-center justify-center text-3xl font-bold">민</div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1.5 mb-1">
-                  <span className="text-[10px] font-bold tracking-widest text-mint-700">MY PAGE</span>
-                  <span className="text-[9px] font-bold bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded-full">FUN-002</span>
-                  <span className="text-[9px] font-bold bg-sun-100 text-sun-600 px-1.5 py-0.5 rounded-full">FUN-004</span>
-                </div>
-                <h1 className="text-xl font-bold tracking-tight">김민지 · 초5</h1>
-                <div className="text-[11px] text-ink-600 mt-1">
-                  학번 <span className="font-semibold tabular-nums">2026-05-1247</span> · 제닉스초등학교 5-3
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-center md:justify-end gap-4 text-center">
-              <div>
-                <div className="text-2xl font-bold text-mint-700 tabular-nums">+36p</div>
-                <div className="text-[9px] text-ink-600">전체 향상도</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-lavender-700 tabular-nums">28%</div>
-                <div className="text-[9px] text-ink-600">전국 상위</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-sun-600 tabular-nums">7급</div>
-                <div className="text-[9px] text-ink-600">반 진도</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="max-w-6xl mx-auto px-6 py-8">
+        <RolePageHeader
+          role="student"
+          title="김민지 · 초5"
+          subtitle="학번 2026-05-1247 · 제닉스초등학교 5-3"
+          funBadges={[{ id: "FUN-002" }, { id: "FUN-004" }]}
+          kpis={[
+            { v: "+36p", l: "전체 향상도" },
+            { v: "28%", l: "전국 상위" },
+            { v: "7급", l: "반 진도" },
+            { v: "12/87", l: "학교 내 랭킹" },
+          ]}
+        />
 
-        {/* 영역별·종합결과 (FUN-002) */}
-        <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
+        {/* 영역별·종합결과 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold tracking-tight"> 영역별·종합결과 (사전 → 사후)</h2>
+            <h2 className="text-base font-bold tracking-tight">영역별·종합결과 (사전 → 사후)</h2>
             <Link href="/parent/report/child_demo" className="text-xs font-semibold text-mint-700 hover:text-mint-900">
               학부모 리포트 →
             </Link>
@@ -66,15 +45,15 @@ export default function MyPage() {
               { subj: "수학", pre: 78, post: null, c: "mint" },
               { subj: "통합사고력", pre: 82, post: null, c: "sun" },
             ].map((s) => {
-              const cmap: Record<string, { bg: string; bar: string; text: string }> = {
-                mint: { bg: "bg-mint-50", bar: "bg-mint-500", text: "text-mint-700" },
-                sky: { bg: "bg-sky-50", bar: "bg-sky-500", text: "text-sky-700" },
-                lavender: { bg: "bg-lavender-50", bar: "bg-lavender-500", text: "text-lavender-700" },
-                sun: { bg: "bg-sun-50", bar: "bg-sun-500", text: "text-sun-600" },
+              const cmap: Record<string, { bar: string; text: string }> = {
+                mint: { bar: "bg-mint-500", text: "text-mint-700" },
+                sky: { bar: "bg-sky-500", text: "text-sky-700" },
+                lavender: { bar: "bg-lavender-500", text: "text-lavender-700" },
+                sun: { bar: "bg-sun-500", text: "text-sun-600" },
               };
               const c = cmap[s.c];
               return (
-                <div key={s.subj} className={`${c.bg} rounded-xl p-3`}>
+                <div key={s.subj} className="bg-paper-grey rounded-xl p-3">
                   <div className={`text-[10px] font-bold ${c.text} mb-1.5`}>{s.subj}</div>
                   {s.post !== null ? (
                     <>
@@ -96,12 +75,9 @@ export default function MyPage() {
           </div>
         </div>
 
-        {/* 학습이력관리 (FUN-004) */}
-        <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold tracking-tight"> 학습이력관리</h2>
-            <span className="text-[10px] font-bold text-lavender-700 bg-lavender-50 px-2 py-0.5 rounded-full">FUN-004</span>
-          </div>
+        {/* 학습이력관리 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold tracking-tight mb-5">학습이력관리</h2>
           <div className="space-y-1.5">
             {history.map((h, i) => {
               const cmap: Record<string, { bg: string; text: string }> = {
@@ -126,9 +102,9 @@ export default function MyPage() {
           </div>
         </div>
 
-        {/* 진단/총괄 현황 조회 (FUN-001 사용자 측) */}
-        <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
-          <h2 className="text-base font-bold mb-4 tracking-tight"> 진단·총괄 현황 조회</h2>
+        {/* 진단/총괄 현황 조회 */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 md:p-7 mb-5">
+          <h2 className="text-base font-bold tracking-tight mb-4">진단·총괄 현황 조회</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
@@ -162,21 +138,19 @@ export default function MyPage() {
 
         {/* 빠른 액션 */}
         <div className="grid md:grid-cols-3 gap-3">
-          <Link href="/improvement" className="bg-sky-50 border-2 border-sky-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2"></div>
-            <div className="font-bold text-sm text-sky-700">향상교육 시작</div>
-            <div className="text-[11px] text-ink-600 mt-0.5">동영상 5편 추천</div>
-          </Link>
-          <Link href="/tutor" className="bg-mint-50 border-2 border-mint-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2"></div>
-            <div className="font-bold text-sm text-mint-700">AI 튜터 대화</div>
-            <div className="text-[11px] text-ink-600 mt-0.5">분수 마저 풀기</div>
-          </Link>
-          <Link href="/summative" className="bg-lavender-50 border-2 border-lavender-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2"></div>
-            <div className="font-bold text-sm text-lavender-700">총괄평가</div>
-            <div className="text-[11px] text-ink-600 mt-0.5">사후 진단 안내</div>
-          </Link>
+          {[
+            { t: "향상교육 시작", d: "동영상 5편 추천", href: "/improvement", dot: "bg-sky-500" },
+            { t: "AI 튜터 대화", d: "분수 마저 풀기", href: "/tutor", dot: "bg-mint-500" },
+            { t: "총괄평가", d: "사후 진단 안내", href: "/summative", dot: "bg-lavender-500" },
+          ].map((a) => (
+            <Link key={a.t} href={a.href} className="bg-white rounded-2xl border border-ink-100 p-5 hover:border-mint-300 transition">
+              <div className="flex items-center gap-2 mb-2">
+                <span className={`w-2 h-2 rounded-full ${a.dot}`} />
+                <span className="font-bold text-sm">{a.t}</span>
+              </div>
+              <div className="text-xs text-ink-600">{a.d}</div>
+            </Link>
+          ))}
         </div>
       </section>
 

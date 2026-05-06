@@ -1,60 +1,49 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { IconArrowRight } from "@/components/icons";
-
-function Squiggle({ color = "#FFC82A" }: { color?: string }) {
-  return (
-    <svg
-      className="absolute -bottom-2 left-0 w-full h-3 pointer-events-none"
-      viewBox="0 0 200 12"
-      preserveAspectRatio="none"
-    >
-      <path d="M2,8 Q35,2 70,7 T138,8 T198,7" stroke={color} strokeWidth="3.5" fill="none" strokeLinecap="round" />
-    </svg>
-  );
-}
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+  const router = useRouter();
   const [tab, setTab] = useState<"login" | "signup">("login");
+  const [email, setEmail] = useState("0000");
+  const [password, setPassword] = useState("0000");
+
+  function login() {
+    router.push("/select");
+  }
 
   return (
-    <main className="bg-paper text-ink-900 min-h-screen">
+    <main className="bg-paper text-ink-900 min-h-screen flex flex-col">
       {/* Compact header */}
       <header className="border-b border-ink-100">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-carbon-900 flex items-center justify-center text-white font-bold text-sm">
-              k
+              제
             </div>
             <div className="font-bold text-base tracking-tight">제닉스</div>
           </div>
           <div className="text-[11px] font-semibold text-ink-500 hidden sm:block">
-            (주)제닉스 · AI 기반 초등학력 진단·학습시스템
+            AI 기반 초등학력 진단·학습시스템
           </div>
         </div>
       </header>
 
-      {/* Split: Pitch + Auth */}
-      <section className="max-w-6xl mx-auto px-6 py-12 md:py-20 grid lg:grid-cols-12 gap-10 items-center">
-        {/* LEFT — 간단 PITCH */}
-        <div className="lg:col-span-7">
-          <h1 className="h-hero text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] mb-5">
-            <span className="relative inline-block">
-              어디서 막혔는지
-              <Squiggle color="#FFC82A" />
-            </span>
-            <br />
-            <span className="text-mint-600">짚어드립니다.</span>
-          </h1>
-          <p className="text-base text-ink-700 leading-[1.7] max-w-md">
-            초3~6 학력 + 재능 8개 동시 진단 · 57문항 · 45분
-          </p>
-        </div>
+      <section className="flex-1 flex items-center justify-center py-12 px-6">
+        <div className="w-full max-w-md">
+          {/* 브랜드 안내 */}
+          <div className="text-center mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
+              제닉스에 로그인
+            </h1>
+            <p className="text-sm text-ink-600">
+              초등 3~6학년 학력·재능 진단 시스템
+            </p>
+          </div>
 
-        {/* RIGHT — AUTH FORM */}
-        <div className="lg:col-span-5">
-          <div className="bg-white border-2 border-ink-100 rounded-3xl p-7 md:p-8 shadow-card">
+          {/* 인증 카드 */}
+          <div className="bg-white border border-ink-100 rounded-2xl p-7 shadow-card">
             {/* 탭 */}
             <div className="flex gap-1 p-1 bg-paper-grey rounded-full mb-6">
               <button
@@ -78,10 +67,11 @@ export default function HomePage() {
             {tab === "login" ? (
               <div className="space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold tracking-widest text-ink-600">이메일</label>
+                  <label className="text-[10px] font-bold tracking-widest text-ink-600">아이디 / 이메일</label>
                   <input
-                    type="email"
-                    placeholder="parent@example.com"
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full mt-1.5 px-4 py-3 rounded-xl border-2 border-ink-100 focus:border-mint-400 focus:outline-none text-sm"
                   />
                 </div>
@@ -89,7 +79,8 @@ export default function HomePage() {
                   <label className="text-[10px] font-bold tracking-widest text-ink-600">비밀번호</label>
                   <input
                     type="password"
-                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full mt-1.5 px-4 py-3 rounded-xl border-2 border-ink-100 focus:border-mint-400 focus:outline-none text-sm"
                   />
                 </div>
@@ -100,12 +91,12 @@ export default function HomePage() {
                   </label>
                   <button className="text-mint-700 font-semibold hover:text-mint-900">비밀번호 찾기</button>
                 </div>
-                <Link
-                  href="/select"
-                  className="flex items-center justify-center gap-2 w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-3.5 rounded-full transition shadow-pop"
+                <button
+                  onClick={login}
+                  className="w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-3.5 rounded-full transition shadow-pop"
                 >
-                  로그인 <IconArrowRight size={18} />
-                </Link>
+                  로그인
+                </button>
                 <div className="relative py-2">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-ink-100" />
@@ -117,30 +108,6 @@ export default function HomePage() {
                 <button className="w-full border-2 border-ink-100 hover:border-mint-300 text-ink-800 font-bold py-3 rounded-full transition text-sm">
                   제닉스 SSO 로그인
                 </button>
-
-                {/* 빠른 진입 (역할별 데모) */}
-                <div className="pt-4 mt-4 border-t border-ink-100">
-                  <div className="text-[10px] font-bold tracking-widest text-ink-500 mb-2">
-                    DEMO · 역할별 빠른 진입
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {[
-                      { l: "학생", h: "/mypage", d: "bg-mint-500" },
-                      { l: "교원", h: "/teacher", d: "bg-sky-500" },
-                      { l: "학부모", h: "/parent/report/child_demo", d: "bg-lavender-500" },
-                      { l: "관리자", h: "/admin", d: "bg-sun-500" },
-                    ].map((r) => (
-                      <Link
-                        key={r.l}
-                        href={r.h}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-paper-grey hover:bg-ink-100 text-xs font-semibold transition"
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full ${r.d}`} />
-                        {r.l}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
             ) : (
               <div className="space-y-3">
@@ -171,29 +138,25 @@ export default function HomePage() {
                 <label className="flex items-start gap-2 text-[11px] text-ink-700 leading-[1.6] py-1">
                   <input type="checkbox" defaultChecked className="mt-0.5 w-3.5 h-3.5 accent-mint-600 flex-shrink-0" />
                   <span>
-                    <strong>[필수]</strong> 만 14세 미만 자녀 법정대리인 동의 · 개인정보 수집·이용 (개인정보보호법 §22조의2)
+                    <strong>[필수]</strong> 만 14세 미만 자녀 법정대리인 동의 · 개인정보 수집·이용
                   </span>
                 </label>
                 <Link
                   href="/signup"
-                  className="flex items-center justify-center gap-2 w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-3.5 rounded-full transition shadow-pop"
+                  className="block text-center w-full bg-mint-600 hover:bg-mint-700 text-white font-bold py-3.5 rounded-full transition shadow-pop"
                 >
-                  다음 단계 — 자녀 등록 <IconArrowRight size={18} />
+                  다음 단계 — 자녀 등록
                 </Link>
-                <div className="text-center text-[10px] text-ink-500 pt-2">
-                  가입 4단계: 학부모 정보 → 동의 → 자녀 등록 → PIN 설정
-                </div>
               </div>
             )}
           </div>
 
-          <div className="mt-4 text-center text-[10px] text-ink-500 leading-[1.7]">
-            5년 보관 자동 파기 · 익명 ID 사용 · IRB 심의 완료
+          <div className="mt-6 text-center text-[10px] text-ink-500 leading-[1.7]">
+            5년 보관 후 자동 파기 · 익명 ID 사용 · IRB 심의 완료
           </div>
         </div>
       </section>
 
-      {/* Footer mini */}
       <footer className="border-t border-ink-100 py-5">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-2 text-[11px] text-ink-500">
           <div>© 2026 (주)제닉스 · AI 기반 초등학력 진단·학습시스템</div>
