@@ -33,13 +33,13 @@ export default function BoardPage() {
         {/* 탭 */}
         <div className="flex gap-2 mb-8 border-b-2 border-ink-100">
           <button className="px-5 py-3 text-sm font-bold text-mint-700 border-b-2 border-mint-600 -mb-0.5">
-            📢 공지사항
+             공지사항
           </button>
           <button className="px-5 py-3 text-sm font-semibold text-ink-500 hover:text-ink-900">
-            💬 Q&amp;A
+             Q&amp;A
           </button>
           <button className="px-5 py-3 text-sm font-semibold text-ink-500 hover:text-ink-900">
-            🏫 학교별 안내
+             학교별 안내
           </button>
         </div>
 
@@ -72,7 +72,7 @@ export default function BoardPage() {
         <div className="grid md:grid-cols-2 gap-5">
           <div className="bg-white rounded-3xl border-2 border-ink-100 p-7">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold tracking-tight">💬 자주 묻는 질문 (Q&A)</h2>
+              <h2 className="text-lg font-bold tracking-tight"> 자주 묻는 질문 (Q&A)</h2>
               <button className="text-xs font-semibold text-mint-700 hover:text-mint-900">전체 보기 →</button>
             </div>
             <ul className="space-y-3">
@@ -93,15 +93,15 @@ export default function BoardPage() {
           </div>
 
           <div className="bg-gradient-to-br from-mint-50 to-sky-50 rounded-3xl p-7 border-2 border-mint-200">
-            <h2 className="text-lg font-bold mb-3 tracking-tight">📞 문의 채널</h2>
+            <h2 className="text-lg font-bold mb-3 tracking-tight"> 문의 채널</h2>
             <p className="text-xs text-ink-700 leading-[1.7] mb-5">
               학습·진단 관련 문의, 시스템 오류 신고는 아래로 접수해주세요.
             </p>
             <div className="space-y-2.5">
               {[
-                { icon: "📧", l: "이메일", v: "support@kidsdiag.com" },
-                { icon: "☎️", l: "전화", v: "1588-0000 (평일 9~18시)" },
-                { icon: "💬", l: "카카오톡", v: "@kidsdiag" },
+                { icon: "", l: "이메일", v: "support@kidsdiag.com" },
+                { icon: "", l: "전화", v: "1588-0000 (평일 9~18시)" },
+                { icon: "", l: "카카오톡", v: "@kidsdiag" },
               ].map((c) => (
                 <div key={c.l} className="bg-white rounded-xl p-3 flex items-center gap-3">
                   <div className="text-xl">{c.icon}</div>

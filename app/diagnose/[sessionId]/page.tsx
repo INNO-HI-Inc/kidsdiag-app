@@ -157,7 +157,7 @@ export default function DiagnosePage() {
     return (
       <main className="min-h-screen flex items-center justify-center bg-paper-grey p-6">
         <div className="bg-white rounded-2xl p-8 max-w-md text-center border-2 border-mint-200">
-          <div className="text-4xl mb-4">⏸</div>
+          <div className="text-4xl mb-4"></div>
           <h2 className="text-xl font-bold mb-2">잠깐 쉬어가기</h2>
           <p className="text-sm text-ink-700 leading-[1.7] mb-6">
             지금까지 답한 건 자동으로 저장됐어요.
@@ -187,8 +187,8 @@ export default function DiagnosePage() {
           <div className="flex items-center justify-between mb-2">
             <Link href="/select" className="text-xs text-ink-500 hover:text-ink-900">← 종료</Link>
             <div className="flex items-center gap-2 text-[11px] tabular-nums font-semibold text-ink-700">
-              ⏱ {minutes}:{seconds.toString().padStart(2, "0")}
-              <button onClick={() => setPaused(true)} className="ml-2 w-7 h-7 rounded-full bg-ink-100 hover:bg-ink-200 text-ink-700 font-bold flex items-center justify-center">⏸</button>
+               {minutes}:{seconds.toString().padStart(2, "0")}
+              <button onClick={() => setPaused(true)} className="ml-2 w-7 h-7 rounded-full bg-ink-100 hover:bg-ink-200 text-ink-700 font-bold flex items-center justify-center"></button>
             </div>
           </div>
 

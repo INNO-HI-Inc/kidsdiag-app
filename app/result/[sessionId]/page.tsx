@@ -245,17 +245,17 @@ export default function ResultPage() {
         {/* 액션 */}
         <div className="grid md:grid-cols-3 gap-3">
           <Link href="/parent/report/child_demo" className="bg-white border-2 border-mint-200 rounded-2xl p-5 text-center hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">📄</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm">학부모 리포트 PDF</div>
             <div className="text-[10px] text-ink-600 mt-1">3페이지 + 대시보드</div>
           </Link>
           <Link href="/improvement" className="bg-white border-2 border-sky-200 rounded-2xl p-5 text-center hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">🎬</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm">향상교육 시작</div>
             <div className="text-[10px] text-ink-600 mt-1">동영상 강의 + AI 학습 도우미</div>
           </Link>
           <Link href="/mypage" className="bg-white border-2 border-lavender-200 rounded-2xl p-5 text-center hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">📊</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm">마이페이지</div>
             <div className="text-[10px] text-ink-600 mt-1">학습이력 · 종합결과</div>
           </Link>

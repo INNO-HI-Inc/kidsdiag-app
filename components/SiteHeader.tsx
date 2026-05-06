@@ -18,10 +18,10 @@ export default function SiteHeader() {
   ];
 
   const roles = [
-    { href: "/mypage", label: "학생", icon: "👧" },
-    { href: "/teacher", label: "교원", icon: "👨‍🏫" },
-    { href: "/parent/report/child_demo", label: "학부모", icon: "👪" },
-    { href: "/admin", label: "관리자", icon: "🛠" },
+    { href: "/mypage", label: "학생", icon: "" },
+    { href: "/teacher", label: "교원", icon: "‍" },
+    { href: "/parent/report/child_demo", label: "학부모", icon: "" },
+    { href: "/admin", label: "관리자", icon: "" },
   ];
 
   return (

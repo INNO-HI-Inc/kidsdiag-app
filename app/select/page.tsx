@@ -27,7 +27,10 @@ export default function SelectPage() {
 
       <section className="max-w-3xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
-          <div className="eyebrow text-mint-600 mb-3">사전진단 시작</div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-bold tracking-widest bg-mint-100 text-mint-700 px-2 py-0.5 rounded-full">FUN-001</span>
+            <span className="eyebrow text-mint-600">사전진단 시작</span>
+          </div>
           <h1 className="h-section text-3xl mb-3">진단 시작 전 확인사항</h1>
           <p className="text-sm text-ink-700 leading-[1.7]">
             총 57문항 / 약 45분 · 4개 교과 블록 (국어 → 과학 → 수학 → 통합사고력)

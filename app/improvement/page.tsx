@@ -21,9 +21,9 @@ export default function ImprovementPage() {
           <h2 className="text-base font-bold mb-4 tracking-tight">3개 영역 온라인 학습 콘텐츠</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { name: "수학", count: "47편", focus: "분수·비례·도형", color: "bg-mint-50 border-mint-200 text-mint-700", emoji: "📐" },
-              { name: "과학", count: "62편", focus: "물질·생명·지구", color: "bg-sky-50 border-sky-200 text-sky-700", emoji: "🔬" },
-              { name: "국어 (논술)", count: "75편", focus: "독해·어휘·논술", color: "bg-lavender-50 border-lavender-200 text-lavender-700", emoji: "📖" },
+              { name: "수학", count: "47편", focus: "분수·비례·도형", color: "bg-mint-50 border-mint-200 text-mint-700", emoji: "" },
+              { name: "과학", count: "62편", focus: "물질·생명·지구", color: "bg-sky-50 border-sky-200 text-sky-700", emoji: "" },
+              { name: "국어 (논술)", count: "75편", focus: "독해·어휘·논술", color: "bg-lavender-50 border-lavender-200 text-lavender-700", emoji: "" },
             ].map((s) => (
               <div key={s.name} className={`${s.color} border-2 rounded-2xl p-5`}>
                 <div className="flex items-center justify-between mb-3">
@@ -40,7 +40,7 @@ export default function ImprovementPage() {
         {/* 동영상 강의 라이브러리 */}
         <div className="bg-white border-2 border-ink-100 rounded-2xl p-6 mb-6">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold tracking-tight">🎬 동영상 강의 라이브러리</h2>
+            <h2 className="text-base font-bold tracking-tight"> 동영상 강의 라이브러리</h2>
             <button className="text-xs font-semibold text-sky-700 hover:text-sky-900">전체 보기 →</button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -76,7 +76,7 @@ export default function ImprovementPage() {
         {/* 학습 자료실 */}
         <div className="grid md:grid-cols-2 gap-5 mb-6">
           <div className="bg-white border-2 border-ink-100 rounded-2xl p-6">
-            <h2 className="text-base font-bold mb-4 tracking-tight">📚 학습 자료실</h2>
+            <h2 className="text-base font-bold mb-4 tracking-tight"> 학습 자료실</h2>
             <ul className="space-y-2.5">
               {[
                 { t: "분수 개념 정리 PDF", subj: "수학", size: "1.2MB" },
@@ -86,7 +86,7 @@ export default function ImprovementPage() {
                 { t: "독해 지문 모음", subj: "국어", size: "2.1MB" },
               ].map((m, i) => (
                 <li key={i} className="flex items-center gap-3 py-2 border-b border-ink-100 last:border-0">
-                  <span className="text-xl">📄</span>
+                  <span className="text-xl"></span>
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-semibold truncate">{m.t}</div>
                     <div className="text-[10px] text-ink-500">{m.subj} · {m.size}</div>
@@ -101,7 +101,7 @@ export default function ImprovementPage() {
             <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-mint-500/20 blur-2xl pointer-events-none" />
             <div className="relative">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-3xl">🤖</span>
+                <span className="text-3xl"></span>
                 <h2 className="text-base font-bold tracking-tight">AI 학습 도우미</h2>
               </div>
               <p className="text-xs text-white/80 leading-[1.7] mb-4">
@@ -125,9 +125,9 @@ export default function ImprovementPage() {
         {/* AI 추천 + 오답유형 + 유사문항 */}
         <div className="grid md:grid-cols-3 gap-4 mb-6">
           {[
-            { t: "AI 추천 학습 문제", d: "결손 영역 우선순위 → 5단계 시퀀스", icon: "🎯", color: "border-mint-200" },
-            { t: "오답 유형 관리", d: "개념 누락 / 절차 오류 / 부주의 / 시간 부족 — 4종 분류", icon: "🔍", color: "border-lavender-200" },
-            { t: "유사 문항 자동 매칭", d: "Sentence-BERT 임베딩으로 동일 개념 변형 문항", icon: "📝", color: "border-sky-200" },
+            { t: "AI 추천 학습 문제", d: "결손 영역 우선순위 → 5단계 시퀀스", icon: "", color: "border-mint-200" },
+            { t: "오답 유형 관리", d: "개념 누락 / 절차 오류 / 부주의 / 시간 부족 — 4종 분류", icon: "", color: "border-lavender-200" },
+            { t: "유사 문항 자동 매칭", d: "Sentence-BERT 임베딩으로 동일 개념 변형 문항", icon: "", color: "border-sky-200" },
           ].map((c) => (
             <div key={c.t} className={`bg-white border-2 ${c.color} rounded-2xl p-5`}>
               <div className="text-3xl mb-3">{c.icon}</div>

@@ -19,10 +19,10 @@ export default function AdminDashboard() {
           </div>
           <div className="flex gap-2">
             <button className="bg-mint-50 hover:bg-mint-100 text-mint-700 font-bold px-5 py-2.5 rounded-full text-sm transition">
-              📊 Excel 다운로드
+               Excel 다운로드
             </button>
             <button className="bg-sun-500 hover:bg-sun-400 text-white font-bold px-5 py-2.5 rounded-full text-sm transition">
-              🔔 알림 발송
+               알림 발송
             </button>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
               ))}
             </div>
             <button className="mt-4 w-full text-xs font-semibold px-3 py-2.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100">
-              📝 콘텐츠 신규 등록
+               콘텐츠 신규 등록
             </button>
           </div>
 
@@ -117,7 +117,7 @@ export default function AdminDashboard() {
               ))}
             </div>
             <button className="mt-4 w-full text-xs font-semibold px-3 py-2.5 rounded-lg bg-lavender-50 text-lavender-700 hover:bg-lavender-100">
-              📊 Excel · CSV · JSON 다운로드
+               Excel · CSV · JSON 다운로드
             </button>
           </div>
 
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
               ))}
             </ul>
             <Link href="/board" className="mt-4 block w-full text-center text-xs font-semibold px-3 py-2.5 rounded-lg bg-sun-50 text-sun-600 hover:bg-sun-100">
-              📋 게시판 관리 →
+               게시판 관리 →
             </Link>
           </div>
         </div>

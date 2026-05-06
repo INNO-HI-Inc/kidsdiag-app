@@ -50,7 +50,7 @@ export default function MyPage() {
         {/* 영역별·종합결과 (FUN-002) */}
         <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold tracking-tight">📊 영역별·종합결과 (사전 → 사후)</h2>
+            <h2 className="text-base font-bold tracking-tight"> 영역별·종합결과 (사전 → 사후)</h2>
             <Link href="/parent/report/child_demo" className="text-xs font-semibold text-mint-700 hover:text-mint-900">
               학부모 리포트 →
             </Link>
@@ -95,7 +95,7 @@ export default function MyPage() {
         {/* 학습이력관리 (FUN-004) */}
         <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-base font-bold tracking-tight">📅 학습이력관리</h2>
+            <h2 className="text-base font-bold tracking-tight"> 학습이력관리</h2>
             <span className="text-[10px] font-bold text-lavender-700 bg-lavender-50 px-2 py-0.5 rounded-full">FUN-004</span>
           </div>
           <div className="space-y-1.5">
@@ -124,7 +124,7 @@ export default function MyPage() {
 
         {/* 진단/총괄 현황 조회 (FUN-001 사용자 측) */}
         <div className="bg-white rounded-2xl p-7 border border-ink-100 mb-5">
-          <h2 className="text-base font-bold mb-4 tracking-tight">🗂 진단·총괄 현황 조회</h2>
+          <h2 className="text-base font-bold mb-4 tracking-tight"> 진단·총괄 현황 조회</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
@@ -159,17 +159,17 @@ export default function MyPage() {
         {/* 빠른 액션 */}
         <div className="grid md:grid-cols-3 gap-3">
           <Link href="/improvement" className="bg-sky-50 border-2 border-sky-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">🎬</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm text-sky-700">향상교육 시작</div>
             <div className="text-[11px] text-ink-600 mt-0.5">동영상 5편 추천</div>
           </Link>
           <Link href="/tutor" className="bg-mint-50 border-2 border-mint-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">🤖</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm text-mint-700">AI 튜터 대화</div>
             <div className="text-[11px] text-ink-600 mt-0.5">분수 마저 풀기</div>
           </Link>
           <Link href="/summative" className="bg-lavender-50 border-2 border-lavender-200 rounded-2xl p-5 hover:-translate-y-1 transition">
-            <div className="text-2xl mb-2">🚀</div>
+            <div className="text-2xl mb-2"></div>
             <div className="font-bold text-sm text-lavender-700">총괄평가</div>
             <div className="text-[11px] text-ink-600 mt-0.5">사후 진단 안내</div>
           </Link>

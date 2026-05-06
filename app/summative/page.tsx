@@ -20,7 +20,7 @@ export default function SummativePage() {
         {/* 사전 진단 결과 요약 */}
         <div className="bg-white border-2 border-ink-100 rounded-2xl p-6 mb-5">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base font-bold tracking-tight">📊 사전 진단 결과</h2>
+            <h2 className="text-base font-bold tracking-tight"> 사전 진단 결과</h2>
             <span className="text-[10px] text-ink-600">2026.05.06 응시</span>
           </div>
           <div className="grid grid-cols-4 gap-3">
@@ -41,7 +41,7 @@ export default function SummativePage() {
         {/* 사후 진단 안내 */}
         <div className="bg-gradient-to-br from-mint-50 to-lavender-50 border-2 border-mint-300 rounded-2xl p-6 mb-5">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-2xl">🚀</span>
+            <span className="text-2xl"></span>
             <h2 className="text-base font-bold tracking-tight">사후 진단 안내</h2>
           </div>
           <ul className="space-y-2 text-sm text-ink-800">

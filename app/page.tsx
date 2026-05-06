@@ -108,15 +108,95 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { r: "학생", icon: "👧", href: "/mypage", color: "bg-mint-50 border-mint-200 text-mint-700" },
-              { r: "교원", icon: "👨‍🏫", href: "/teacher", color: "bg-sky-50 border-sky-200 text-sky-700" },
-              { r: "학부모", icon: "👪", href: "/parent/report/child_demo", color: "bg-lavender-50 border-lavender-200 text-lavender-700" },
-              { r: "관리자", icon: "🛠", href: "/admin", color: "bg-sun-50 border-sun-200 text-sun-600" },
+              { r: "학생", icon: "", href: "/mypage", color: "bg-mint-50 border-mint-200 text-mint-700" },
+              { r: "교원", icon: "‍", href: "/teacher", color: "bg-sky-50 border-sky-200 text-sky-700" },
+              { r: "학부모", icon: "", href: "/parent/report/child_demo", color: "bg-lavender-50 border-lavender-200 text-lavender-700" },
+              { r: "관리자", icon: "", href: "/admin", color: "bg-sun-50 border-sun-200 text-sun-600" },
             ].map((r) => (
               <Link key={r.r} href={r.href} className={`${r.color} border-2 rounded-2xl p-5 text-center hover:-translate-y-1 transition`}>
                 <div className="text-3xl mb-2">{r.icon}</div>
                 <h3 className="font-bold">{r.r}</h3>
                 <div className="text-[10px] text-ink-600 mt-1">화면 보기 →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FUN-001 ~ FUN-008 기능 요구사항 8종 */}
+      <section className="py-20 border-b border-ink-100">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <div className="eyebrow text-mint-600 mb-3">RFP V2 · FUN-001 ~ FUN-008</div>
+            <h2 className="h-section text-2xl md:text-3xl">기능 요구사항 8종 충족</h2>
+            <p className="text-sm text-ink-700 mt-3">각 요구사항이 어느 화면에서 구현되는지 한눈에 확인</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            {[
+              {
+                id: "FUN-001", name: "3개 영역 기초학습 진단·총괄 검사",
+                desc: "수학·과학·국어 사전·사후 진단 (CAT 적응형, 4블록 57문항)",
+                href: "/select", linkLabel: "진단 시작 →",
+                color: "bg-mint-50 border-mint-200 text-mint-700",
+              },
+              {
+                id: "FUN-002", name: "진단·총괄 검사 결과 및 종합 결과",
+                desc: "마스터리%·신뢰구간·랭킹·진도·8재능 레이더·전국 백분위",
+                href: "/result/demo", linkLabel: "결과 보기 →",
+                color: "bg-sky-50 border-sky-200 text-sky-700",
+              },
+              {
+                id: "FUN-003", name: "학력 학습 학습 기능",
+                desc: "동영상 강의 라이브러리 + 학습 자료실 + AI 학습 도우미 + 오답·유사 문항",
+                href: "/improvement", linkLabel: "향상교육 →",
+                color: "bg-lavender-50 border-lavender-200 text-lavender-700",
+              },
+              {
+                id: "FUN-004", name: "학습이력 관리",
+                desc: "일자·시간·내용 타임라인 + 종합 대시보드 (학생용)",
+                href: "/mypage", linkLabel: "마이페이지 →",
+                color: "bg-sun-50 border-sun-200 text-sun-600",
+              },
+              {
+                id: "FUN-005", name: "콘텐츠 관리 시스템 (CMS)",
+                desc: "문항·동영상 등록·수정·삭제 + 메타데이터 검색 + LaTeX·이미지·음성",
+                href: "/admin", linkLabel: "관리자 콘솔 →",
+                color: "bg-mint-50 border-mint-200 text-mint-700",
+              },
+              {
+                id: "FUN-006", name: "통계 기능",
+                desc: "학생 통계·진단/총괄 영역별 현황 + Excel·CSV·JSON 다운로드",
+                href: "/admin", linkLabel: "통계 대시보드 →",
+                color: "bg-sky-50 border-sky-200 text-sky-700",
+              },
+              {
+                id: "FUN-007", name: "권한 관리 기능",
+                desc: "학생·교원·학부모·관리자 4역할 RBAC + 알림 발송",
+                href: "/admin", linkLabel: "권한 매트릭스 →",
+                color: "bg-lavender-50 border-lavender-200 text-lavender-700",
+              },
+              {
+                id: "FUN-008", name: "시스템(홈페이지) 관리 기능",
+                desc: "공지사항·Q&A 게시판 등록·수정·삭제 + 학교 이미지(로고·배너) 관리",
+                href: "/board", linkLabel: "게시판 →",
+                color: "bg-sun-50 border-sun-200 text-sun-600",
+              },
+            ].map((f) => (
+              <Link
+                key={f.id}
+                href={f.href}
+                className={`${f.color} border-2 rounded-2xl p-5 hover:-translate-y-1 transition group block`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold tracking-widest bg-white px-2 py-0.5 rounded-full">
+                    {f.id}
+                  </span>
+                  <span className="text-xs font-semibold opacity-60 group-hover:opacity-100">
+                    {f.linkLabel}
+                  </span>
+                </div>
+                <h3 className="font-bold text-sm mb-1.5 tracking-tight">{f.name}</h3>
+                <p className="text-[11px] text-ink-700 leading-[1.6]">{f.desc}</p>
               </Link>
             ))}
           </div>
@@ -157,9 +237,9 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { t: "동영상 강의", d: "결손 영역 매칭 동영상 라이브러리", icon: "🎬" },
-              { t: "AI 학습 도우미", d: "개별 질의·피드백 (정답 직답 X)", icon: "🤖" },
-              { t: "오답·유사 문항", d: "오답 유형 관리 + 유사 문항 자동 추천", icon: "📝" },
+              { t: "동영상 강의", d: "결손 영역 매칭 동영상 라이브러리", icon: "" },
+              { t: "AI 학습 도우미", d: "개별 질의·피드백 (정답 직답 X)", icon: "" },
+              { t: "오답·유사 문항", d: "오답 유형 관리 + 유사 문항 자동 추천", icon: "" },
             ].map((f) => (
               <div key={f.t} className="bg-white border-2 border-ink-100 rounded-2xl p-5">
                 <div className="text-3xl mb-3">{f.icon}</div>
@@ -230,14 +310,14 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { t: "법정대리인 동의", d: "만 14세 미만", icon: "🛡️" },
-              { t: "5년 자동 파기", d: "보관 기간 명시", icon: "⏰" },
-              { t: "익명 ID", d: "실명 미수집", icon: "🆔" },
-              { t: "IRB 심의", d: "서울교대 경유", icon: "🎓" },
-              { t: "캡처 방지", d: "스크린샷 차단", icon: "🚫" },
-              { t: "동적 문항 할당", d: "57→55 랜덤", icon: "🎲" },
-              { t: "WCAG 2.1", d: "한국형 웹 접근성", icon: "♿" },
-              { t: "SSO 연동", d: "제닉스 포털", icon: "🔗" },
+              { t: "법정대리인 동의", d: "만 14세 미만", icon: "" },
+              { t: "5년 자동 파기", d: "보관 기간 명시", icon: "" },
+              { t: "익명 ID", d: "실명 미수집", icon: "" },
+              { t: "IRB 심의", d: "서울교대 경유", icon: "" },
+              { t: "캡처 방지", d: "스크린샷 차단", icon: "" },
+              { t: "동적 문항 할당", d: "57→55 랜덤", icon: "" },
+              { t: "WCAG 2.1", d: "한국형 웹 접근성", icon: "" },
+              { t: "SSO 연동", d: "제닉스 포털", icon: "" },
             ].map((s) => (
               <div key={s.t} className="bg-white border border-ink-100 rounded-xl p-4 text-center">
                 <div className="text-2xl mb-2">{s.icon}</div>
