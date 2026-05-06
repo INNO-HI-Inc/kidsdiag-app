@@ -67,10 +67,9 @@ export default function AdminDashboard() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 flex gap-2">
-              <button className="flex-1 text-xs font-semibold px-3 py-2 rounded-lg bg-paper-grey text-ink-700 hover:bg-ink-100">+ 추가</button>
-              <button className="flex-1 text-xs font-semibold px-3 py-2 rounded-lg bg-paper-grey text-ink-700 hover:bg-ink-100">승인 대기</button>
-            </div>
+            <Link href="/admin/permissions" className="mt-4 block w-full text-center text-xs font-semibold px-3 py-2.5 rounded-lg bg-mint-50 text-mint-700 hover:bg-mint-100">
+              권한 매트릭스 + 알림 발송 →
+            </Link>
           </div>
 
           {/* 콘텐츠 관리 (FUN-005) */}
@@ -93,9 +92,9 @@ export default function AdminDashboard() {
                 </div>
               ))}
             </div>
-            <button className="mt-4 w-full text-xs font-semibold px-3 py-2.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100">
-               콘텐츠 신규 등록
-            </button>
+            <Link href="/admin/cms-editor" className="mt-4 block w-full text-center text-xs font-semibold px-3 py-2.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100">
+              문항 편집기 →
+            </Link>
           </div>
 
           {/* 통계 (FUN-006) */}
@@ -140,10 +139,25 @@ export default function AdminDashboard() {
                 </li>
               ))}
             </ul>
-            <Link href="/board" className="mt-4 block w-full text-center text-xs font-semibold px-3 py-2.5 rounded-lg bg-sun-50 text-sun-600 hover:bg-sun-100">
-               게시판 관리 →
+            <Link href="/admin/site" className="mt-4 block w-full text-center text-xs font-semibold px-3 py-2.5 rounded-lg bg-sun-50 text-sun-600 hover:bg-sun-100">
+              학교 이미지·문구·게시판 관리 →
             </Link>
           </div>
+        </div>
+
+        {/* 추가 4개 관리 화면 바로가기 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          {[
+            { href: "/admin/grading", title: "답안 채점", desc: "FUN-001 수동 채점", color: "bg-mint-50 text-mint-700 border-mint-200" },
+            { href: "/admin/cms-editor", title: "문항 편집기", desc: "FUN-005 CMS 에디터", color: "bg-sky-50 text-sky-700 border-sky-200" },
+            { href: "/admin/permissions", title: "권한 매트릭스", desc: "FUN-007 알림 발송", color: "bg-lavender-50 text-lavender-700 border-lavender-200" },
+            { href: "/admin/site", title: "사이트 설정", desc: "FUN-008 로고·문구", color: "bg-sun-50 text-sun-600 border-sun-200" },
+          ].map((c) => (
+            <Link key={c.href} href={c.href} className={`${c.color} border-2 rounded-2xl p-4 hover:-translate-y-1 transition`}>
+              <div className="text-sm font-bold mb-0.5">{c.title}</div>
+              <div className="text-[10px]">{c.desc}</div>
+            </Link>
+          ))}
         </div>
 
         {/* 검수 콘솔 미니 */}

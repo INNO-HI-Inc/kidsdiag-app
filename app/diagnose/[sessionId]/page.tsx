@@ -224,9 +224,28 @@ export default function DiagnosePage() {
 
       {/* QUESTION */}
       <div className="max-w-3xl mx-auto px-4 md:px-6 py-8">
-        <div className={`${block.color.bg} rounded-2xl p-3 mb-4 inline-block`}>
-          <span className={`text-[10px] font-bold tracking-widest ${block.color.text}`}>{block.short.toUpperCase()}</span>
+        <div className="flex items-center gap-2 mb-4">
+          <div className={`${block.color.bg} rounded-xl px-3 py-1.5`}>
+            <span className={`text-[10px] font-bold tracking-widest ${block.color.text}`}>{block.short.toUpperCase()}</span>
+          </div>
+          <button className="text-[10px] font-semibold px-2.5 py-1.5 rounded-full bg-paper-grey hover:bg-ink-100 text-ink-700">
+            정답채점기준 보기
+          </button>
         </div>
+
+        {/* 멀티미디어 영역 (음성·동영상 재생 자리) */}
+        {block.id === "korean" && itemIdx === 2 && (
+          <div className="bg-white border-2 border-lavender-200 rounded-2xl p-4 mb-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-lavender-500 text-white flex items-center justify-center font-bold">▶</div>
+            <div className="flex-1">
+              <div className="text-xs font-semibold text-lavender-700">지문 음성 듣기 (1회 재생)</div>
+              <div className="text-[10px] text-ink-600">자전거 타기 — 0:42</div>
+            </div>
+            <div className="h-1 flex-1 bg-lavender-100 rounded-full max-w-[80px]">
+              <div className="h-full bg-lavender-500 rounded-full" style={{ width: "30%" }} />
+            </div>
+          </div>
+        )}
 
         <div className="bg-white border border-ink-100 rounded-2xl shadow-card p-6 md:p-8">
           <h2 className="text-lg md:text-xl font-bold leading-[1.6] mb-6 whitespace-pre-line tracking-tight">

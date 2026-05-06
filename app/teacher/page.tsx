@@ -116,6 +116,32 @@ export default function TeacherDashboard() {
             검사지 발송
           </button>
         </div>
+
+        {/* 알림 발송 폼 (FUN-007 교원 권한) */}
+        <div className="bg-white rounded-3xl p-7 border border-ink-100 mt-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold tracking-tight">학생·학부모 알림 발송</h2>
+            <span className="text-[10px] font-bold text-lavender-700 bg-lavender-50 px-2 py-0.5 rounded-full">FUN-007</span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-3 mb-3">
+            <select className="px-3 py-2 rounded-lg border border-ink-100 text-sm">
+              <option>대상: 5-3 전체 27명</option>
+              <option>대상: 진단 미응시 (3명)</option>
+              <option>대상: 향상도 &lt; 10p (4명)</option>
+            </select>
+            <select className="px-3 py-2 rounded-lg border border-ink-100 text-sm">
+              <option>채널: 앱 푸시</option>
+              <option>채널: 학부모 SMS</option>
+              <option>채널: 이메일</option>
+            </select>
+            <input placeholder="제목" defaultValue="향상교육 동영상 5편 추천" className="px-3 py-2 rounded-lg border border-ink-100 text-sm" />
+          </div>
+          <textarea rows={3} defaultValue="진단 결과 분수의 덧셈 영역이 약점으로 분류되어 동영상 강의 5편을 학습 자료실에 등록했습니다. 이번 주말까지 시청 부탁드립니다." className="w-full mb-3 px-3 py-2 rounded-lg border border-ink-100 text-sm" />
+          <div className="flex gap-2">
+            <button className="flex-1 px-3 py-2 rounded-lg bg-paper-grey text-ink-700 text-sm font-semibold">초안 저장</button>
+            <button className="flex-1 px-3 py-2 rounded-lg bg-sky-600 text-white text-sm font-bold">발송</button>
+          </div>
+        </div>
       </section>
 
       <SiteFooter />

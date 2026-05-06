@@ -67,6 +67,43 @@ export default function ResultPage() {
           </div>
         </div>
 
+        {/* 랭킹·진도 표 (FUN-002) */}
+        <div className="bg-white border-2 border-ink-100 rounded-3xl p-6 mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">랭킹 · 진도</h2>
+            <span className="text-[10px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full">FUN-002</span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
+                <tr>
+                  <th className="pb-2 text-left">분류</th>
+                  <th className="pb-2 text-center">국어</th>
+                  <th className="pb-2 text-center">과학</th>
+                  <th className="pb-2 text-center">수학</th>
+                  <th className="pb-2 text-center">통합</th>
+                  <th className="pb-2 text-right">종합</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { l: "반 내 랭킹 (5-3 / 27명)", v: ["6", "8", "4", "2", "5"], color: "text-mint-700" },
+                  { l: "학교 내 (5학년 / 87명)", v: ["18", "24", "12", "9", "12"], color: "text-sky-700" },
+                  { l: "학년 진도 (전국 평균 5급)", v: ["7급", "6급", "8급", "7급", "7급"], color: "text-lavender-700" },
+                  { l: "전국 백분위 (상위 %)", v: ["35%", "42%", "28%", "22%", "32%"], color: "text-sun-600" },
+                ].map((r) => (
+                  <tr key={r.l} className="border-b border-ink-100 last:border-0">
+                    <td className="py-2.5 text-xs font-semibold">{r.l}</td>
+                    {r.v.map((x, i) => (
+                      <td key={i} className={`py-2.5 text-center text-sm font-bold tabular-nums ${i === 4 ? r.color : "text-ink-700"}`}>{x}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         {/* 페이지 1 — 학력 결과 */}
         <div className="bg-white border-2 border-mint-200 rounded-3xl p-7 mb-6">
           <div className="flex items-center gap-2 mb-5">
