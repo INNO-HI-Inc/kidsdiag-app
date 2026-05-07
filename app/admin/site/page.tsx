@@ -81,6 +81,81 @@ export default function SiteSettingsPage() {
             </div>
           </div>
 
+          {/* 공지사항 옵션 (FUN-008) */}
+          <div className="bg-white rounded-2xl border border-ink-100 p-6 lg:col-span-2">
+            <h2 className="text-base font-bold mb-4 tracking-tight">공지사항 작성 옵션</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <input placeholder="제목" defaultValue="5월 사전 진단 일정 안내" className="w-full px-3 py-2 rounded-lg border border-ink-100 text-sm mb-2" />
+                <textarea rows={3} defaultValue="6월 첫째 주에 사전 진단을 시작합니다. 자세한 일정은 아래를 참고해주세요." className="w-full px-3 py-2 rounded-lg border border-ink-100 text-sm" />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between p-3 rounded-lg bg-paper-grey">
+                  <div>
+                    <div className="text-xs font-bold">상단 고정</div>
+                    <div className="text-[10px] text-ink-600">메인 페이지 최상단 노출</div>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" defaultChecked className="sr-only peer" />
+                    <div className="w-9 h-5 bg-ink-200 peer-checked:bg-mint-500 rounded-full transition relative">
+                      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full peer-checked:translate-x-4 transition" />
+                    </div>
+                  </label>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <div className="text-[10px] text-ink-600 mb-1">게시 시작</div>
+                    <input type="date" defaultValue="2026-05-07" className="w-full px-2 py-1.5 rounded border border-ink-100 text-xs" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-ink-600 mb-1">게시 종료</div>
+                    <input type="date" defaultValue="2026-06-30" className="w-full px-2 py-1.5 rounded border border-ink-100 text-xs" />
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-2.5 rounded-lg bg-paper-grey">
+                  <span className="text-xs font-bold">중요 공지 (배너 노출)</span>
+                  <input type="checkbox" className="accent-mint-600" />
+                </div>
+                <div className="flex items-center justify-between p-2.5 rounded-lg bg-paper-grey">
+                  <span className="text-xs font-bold">SMS·이메일 동시 발송</span>
+                  <input type="checkbox" className="accent-mint-600" />
+                </div>
+                <button className="w-full bg-mint-600 text-white text-sm font-bold py-2 rounded-lg">공지 등록 + 즉시 반영</button>
+              </div>
+            </div>
+          </div>
+
+          {/* Q&A 옵션 (비공개·답변 권한) */}
+          <div className="bg-white rounded-2xl border border-ink-100 p-6 lg:col-span-2">
+            <h2 className="text-base font-bold mb-4 tracking-tight">Q&A 게시판 옵션</h2>
+            <div className="grid md:grid-cols-3 gap-3">
+              <div className="bg-paper-grey rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">비공개 질문</div>
+                <p className="text-[11px] text-ink-700 leading-[1.5] mb-2">민감한 학습·개인 질문은 비공개로 작성 가능. 학부모 ↔ 관리자만 열람.</p>
+                <label className="flex items-center gap-2 text-xs">
+                  <input type="checkbox" defaultChecked className="accent-mint-600" />
+                  비공개 옵션 허용
+                </label>
+              </div>
+              <div className="bg-paper-grey rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">답변 권한</div>
+                <div className="space-y-1.5 text-[11px]">
+                  <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="accent-mint-600" />관리자</label>
+                  <label className="flex items-center gap-2"><input type="checkbox" defaultChecked className="accent-mint-600" />교원 (담당 학급)</label>
+                  <label className="flex items-center gap-2"><input type="checkbox" className="accent-mint-600" />학부모 간 답변</label>
+                </div>
+              </div>
+              <div className="bg-paper-grey rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">이미지 자동 최적화</div>
+                <p className="text-[11px] text-ink-700 leading-[1.5] mb-2">업로드 시 WebP 변환 + 크기 조정으로 빠른 로드.</p>
+                <label className="flex items-center gap-2 text-xs">
+                  <input type="checkbox" defaultChecked className="accent-mint-600" />
+                  자동 최적화 ON
+                </label>
+              </div>
+            </div>
+          </div>
+
           {/* 공지사항 관리 */}
           <div className="bg-white rounded-2xl border border-ink-100 p-6 lg:col-span-2">
             <div className="flex items-center justify-between mb-4">

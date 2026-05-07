@@ -28,13 +28,13 @@ export default function StatsPage() {
     { s: "통합사고력", v: 73, c: "bg-sun-500" },
   ];
 
-  // 영역별 수준
+  // 영역별 수준 A~E (성취수준)
   const levels = [
-    { l: "최우수 (≥90%)", n: 412, pct: 8 },
-    { l: "우수 (75~89%)", n: 1789, pct: 35 },
-    { l: "보통 (60~74%)", n: 1947, pct: 38 },
-    { l: "미흡 (45~59%)", n: 718, pct: 14 },
-    { l: "기초 미달 (<45%)", n: 258, pct: 5 },
+    { grade: "A", l: "최우수", range: "≥ 90%", n: 412, pct: 8 },
+    { grade: "B", l: "우수", range: "75~89%", n: 1789, pct: 35 },
+    { grade: "C", l: "보통", range: "60~74%", n: 1947, pct: 38 },
+    { grade: "D", l: "미흡", range: "45~59%", n: 718, pct: 14 },
+    { grade: "E", l: "기초 미달", range: "< 45%", n: 258, pct: 5 },
   ];
 
   return (
@@ -273,16 +273,21 @@ export default function StatsPage() {
           </div>
         </div>
 
-        {/* 수준 현황 */}
+        {/* 수준 현황 A~E */}
         <div className="bg-white rounded-2xl border border-ink-100 p-6 mb-5">
-          <h2 className="text-base font-bold mb-4">진단 수준 현황 (5단계 분포)</h2>
+          <h2 className="text-base font-bold mb-4">진단 성취수준 분포 (A~E 5단계)</h2>
           <div className="space-y-2.5">
             {levels.map((l, i) => {
               const colors = ["bg-mint-500", "bg-mint-400", "bg-sky-400", "bg-sun-400", "bg-peach-400"];
+              const txtColors = ["text-mint-700", "text-mint-600", "text-sky-700", "text-sun-600", "text-peach-500"];
               return (
                 <div key={l.l}>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold">{l.l}</span>
+                    <span className="font-semibold flex items-center gap-2">
+                      <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${colors[i]} text-white`}>{l.grade}</span>
+                      <span>{l.l}</span>
+                      <span className="text-[10px] text-ink-500 font-mono">{l.range}</span>
+                    </span>
                     <span className="tabular-nums">{l.n.toLocaleString()}명 · {l.pct}%</span>
                   </div>
                   <div className="h-3 bg-paper-grey rounded-full overflow-hidden">
@@ -323,6 +328,48 @@ export default function StatsPage() {
                     <td className="py-3 text-center tabular-nums text-xs">{r.post.toLocaleString()}</td>
                     <td className="py-3 text-center tabular-nums text-xs font-bold text-mint-700">+{r.gain}p</td>
                     <td className="py-3 text-right tabular-nums text-xs font-bold">{r.comp}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* 오답률 상위 문항 분석 (FUN-006) */}
+        <div className="bg-white rounded-2xl border border-ink-100 p-6 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">오답률 상위 문항 분석</h2>
+            <span className="text-[10px] font-bold text-peach-500 bg-peach-100 px-2 py-0.5 rounded-full">집중 학습 추천</span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-[10px] text-ink-500 font-bold tracking-widest border-b border-ink-100">
+                <tr>
+                  <th className="pb-2 text-left">문항 ID</th>
+                  <th className="pb-2 text-left">교과·단원</th>
+                  <th className="pb-2 text-left">유형</th>
+                  <th className="pb-2 text-center">응시 수</th>
+                  <th className="pb-2 text-center">오답률</th>
+                  <th className="pb-2 text-right">조치</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { id: "MATH-5-FRAC-007", c: "수학·분수", t: "응용 문장제", n: 4218, rate: 78, color: "text-peach-500" },
+                  { id: "SCI-5-MAT-014", c: "과학·물질", t: "현상 해석", n: 4087, rate: 71, color: "text-peach-500" },
+                  { id: "MATH-5-RATIO-003", c: "수학·비율", t: "다단계 추론", n: 4124, rate: 68, color: "text-sun-600" },
+                  { id: "KOR-5-READ-009", c: "국어·독해", t: "추론", n: 4156, rate: 64, color: "text-sun-600" },
+                  { id: "SCI-5-LIFE-005", c: "과학·생명", t: "분류", n: 3987, rate: 61, color: "text-sun-600" },
+                ].map((r) => (
+                  <tr key={r.id} className="border-b border-ink-100 last:border-0">
+                    <td className="py-2.5 text-xs font-mono">{r.id}</td>
+                    <td className="py-2.5 text-xs">{r.c}</td>
+                    <td className="py-2.5 text-xs text-ink-600">{r.t}</td>
+                    <td className="py-2.5 text-center text-xs tabular-nums">{r.n.toLocaleString()}</td>
+                    <td className={`py-2.5 text-center text-sm font-bold tabular-nums ${r.color}`}>{r.rate}%</td>
+                    <td className="py-2.5 text-right">
+                      <button className="text-[10px] font-bold text-mint-700 hover:text-mint-900">유사 문항 추천 →</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

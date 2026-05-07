@@ -92,6 +92,112 @@ export default function ImprovementPage() {
           </div>
         </div>
 
+        {/* 동영상 플레이어 데모 — 재생속도·구간반복·자막 (FUN-003) */}
+        <div className="bg-white border-2 border-ink-100 rounded-2xl p-5 md:p-6 lg:p-7 mb-6">
+          <h2 className="text-base font-bold mb-4 tracking-tight">동영상 플레이어 — 학습 도구</h2>
+          <div className="grid lg:grid-cols-3 gap-5">
+            {/* 플레이어 미리보기 */}
+            <div className="lg:col-span-2 bg-carbon-900 rounded-xl overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-mint-400 to-mint-700 relative flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/20" />
+                <button className="relative w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-pop hover:scale-110 transition">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-ink-900 ml-1" fill="currentColor">
+                    <polygon points="6,4 20,12 6,20" />
+                  </svg>
+                </button>
+                <div className="absolute top-3 left-3 bg-black/60 text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest">EBS Math</div>
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <div className="text-sm font-bold mb-2">분수의 덧셈 — 통분 이해</div>
+                  <div className="h-1 bg-white/30 rounded-full overflow-hidden">
+                    <div className="h-full bg-mint-400 rounded-full" style={{ width: "42%" }} />
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] mt-1.5 tabular-nums">
+                    <span>2:18 / 5:32</span>
+                    <span className="bg-mint-500/60 px-1.5 py-0.5 rounded font-bold">42% 시청</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-3 flex items-center gap-2 flex-wrap">
+                <button className="text-[10px] font-bold bg-white/10 text-white px-2 py-1 rounded hover:bg-white/20">⏮</button>
+                <button className="text-[10px] font-bold bg-white/10 text-white px-2 py-1 rounded hover:bg-white/20">⏯</button>
+                <button className="text-[10px] font-bold bg-white/10 text-white px-2 py-1 rounded hover:bg-white/20">⏭</button>
+                <div className="ml-2 flex items-center gap-1 text-[10px] text-white/80">
+                  <span>속도</span>
+                  {["0.75x", "1x", "1.25x", "1.5x", "2x"].map((s) => (
+                    <button key={s} className={`px-1.5 py-0.5 rounded ${s === "1x" ? "bg-mint-500 text-white" : "bg-white/10 text-white/70 hover:bg-white/20"}`}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+                <div className="ml-auto flex items-center gap-1.5 text-[10px] text-white/80">
+                  <button className="bg-mint-500 text-white px-2 py-1 rounded font-bold">자막 ON</button>
+                  <button className="bg-white/10 px-2 py-1 rounded">CC</button>
+                </div>
+              </div>
+            </div>
+
+            {/* 우측 — 컨트롤 옵션 + 학습 완료 */}
+            <div className="space-y-3">
+              <div className="bg-paper-grey rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">구간 반복</div>
+                <div className="flex items-center gap-2 mb-2">
+                  <input defaultValue="2:00" className="flex-1 px-2 py-1 rounded border border-ink-100 text-xs tabular-nums" />
+                  <span className="text-xs">~</span>
+                  <input defaultValue="3:30" className="flex-1 px-2 py-1 rounded border border-ink-100 text-xs tabular-nums" />
+                </div>
+                <button className="w-full text-xs font-semibold py-1.5 rounded bg-mint-500 text-white">반복 재생 ON</button>
+              </div>
+
+              <div className="bg-paper-grey rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-ink-700 mb-2">자막 옵션</div>
+                <div className="space-y-1.5">
+                  <label className="flex items-center gap-2 text-xs cursor-pointer">
+                    <input type="radio" name="caption" defaultChecked className="accent-mint-600" />
+                    한국어 자막
+                  </label>
+                  <label className="flex items-center gap-2 text-xs cursor-pointer">
+                    <input type="radio" name="caption" className="accent-mint-600" />
+                    한국어 + 핵심 단어 강조
+                  </label>
+                  <label className="flex items-center gap-2 text-xs cursor-pointer">
+                    <input type="radio" name="caption" className="accent-mint-600" />
+                    자막 끄기
+                  </label>
+                </div>
+              </div>
+
+              <div className="bg-mint-50 border border-mint-200 rounded-xl p-4">
+                <div className="text-[10px] font-bold tracking-widest text-mint-700 mb-2">학습 완료 자동 처리</div>
+                <p className="text-[11px] text-ink-700 leading-[1.5] mb-2">
+                  영상의 <strong className="text-mint-700">80% 이상 시청</strong> 시 자동으로 학습 이력에 기록됩니다.
+                </p>
+                <div className="text-[10px] text-ink-600 flex items-center gap-1.5">
+                  <span className="w-1 h-1 rounded-full bg-mint-500" />
+                  현재 42% — 38% 더 시청 시 완료
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 첨부 자료 */}
+          <div className="mt-4 pt-4 border-t border-ink-100">
+            <div className="text-[10px] font-bold tracking-widest text-ink-600 mb-2">강의 첨부 자료</div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { t: "통분 개념 정리", n: "통분.pdf", s: "0.4MB" },
+                { t: "예제 풀이지", n: "분수덧셈_예제.pdf", s: "0.6MB" },
+                { t: "수업 자료 PPT", n: "분수.pptx", s: "1.2MB" },
+              ].map((f) => (
+                <button key={f.n} className="flex items-center gap-2 px-3 py-2 bg-paper-grey hover:bg-ink-100 rounded-lg text-xs">
+                  <span className="font-mono text-[9px] bg-white px-1 py-0.5 rounded border border-ink-100">PDF</span>
+                  <span className="font-semibold">{f.t}</span>
+                  <span className="text-ink-500 text-[10px]">{f.s} ↓</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* 학습 자료실 */}
         <div className="grid md:grid-cols-2 gap-5 mb-6">
           <div className="bg-white border-2 border-ink-100 rounded-2xl p-6">
