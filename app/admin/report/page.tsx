@@ -239,6 +239,33 @@ export default function ReportPage() {
           </div>
         </div>
 
+        {/* TF 최종 의사결정 5요청 (GeniusX 종합 결론) */}
+        <div className="bg-white rounded-2xl border-2 border-mint-200 p-6 md:p-7 mb-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold tracking-tight">TF 최종 의사결정 — 5요청</h2>
+            <span className="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded-full">본 문서 승인 후 M1 착수</span>
+          </div>
+          <div className="space-y-2.5">
+            {[
+              { n: "①", t: "교과 구성 — 과학+수학+국어 57문항, 총 45분", status: "승인 대기" },
+              { n: "②", t: "국어 블록 추가에 따른 언어·독해 전문가 1인 추가 영입 (국어교육학 전공)", status: "섭외 중" },
+              { n: "③", t: "박민구 교수 책임연구원 체제 하 서울교대 IRB 심의 경유", status: "승인 완료" },
+              { n: "④", t: "추가 권고 8개 항목 우선순위 재조정 — TF 토의", status: "토의 진행" },
+              { n: "⑤", t: "M1 개발 착수 시점 확정 — 예산 집행 연계", status: "확정 대기" },
+            ].map((d) => (
+              <div key={d.n} className="flex items-center gap-3 p-3 rounded-xl bg-paper-grey">
+                <span className="text-lg font-bold text-mint-700 flex-shrink-0">{d.n}</span>
+                <div className="flex-1 min-w-0 text-sm font-semibold">{d.t}</div>
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                  d.status === "승인 완료" ? "bg-mint-100 text-mint-700" :
+                  d.status === "섭외 중" || d.status === "토의 진행" ? "bg-sky-100 text-sky-700" :
+                  "bg-sun-100 text-sun-600"
+                }`}>{d.status}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* 일괄 다운로드 */}
         <div className="bg-white rounded-2xl border border-ink-100 p-5 md:p-6 lg:p-7">
           <h2 className="text-base font-bold mb-4">일괄 다운로드</h2>

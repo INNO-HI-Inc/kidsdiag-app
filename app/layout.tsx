@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import A11yToggle from "@/components/A11yToggle";
 
 export const metadata: Metadata = {
   title: "제닉스 — AI 기반 초등학력 진단·학습시스템",
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+        <A11yToggle />
+      </body>
     </html>
   );
 }

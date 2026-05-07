@@ -10,7 +10,7 @@ export default function SignupPage() {
   const [parentName, setParentName] = useState("홍부모");
   const [email, setEmail] = useState("hong@example.com");
   const [password, setPassword] = useState("");
-  const [agreed, setAgreed] = useState({ guardian: false, dataDiag: false, dataTalent: false, marketing: false });
+  const [agreed, setAgreed] = useState({ guardian: false, dataDiag: false, dataTalent: false, longitudinal: false, marketing: false });
   const [childName, setChildName] = useState("홍길동");
   const [childGrade, setChildGrade] = useState<3 | 4 | 5 | 6>(5);
   const [pin, setPin] = useState("");
@@ -116,6 +116,7 @@ export default function SignupPage() {
                 { k: "guardian", t: "법정대리인 동의 (필수)", d: "만 14세 미만 자녀의 진단·학습 데이터 처리에 보호자로서 동의합니다. 개인정보보호법 §22조의2 준수." },
                 { k: "dataDiag", t: "학력 진단 데이터 수집·이용 (필수)", d: "응답·풀이시간·답 변경 등 학습 행동 로그를 데이터 최소 수집 원칙에 따라 익명 ID로 처리하며, 5년 보관 후 자동 파기됩니다." },
                 { k: "dataTalent", t: "재능 진단 프리뷰 분석 (필수)", d: "8개 재능 중 5개 측정값을 익명 ID로 분석합니다. 서울교대 IRB(박민구 교수 책임 체제) 심의 완료." },
+                { k: "longitudinal", t: "종단 추적 — 1년 후 재응시 (선택)", d: "GeniusX Ver.4 민감기 이론 실증 연구를 위한 동의. 1년 후 발달 궤적 측정 + 학술 논문 자료. 동의자는 자동 알림." },
                 { k: "marketing", t: "심화 진단 안내·마케팅 (선택)", d: "GeniusX 진로 가이드, 이벤트 등 추가 정보 수신. 연구 목적 2차 활용 시 별도 재동의를 받습니다." },
               ].map((c) => {
                 const sel = agreed[c.k as keyof typeof agreed];
